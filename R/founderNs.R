@@ -1,5 +1,34 @@
+##' Numbers of founder genotypes
+##'
+##' \code{founderNs} calculates the number of founder genotypes represented in the DSPR
+##' RILs at a given position.
+##' 
+##' @title Numbers of founder genotypes
+##' @param peakChr character vector of length one. 
+##' Must be one of the major chromosome arms in the 
+##' \emph{Drosophila} genome ('X','2L','2R','3L',or '3R').
+##' 
+##' @param peakPos numeric vector of length one. A position in 
+##' base pairs in the DSPR position list (every 10kb). 
+##' 
+##' @param design a character string. One of either 'inbredA' or 'inbredB'
+##' corresponding to the pA and pB set of inbred RILs. Other crossing designs 
+##' will be supported in the future. 
+##' 
+##' @param phenotype.dat \code{data.frame} containing a column of 
+##' ril ids (must be named patRIL) and phenotypes.
+##'
+##' @return A named numeric vector consisting of the numbers of RILs in the 
+##' phenotype.dat \code{data.frame} with each founder genotype at the given position. 
+##' A RIl is assigned a founder genotype if the HMM probability is over 0.95. The number 
+##' of RILs with a heterozygous genotype and an uncertain genotype are also returned. 
+##' 
+##' @author Elizabeth King (\email{egking@@uci.edu})
+##' 
+##' @export
+##' 
 
-founderNs<-function(peakChr,peakPos,model,design,phenotype.dat)
+founderNs<-function(peakChr,peakPos,design,phenotype.dat)
 {
   
   if(design=='inbredA'|design=='inbredB')
