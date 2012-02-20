@@ -1,15 +1,48 @@
-##' .. content for \description{} (no empty lines) ..
+##' \code{DSPRperm} performs a permutation test for a DSPR dataset.
 ##'
-##' .. content for \details{} ..
-##' @title 
-##' @param model 
-##' @param design 
-##' @param phenotype.dat 
-##' @param batch 
-##' @param niter 
-##' @param alpha 
-##' @return 
-##' @author Elizabeth King
+##' The permutation test can take a very long time to run (over 24 hrs).
+##' 
+##' @title DSPR permutation test
+##' 
+##' @aliases DSPRperm print.pt
+##' 
+##' 
+##' @param model an object of class formula: a symbolic description of the 
+##' null model to be fitted at each position (e.g., \code{phenotype \~ 1}).  
+##' The genotype effects to be fitted 
+##' will be added based on \code{design}. 
+##' 
+##' @param design a character string. One of either 'inbredA' or 'inbredB'
+##' corresponding to the pA and pB set of inbred RILs. Other crossing designs 
+##' will be supported in the future. 
+##' 
+##' @param phenotype.dat \code{data.frame} containing a column of 
+##' ril ids (must be named patRIL) and phenotypes.
+##' 
+##' @param batch A numeric vector of length one specifying the number of positions 
+##' to be examined at a time. A larger number will use more memory but can be faster. 
+##' Default is 1000.
+##' 
+##' @param niter A numeric vector of length one specifying the number of permutations 
+##' to run. Default is 1000.
+##' 
+##' @param alpha The alpha level for the genome-wide signficance threshold. Default is 0.05. 
+##' Raw maximum LOD scores are also returned and \code{\link{quantile}} can be used to test 
+##' other alphas.
+##' 
+##' @return A list of class \code{pt} containing:
+##' \item{maxLODs}{A vector containing the maximum LOD score obtained for each permutation of 
+##' the data.} 
+##' \item{alpha}{the specified alpha level}
+##' \item{threshold}{the signficance threshold at the specified alpha level}
+##' 
+##' 
+##' 
+##' @author Elizabeth King (\email{egking@@uci.edu})
+##' 
+##' @export
+##'
+##' @S3method print pt
 DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
 {
   
@@ -72,7 +105,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
     ysamps<-sample(index)
   }
   
-  if(batch='full'){batch=nrow(poslist)}
+  if(batch=='full'){batch=nrow(poslist)}
   
   batches<-seq(1,nrow(poslist),by=batch)
   

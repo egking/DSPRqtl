@@ -23,4 +23,25 @@
 ##' @keywords package
 NULL
 
+##' Positionlist
+##' 
+##' Long description
+##' 
+##' @name positionlist_wgenetic
+##' 
+##' @aliases positionlist_wgenetic poslist
+##' 
+##' @docType data
+##' 
+##' @format A data frame with 4 variables.
+##' \describe{
+##' \item{\code{chr}}{character vector of chromosome}
+##' \item{\code{Ppos}}{numeric vector}
+##' \item{\code{Gpos}}{numeric vector}
+##' \item{\code{Gaxis}}{numeric vector}
+##' }
+##' 
+##' @keywords datasets
+##' 
+NULL
 

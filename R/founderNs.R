@@ -9,8 +9,7 @@
 ##' \emph{Drosophila} genome ('X','2L','2R','3L',or '3R').
 ##' 
 ##' @param peakPos numeric vector of length one. A position in 
-##' base pairs in the DSPR position list (every 10kb). See 
-##' \code{\link{positionlist_wgenetic}}.
+##' base pairs in the DSPR position list (every 10kb). 
 ##' 
 ##' @param design a character string. One of either 'inbredA' or 'inbredB'
 ##' corresponding to the pA and pB set of inbred RILs. Other crossing designs 

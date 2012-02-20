@@ -9,8 +9,7 @@
 ##' \emph{Drosophila} genome ('X','2L','2R','3L',or '3R').
 ##' 
 ##' @param peakPos numeric vector of length one. A position in 
-##' base pairs in the DSPR position list (every 10kb). See 
-##' \code{\link{positionlist_wgenetic}}.
+##' base pairs in the DSPR position list (every 10kb). 
 ##'
 ##' @param qtldat \code{data.frame} of chromosome, position, 
 ##' and LOD scores (column names chr,Ppos,Gpos,LOD). List element LODscores 
@@ -19,7 +18,7 @@
 ##' @param peak numeric vector of length one consisting of the peak LOD score.
 ##'  
 ##' @param LODdrop numeric vector of length one consisting of the LOD drop to be used. 
-##' Default value is 2 which approximates a 95% confidence interval.
+##' Default value is 2 which approximates a 95\% confidence interval.
 ##' 
 ##' @return A \code{data.frame} with two rows containing the chromosome, physical position (bp), 
 ##' genetic position (cM) and LOD scores corresponding to the lower and upper bound. 

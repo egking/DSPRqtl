@@ -12,8 +12,7 @@
 ##' \emph{Drosophila} genome ('X','2L','2R','3L',or '3R').
 ##' 
 ##' @param peakPos numeric vector of length one. A position in 
-##' base pairs in the DSPR position list (every 10kb). See 
-##' \code{\link{positionlist_wgenetic}}.
+##' base pairs in the DSPR position list (every 10kb). 
 ##' 
 ##' @param phenotype.dat \code{data.frame} containing a column of 
 ##' ril ids (must be named patRIL) and phenotypes.
@@ -27,8 +26,7 @@
 ##' 
 ##' @author Elizabeth King (\email{egking@@uci.edu})
 ##' 
-##' @reference
-##' Shannon, C.E. 1984. A mathematical theory of communication. 
+##' @references Shannon, C.E. 1984. A mathematical theory of communication. 
 ##' \emph{Bell System Technical Journal} 27(3): 379-423.
 ##' \url{http://en.wikipedia.org/wiki/Information_theory#Entropy}
 ##' 

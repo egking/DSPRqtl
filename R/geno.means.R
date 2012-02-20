@@ -9,8 +9,7 @@
 ##' \emph{Drosophila} genome ('X','2L','2R','3L',or '3R').
 ##' 
 ##' @param peakPos numeric vector of length one. A position in 
-##' base pairs in the DSPR position list (every 10kb). See 
-##' \code{\link{positionlist_wgenetic}}.
+##' base pairs in the DSPR position list (every 10kb). 
 ##' 
 ##' @param model an object of class formula: a symbolic description of the 
 ##' null model to be fitted at each position (e.g., \code{phenotype ~ 1}).  The genotype effects to be fitted 
