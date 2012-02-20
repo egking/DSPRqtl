@@ -25,3 +25,5 @@ Collate:
     'geno.means.R'
     'misc.R'
     'perct.var.R'
+    'DSPRqtl-package.R'
+    'DSPRperm.R'
