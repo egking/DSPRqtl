@@ -7,5 +7,9 @@ Type: Package
 LazyLoad: yes
 Author: Elizabeth King
 Description: Package to analyze phenotypes measured on the Drosophila Synthetic Population Resource
-Version: 1.0-1
+Depends:
+    R (>= 2.13)
+Suggests:
+    DSPRqtlDataA,
+    DSPRqtlDataB
 Date: 2012-02-19
