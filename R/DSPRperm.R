@@ -1,4 +1,15 @@
-
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param model 
+##' @param design 
+##' @param phenotype.dat 
+##' @param batch 
+##' @param niter 
+##' @param alpha 
+##' @return 
+##' @author Elizabeth King
 DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
 {
   

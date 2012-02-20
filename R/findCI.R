@@ -1,3 +1,14 @@
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param peakChr 
+##' @param peakPos 
+##' @param qtldat 
+##' @param peak 
+##' @param drop 
+##' @return 
+##' @author Elizabeth King
 findCI<-function(peakChr,peakPos,qtldat,peak,drop)
 {
   startIndex<-which(qtldat$chr==peakChr & qtldat$Ppos==peakPos)

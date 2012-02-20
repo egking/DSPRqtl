@@ -1,4 +1,13 @@
-
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param model 
+##' @param design 
+##' @param phenotype.dat 
+##' @param batch 
+##' @return 
+##' @author Elizabeth King
 DSPRscan<-function(model,design,phenotype.dat, batch=1000)
 {
    

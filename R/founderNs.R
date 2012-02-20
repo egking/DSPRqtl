@@ -1,4 +1,14 @@
-
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param peakChr 
+##' @param peakPos 
+##' @param model 
+##' @param design 
+##' @param phenotype.dat 
+##' @return 
+##' @author Elizabeth King
 founderNs<-function(peakChr,peakPos,model,design,phenotype.dat)
 {
   

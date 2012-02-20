@@ -1,3 +1,12 @@
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param qtldat 
+##' @param threshold 
+##' @param LODdrop 
+##' @return 
+##' @author Elizabeth King
 DSPRpeaks<-function(qtldat,threshold,LODdrop)
 {
   peakmat<-findQTL(qtldat$LODscores,threshold)

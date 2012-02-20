@@ -1,3 +1,12 @@
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param peakChr 
+##' @param peakPos 
+##' @param phenotype.dat 
+##' @return 
+##' @author Elizabeth King
 entropy.pos<-function(peakChr,peakPos,phenotype.dat)
 {
   if(design=='inbredA'|design=='inbredB')

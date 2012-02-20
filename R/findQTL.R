@@ -1,3 +1,11 @@
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param qtldat 
+##' @param threshold 
+##' @return 
+##' @author Elizabeth King
 findQTL<-function(qtldat,threshold)
 {
   output<-data.frame('chr'=numeric(length=0),'Ppos'=numeric(length=0),'Gpos'=numeric(length=0),'LOD'=numeric(length=0))

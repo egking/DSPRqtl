@@ -1,3 +1,14 @@
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title 
+##' @param peakChr 
+##' @param peakPos 
+##' @param model 
+##' @param phenotype.dat 
+##' @param design 
+##' @return 
+##' @author Elizabeth King
 geno.means<-function(peakChr,peakPos,model,phenotype.dat,design)
 {
   if(design=='inbredA'|design=='inbredB')
