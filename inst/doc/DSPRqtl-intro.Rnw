@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{mathpazo}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage{url}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%\VignetteIndexEntry{A data analysis tutorial for DSPR data}
+
+\makeatother
+
+\begin{document}
+
+\title{A data analysis tutorial for DSPR data}
+
+\author{Elizabeth King}
+
+\maketitle
+
+\section{Prerequisites}
+
+If you do not have R, see (\url{http:\\www.r-project.org}) to download and 
+install it and obtain the reference manual.
+
+\section{Installing DSPRqtlData Packages}
+
+\begin{itemize}
+  \item Install the data package (DSPRqtlDataA/DSPRqtlDataB) and the 
+  analysis package (DSPRqtl). If only one population was used, only 
+  one data package (A or B) needs to be installed.
+  \item The data packages are 3.2 GB each and will take several 
+  minutes to download and install depending on your internet 
+  connection speed.
+\end{itemize}
+
+Within R (not recommended in RStudio), type:
+
+\texttt{install.packages("DSPRqtlDataA", repos = "http://wfitch.bio.uci.edu/R/", type = "source")}
+
+\emph{and/or}
+
+\texttt{install.packages("DSPRqtlDataB", repos = "http://wfitch.bio.uci.edu/R/", type = "source")}
+
+for the pA and pB data packages respectively. Note, you must use the 
+repos statement.  These packages are too large to be stored on CRAN.
+
+\section{Loading and Using the Data Packages}
+
+Once the data packages are installed, they can be loaded using
+
+<<>>=
+  library(DSPRqtlDataA)
+@
+
+Then, the set of additive HMM probabilities and raw HMM probabilities 
+for any given position can be obtained with 
+
+\texttt{data(A\_chromosome arm\_position in base pairs)}
+
+e.g.,
+
+<<>>=
+  data(A_X_12000000)
+@
+
+Our list of regularly space positions is available here:
+
+To install the analysis package, within R, type:
+
+\texttt{install.packages("DSPRqtl", repos = "http://wfitch.bio.uci.edu/R/", type = "source")}
+
+or simply 
+
+\texttt{install.packages("DSPRqtl")} to install directly from CRAN.
+
+\section{Analysis}
+
+\subsection{Phenotype Data}
+
+Format your phenotype file and read it into R.  All phenotype files must have at a minimum column named 'patRIL' (and in the case of crossing designs, also one named 'matRIL') containing the numeric RIL IDs (e.g., 11001, 11002...) and a column with phenotype measurements (with a name chosen by the user). If covariates are to be used, these should also be in this file. For an example, see (). R will accept many types of files.  For help reading files into R, see ().  A text file is shown below as an example.
+
+phenotype.dat<-read.table("your\_file\_path", header=TRUE)
+
+\subsection{Genome Scan}
+
+3) Perform a genome scan. Currently only measurements taken on the sets of inbred lines are available. Crossing design analysis is in development. The DSPRscan function performs a genome scan that regresses the 8 founder genotype probabilities on the measured phenotype at evenly spaced 10kb positions across the genome. 
+DSPRscan(model,design,phenotype.dat,batch)
+Model is the null model.  For a phenotype with no covariates, it is of the form phenotype ~ 1.  With covariate phenotype~covariate1+covariate2…
+Design is either 'inbredA' or 'inbredB' for the pA and pB RILs.
+Phenotype.dat is the data.frame read in at step 2 containing the RIL IDs, phenotype, and any covariates. 
+Batch is the number of positions tested at one time.  Defaults to 1000 to balance memory use and speed.
+DSPRscan(phenotype ~ 1, 'inbredA', phenotype.dat)
+For a single phenotype with the data package installed, this will take ~20min.  
+Handling interactive covariates and analyzing multiple phenotypes at once is in development.
+4) Perform a permutation test using the function DSPRperm to obtain a significance threshold. For initial data exploration, the value 6.8 can be used.  This threshold seems to be fairly stable for multiple phenotypes we've tested but we recommend each user performs a permutation test for their specific data set. 
+5) Get a summary of the significant peaks.  Use DSPRpeaks. Individual functions to get these values are also available see manual.  
+
+
+\end{document}
