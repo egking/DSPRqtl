@@ -27,3 +27,4 @@ Collate:
     'perct.var.R'
     'DSPRqtl-package.R'
     'DSPRperm.R'
+    'LocalInt.R'

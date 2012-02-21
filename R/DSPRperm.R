@@ -102,7 +102,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
   ysamps<-matrix(,nrow(phenotype.dat),niter)
   for (j in 1:niter)
   {
-    ysamps<-sample(index)
+    ysamps[,j]<-sample(index)
   }
   
   if(batch=='full'){batch=nrow(poslist)}
@@ -175,7 +175,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
     all.lms <- array(dim=c(length(lms),dim(lms[[1]])[1]))
     
     for(zz in seq(along=lms)) all.lms[zz,] <- lms[[zz]]
-    full.lod.set[start:end,]<-all.lms
+    full.lod.set[start:end,]<-all.lms-L.n
    }else{
     
      for(jj in 1:niter)
@@ -198,6 +198,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
     
     
   }#batch close
+  rm(poslist,pos=.GlobalEnv)
   
   maxlods<-apply(full.lod.set,2,max)
   

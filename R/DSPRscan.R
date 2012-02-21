@@ -23,7 +23,7 @@
 ##' 
 ##' @return A list of class \code{gscan} containing:
 ##' \item{LODscores}{A \code{data.frame} consisting of the chromosome, physical position (bp),
-##' genetic position (cM) and LOD score for each significant peak.}
+##' genetic position (cM) and LOD score for each position.}
 ##' \item{model}{the model specification}
 ##' \item{design}{the design specification}
 ##' \item{phenotype}{the phenotype \code{data.frame} specified}
@@ -66,7 +66,8 @@ DSPRscan<-function(model,design,phenotype.dat, batch=1000)
   
   #get list of positions
   data(positionlist_wgenetic)
-  #poslist<-poslist[1:5,]
+  names(poslist)<-c('chr','Ppos','Gpos','Gaxis')
+  
   if(batch=='full'){batch=nrow(poslist)}
   
   batches<-seq(1,nrow(poslist),by=batch)
@@ -153,13 +154,16 @@ DSPRscan<-function(model,design,phenotype.dat, batch=1000)
   
   #put position and LOD scores in a data frame
   #qtl.results<-data.frame('chr'=poslist$chr,'Ppos'=poslist$Ppos,'Gpos'=poslist$Gpos,'LOD'=lod.set)
-  qtl.results<-list("LODscores"=data.frame('chr'=poslist$chr,'Ppos'=poslist$pos,'Gpos'=poslist$Gpos,'LOD'=full.lod.set),
+  qtl.results<-list("LODscores"=data.frame('chr'=poslist$chr,'Ppos'=poslist$Ppos,'Gpos'=poslist$Gpos,'LOD'=full.lod.set),
                     "model"=model,
                     "design"=design,
                     "phenotype"=phenotype.dat
                     )
  
   class(qtl.results)<-'gscan'
+  
+  rm(poslist,pos=.GlobalEnv)
+  
   return(qtl.results)
 } #function close
 

@@ -28,10 +28,10 @@
   A list of class \code{gscan} containing:
   \item{LODscores}{A \code{data.frame} consisting of the
   chromosome, physical position (bp), genetic position (cM)
-  and LOD score for each significant peak.}
-  \item{model}{the model specification} \item{design}{the
-  design specification} \item{phenotype}{the phenotype
-  \code{data.frame} specified}
+  and LOD score for each position.} \item{model}{the model
+  specification} \item{design}{the design specification}
+  \item{phenotype}{the phenotype \code{data.frame}
+  specified}
 }
 \description{
   Function to perform a genome scan for data generated with

@@ -31,7 +31,7 @@
 ##' @export
 ##'
 ##' @S3method print peaks
-DSPRpeaks<-function(qtldat,threshold,LODdrop)
+DSPRpeaks<-function(qtldat,threshold=6.8,LODdrop)
 {
   peakmat<-findQTL(qtldat$LODscores,threshold)
   peaks.obj<-vector('list',nrow(peakmat))
@@ -46,8 +46,8 @@ DSPRpeaks<-function(qtldat,threshold,LODdrop)
     ci<-findCI(peakChr,peakPos,qtldat$LODscores,peak,LODdrop)
     gmeans<-geno.means(peakChr,peakPos,model,phenotype.dat,design)
     pvar<-perct.var(peakChr,peakPos,model,phenotype.dat,design)
-    Ns<-founderNs(peakChr,peakPos,design)
-    entropy<-entropy.pos(peakChr,peakPos,phenotype.dat)
+    Ns<-founderNs(peakChr,peakPos,design,phenotype.dat)
+    ent<-entropy.pos(peakChr,peakPos,phenotype.dat,design)
     peaks.obj[[p]]<-list(
                     "threshold"=threshold,
                     "peak"=peakmat[p,],
@@ -56,7 +56,7 @@ DSPRpeaks<-function(qtldat,threshold,LODdrop)
                     "founderNs"=Ns,
                     "geno.means"=gmeans,
                     "perct.var"=pvar,
-                    "entropy"=entropy                
+                    "entropy"=ent                
                     )
   }
   
@@ -67,7 +67,7 @@ return(peaks.obj)
 
 
 
-print.peaks <- function(x, digits = 4, ...){
+print.peaks <- function(x, ...){
   cat("\n")
   cat("Significant peaks at a threshold of",x[[1]]$threshold,"\n")
   cat("\tAll peaks should be examined visually by the user to determine which constitute distinct peaks.\n")
@@ -77,19 +77,19 @@ print.peaks <- function(x, digits = 4, ...){
   xi<-x[[i]]  
   
   cat("Peak ",i,":\n")
-  cat("\t",xi$peak,"\n")
+  print(xi$peak)
   cat("\n")
   
   cat("Confidence Interval(LOD drop = ",xi$LODdrop,"):\n")
-  cat("\t",xi$CI,"\n")
+  print(xi$CI)
   cat("\n")
   
   cat("Numbers of RILs with each founder genotype:\n")
-  cat("\t",xi$Ns,"\n")
+  print(xi$founderNs)
   cat("\n")
   
   cat("Founder genotype means and standard errors:\n")
-  cat("\t",xi$geno.means,"\n")
+  print(xi$geno.means)
   cat("\n")
   
   cat("Percent of variation explained by the QTL:\n")
