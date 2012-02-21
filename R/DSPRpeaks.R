@@ -31,7 +31,7 @@
 ##' @export
 ##'
 ##' @S3method print peaks
-DSPRpeaks<-function(qtldat,threshold=6.8,LODdrop)
+DSPRpeaks<-function(qtldat,threshold=6.8,LODdrop=2)
 {
   peakmat<-findQTL(qtldat$LODscores,threshold)
   peaks.obj<-vector('list',nrow(peakmat))

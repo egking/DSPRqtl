@@ -3,7 +3,7 @@
 \alias{print.peaks}
 \title{Find and Summarize QTL}
 \usage{
-  DSPRpeaks(qtldat, threshold = 6.8, LODdrop)
+  DSPRpeaks(qtldat, threshold = 6.8, LODdrop = 2)
 }
 \arguments{
   \item{qtldat}{An object of class gscan. Output from
