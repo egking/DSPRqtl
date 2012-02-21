@@ -7,4 +7,5 @@
 *.log
 *.tex
 *.pdf
+*.synctex
 *.Rproj
