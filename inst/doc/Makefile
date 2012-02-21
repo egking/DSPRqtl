@@ -7,7 +7,7 @@ PDFS= DSPRqtl-intro.pdf
 all: $(PDFS) 
 
 clean:
-  rm -f *.tex *.bbl *.blg *.aux *.out *.log *.spl *tikzDictionary
+	rm -f *.tex *.bbl *.blg *.aux *.out *.log *.spl *tikzDictionary
 
 %.pdf: %.Rnw
 	$(R_HOME)/bin/Rscript -e "library(knitr); knit2pdf('$*.Rnw')"
