@@ -3,3 +3,7 @@
 .RData
 *.Rcheck
 *.gz
+*.aux
+*.log
+*.tex
+*.pdf
