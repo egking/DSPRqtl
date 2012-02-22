@@ -1,0 +1,16 @@
+\docType{data}
+\name{ADHscan}
+\alias{ADHscan}
+\title{ADH scan}
+\format{A list with 4 variables.
+\describe{
+\item{\code{LODscores}}{data.frame containing positions and LODscores}
+\item{\code{model}}{formula}
+\item{\code{design}}{character vector}
+\item{\code{phenotype}}{data.frame containing RIL ids and phenotypes}
+}}
+\description{
+  The ADH genome scan results.
+}
+\keyword{datasets}
+
