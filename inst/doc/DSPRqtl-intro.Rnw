@@ -1,10 +1,14 @@
 \documentclass{article}
+
 \usepackage{mathpazo}
 \renewcommand{\sfdefault}{lmss}
 \renewcommand{\ttdefault}{lmtt}
+
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
 \usepackage{geometry}
-\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage{url}
 
 \makeatletter
@@ -33,7 +37,7 @@ install it and obtain the reference manual.
   \item Install the data package (DSPRqtlDataA/DSPRqtlDataB). 
   If only one population was used, only 
   one data package (A or B) needs to be installed.
-  \item The data packages are 3.2 GB each and will take several 
+  \item The data packages are $\sim$3.2 GB each and will take several 
   minutes to download and install depending on your 
   connection speed. If you do not install these packages, the functions in DSPRqtl will fetch each position file from the internet. This method takes considerably longer to run.
 \end{itemize}
@@ -41,11 +45,20 @@ install it and obtain the reference manual.
 Within R (not recommended in RStudio), type:
 \vspace*{1 pc}
 
-\texttt{install.packages("DSPRqtlDataA", repos = "http://wfitch.bio.uci.edu/R/", type = "source")}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  install.packages("DSPRqtlDataA", 
+                   repos = "http://wfitch.bio.uci.edu/R/", 
+                   type = "source")
+@
 
 \emph{and/or}
 
-\texttt{install.packages("DSPRqtlDataB", repos = "http://wfitch.bio.uci.edu/R/", type = "source")}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  install.packages("DSPRqtlDataB", 
+                   repos = "http://wfitch.bio.uci.edu/R/", 
+                   type = "source")
+@
+
 \vspace*{1 pc}
 
 for the pA and pB data packages respectively. Note, you must use the repos statement. These packages are too large to be stored on CRAN.
@@ -67,9 +80,13 @@ Once the data packages are installed, they can be loaded using:
 
 Then, the set of additive HMM probabilities and raw HMM probabilities 
 for any given position can be obtained with: 
+
 \vspace*{1 pc}
 
-\texttt{data(A\_chromosome arm\_position in base pairs)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  #data(A_chromosome arm_position in base pairs)
+@
+
 \vspace*{1 pc}
 
 e.g.,
@@ -93,15 +110,26 @@ or within the DSPRqtl package (see below for install instructions).
 \section{Installing the DSPRqtl Analysis Package}
 
 To install the analysis package, within R, type:
+
 \vspace*{1 pc}
 
-\texttt{install.packages("DSPRqtl", repos = "http://wfitch.bio.uci.edu/R/", type = "source")}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  install.packages("DSPRqtl", 
+                   repos = "http://wfitch.bio.uci.edu/R/", 
+                   type = "source")
+@
+
 \vspace*{1 pc}
 
 or simply 
+
 \vspace*{1 pc}
 
-\texttt{install.packages("DSPRqtl")} to install directly from CRAN.
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  install.packages("DSPRqtl")
+@
+
+to install directly from CRAN.
 
 \section{Data Analysis Tutorial}
 
@@ -115,6 +143,7 @@ Before you begin, please also obtain the DSPRqtl manual (see \url{http://FlyRILs
 \subsection{Phenotype Data}
 
 Format your phenotype file and read it into R.  All phenotype files must have at a minimum a column named 'patRIL' (and in the case of crossing designs, also one named 'matRIL') containing the numeric RIL IDs (e.g., 11001, 11002...) and a column with phenotype measurements (with a name chosen by the user). If covariates are to be used, these should also be in this file (or added to it within R before beginning the analysis). To see an example, load the example ADH data in the DSPR package. Throughout this tutorial, the example dataset ADHdata (included in the R package) will be used to illustrate each step.
+
 <<>>=
   data(ADHdata)
   # a data.frame named ADHdata
@@ -123,41 +152,59 @@ Format your phenotype file and read it into R.  All phenotype files must have at
 @
 
 To get your data into R, you must read the file in. R will accept many types of files.  For help reading files into R, see (\url{http://cran.r-project.org/doc/manuals/R-data.html}).  The code to read in a text file is shown below as an example. 
+
 \vspace*{1 pc}
 
-\texttt{phenotype.dat<-read.table("your\_file\_path", header=TRUE)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  phenotype.dat <- read.table("your_file_path", 
+                              header = TRUE)
+@
 
 \subsection{Genome Scan}
 
 Perform a genome scan. Currently only measurements taken on the sets of inbred lines are available. Crossing design analysis is in development. Handling interactive covariates and analyzing multiple phenotypes at once is also in development. The DSPRscan function performs a genome scan that regresses the 8 founder genotype probabilities on the measured phenotype at evenly spaced 10kb positions across the genome:
+
 \vspace*{1 pc}
 
-\texttt{DSPRscan(model,design,phenotype.dat,batch)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  DSPRscan(model, design, phenotype.dat, batch)
+@
+
 \begin{itemize}
-\item \texttt{model} is the null model.  For a phenotype with no covariates, it is of the form \texttt{phenotype $\sim$ 1}.  With a single additive covariate, it would be: \texttt{phenotype $\sim$ covariate}.
-\item \texttt{design} is either 'inbredA' or 'inbredB' for the pA and pB RILs.
-\item \texttt{phenotype.dat} is the \texttt{data.frame} read in at section 3 containing the RIL IDs, phenotype, and any covariates. 
-\item \texttt{batch} is the number of positions tested at one time.  Defaults to 1000. If memory use is a problem, reduce this number.
+  \item \texttt{model} is the null model.  For a phenotype with no covariates, it is of the form \texttt{phenotype $\sim$ 1}.  With a single additive covariate, it would be: \texttt{phenotype $\sim$ covariate}.
+  \item \texttt{design} is either 'inbredA' or 'inbredB' for the pA and pB RILs.
+  \item \texttt{phenotype.dat} is the \texttt{data.frame} read in at section 3 containing the RIL IDs, phenotype, and any covariates. 
+  \item \texttt{batch} is the number of positions tested at one time.  Defaults to 1000. If memory use is a problem, reduce this number.
 \end{itemize}
 
-For a single phenotype with the data package installed, a genome scan should take ~15-20min.  
+For a single phenotype with the data package installed, a genome scan should take $\sim$15-20 min.  
+
 \vspace*{1 pc}
 
 Using the ADH example data:
+
 \vspace*{1 pc}
 
-\texttt{data(ADHdata)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  data(ADHdata)
+@
+
 \vspace*{1 pc}
 
-\texttt{scan.results<-DSPRscan(adh $\sim$ 1, design = 'inbredA', phenotype.dat=ADHdata)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  scan.results <- DSPRscan(adh ~ 1, 
+                           design = 'inbredA', 
+                           phenotype.dat = ADHdata)
+@
+
 \vspace*{1 pc}
 
 The output of DSPRscan is a list containing:
 \begin{itemize}
-\item \texttt{LODscores} This is a \texttt{data.frame} with postitions and LOD scores.
-\item \texttt{model} This is the model statement.
-\item \texttt{design} This is the design specified.
-\item \texttt{phenotype} This is the phenotype data.
+  \item \texttt{LODscores} This is a \texttt{data.frame} with postitions and LOD scores.
+  \item \texttt{model} This is the model statement.
+  \item \texttt{design} This is the design specified.
+  \item \texttt{phenotype} This is the phenotype data.
 \end{itemize}
 
 There is example output from a finished genome scan of the ADH data in this package as well. Type:  
@@ -169,107 +216,135 @@ There is example output from a finished genome scan of the ADH data in this pack
 To extract the LOD scores \texttt{data.frame}:
 
 <<>>=
-  ADH.lod.scores<-ADHscan$LODscores
+  ADH.lod.scores <- ADHscan$LODscores
   
-  ADH.lod.scores[100:105,]
+  ADH.lod.scores[100:105, ]
 @
 
 
 \subsection{Permutation Test}
 
 Perform a permutation test using the function DSPRperm to obtain a significance threshold. For initial data exploration, the value 6.8 can be used.  This threshold seems to be fairly stable for multiple phenotypes we've tested but we recommend each user performs a permutation test for their specific data set.
+
 \vspace*{1 pc}
 
-\texttt{DSPRperm(model,design,phenotype.dat,batch,niter,alpha)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  DSPRperm(model, design, phenotype.dat, batch, niter, alpha)
+@
+
 \vspace*{1 pc}
 
 For \texttt{model,design,phenotype.dat,batch} see above description for \texttt{DSPRscan}. The two additional arguments to \texttt{DSPRperm} are:
+
 \begin{itemize}
-\item \texttt{niter} The number of permutations to perform. Default is 1000.
-\item \texttt{alpha} The desired Type I error rate. 
+  \item \texttt{niter} The number of permutations to perform. Default is 1000.
+  \item \texttt{alpha} The desired Type I error rate. 
 \end{itemize}
 
 The output of \texttt{DSPRperm} is a list containing:
 \begin{itemize}
-\item \texttt{maxLODs} This is a vector of maximum LOD scores for each permutation.
-\item \texttt{alpha} The specified alpha level
-\item \texttt{threshold} The significance threshold.
+  \item \texttt{maxLODs} This is a vector of maximum LOD scores for each permutation.
+  \item \texttt{alpha} The specified alpha level
+  \item \texttt{threshold} The significance threshold.
 \end{itemize}
 
 Once a permutation test is performed, the \texttt{maxLODs} can also be used to determine the significance threshold at another alpha level. For example,
+
 \vspace*{1 pc}
 
-\texttt{perm.test<-DSPRperm(adh $\sim$ 1, design = 'inbredA', phenotype.dat = ADHdata)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  perm.test <- DSPRperm(adh ~ 1, 
+                        design = 'inbredA', 
+                        phenotype.dat = ADHdata)
+@
+
 \vspace*{1 pc}
 
-For an alpha = 0.01:
+For an $\alpha - 0.01$:
+
 \vspace*{1 pc}
 
-\texttt{quantile(perm.test\$maxLODs, 0.01)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  quantile(perm.test$maxLODs, 0.01)
+@
 
 \subsection{Identify Significant QTL}
 
 Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function \texttt{DSPRpeaks}. The individual functions to get the values are also available (see the DSPRqtl manual). Once peaks are identified, it is important for the user to confirm these represent distinct peaks.
+
 \vspace*{1 pc}
 
-\texttt{DSPRpeaks(qtldat,threshold,LODdrop)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  DSPRpeaks(qtldat, threshold, LODdrop)
+@
+
 \begin{itemize}
-\item \texttt{qtldat} Output from DSPRscan.
-\item \texttt{threshold} The threshold found with the permutation test. Defaults to 6.8.
-\item \texttt{LODdrop} The desired LODdrop for support intervals.  Defaults to 2.
+  \item \texttt{qtldat} Output from DSPRscan.
+  \item \texttt{threshold} The threshold found with the permutation test. Defaults to 6.8.
+  \item \texttt{LODdrop} The desired LODdrop for support intervals.  Defaults to 2.
 \end{itemize}
 
 The output of \texttt{DSPRpeaks} is a list of peaks. Each peak is a list containing:
 \begin{itemize}
-\item \texttt{threshold} The specified threshold.
-\item \texttt{peak} The peak position and LOD score.
-\item \texttt{LODdrop} The specified LODdrop.
-\item \texttt{CI} The confidence interval.
-\item \texttt{founderNs} The number of RILs with each founder genotype at the peak.
-\item \texttt{geno.means} The founder means and standard errors at the peak.
-\item \texttt{perct.var} The percent variation explained by the QTL.
-\item \texttt{entropy} The proportion missing information.
+  \item \texttt{threshold} The specified threshold.
+  \item \texttt{peak} The peak position and LOD score.
+  \item \texttt{LODdrop} The specified LODdrop.
+  \item \texttt{CI} The confidence interval.
+  \item \texttt{founderNs} The number of RILs with each founder genotype at the peak.
+  \item \texttt{geno.means} The founder means and standard errors at the peak.
+  \item \texttt{perct.var} The percent variation explained by the QTL.
+  \item \texttt{entropy} The proportion missing information.
 \end{itemize}
 
 Using the ADHscan output:
+
 <<>>=
-  peaks<-DSPRpeaks(ADHscan, threshold=6.8, LODdrop=2)
+  peaks <- DSPRpeaks(ADHscan, threshold = 6.8, LODdrop = 2)
   
   #the main QTL
   peaks[[26]]
 @
 
-
 \subsection{Local Interval Mapping}
 
 The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The \texttt{LocalInt} function will perform inteval mapping for a range of positions given by the user. FindCI can then be used to re-estimate confidence intevals. 
+
 \vspace*{1 pc}
 
-\texttt{LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)}
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
+  LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)
+@
+
 \begin{itemize}
-\item \texttt{peakChr} Chromosome arm at the peak.
-\item \texttt{peakPos} Position in base pairs at the peak.
-\item \texttt{range} The range of positions to examine.  Default is 100 (on either side, positions are 10kb apart)
-\item \texttt{phenotype.dat} The phenotype \texttt{data.frame}. See section 3.
-\item \texttt{pheno.name} The name of the column containing the phenotype.
-\item \texttt{design} 'inbredA' or 'inbredB'
+  \item \texttt{peakChr} Chromosome arm at the peak.
+  \item \texttt{peakPos} Position in base pairs at the peak.
+  \item \texttt{range} The range of positions to examine.  Default is 100 (on either side, positions are 10kb apart)
+  \item \texttt{phenotype.dat} The phenotype \texttt{data.frame}. See section 3.
+  \item \texttt{pheno.name} The name of the column containing the phenotype.
+  \item \texttt{design} 'inbredA' or 'inbredB'
 \end{itemize}
 
 The output of \texttt{LocalInt} is the same as the LODscores from \texttt{DSPRscan} but only for the specified set of positions.
+
 \vspace*{1 pc}
 
 Using the ADH sample data:
 
 <<>>=
- # peaks<-DSPRpeaks(ADHscan, threshold=6.8, LODdrop=2)
+  # peaks <- DSPRpeaks(ADHscan, threshold = 6.8, LODdrop = 2)
   
   #the main QTL
   main.peak <- peaks[[26]]
   peakChr <- main.peak$peak$chr
   peakPos <- main.peak$peak$Ppos
 @
+
 <<echo=TRUE,eval=FALSE,tidy=FALSE>>=
-  peak.int <- LocalInt(peakChr, peakPos, phenotype.dat=ADHdata, pheno.name='adh', design='inbredA')
+  peak.int <- LocalInt(peakChr, 
+                       peakPos, 
+                       phenotype.dat=ADHdata, 
+                       pheno.name='adh', 
+                       design='inbredA')
 @
 
 \section{Questions?}
