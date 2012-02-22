@@ -184,7 +184,7 @@ positions across the genome:
   covariates, it is of the form \code{phenotype $\sim$ 1}. With a
   single additive covariate, it would be: \code{phenotype $\sim$
   covariate}.
-  \item \code{design} is either 'inbredA' or 'inbredB' for the pA and
+  \item \code{design} is either "inbredA" or "inbredB" for the pA and
   pB RILs.
   \item \code{phenotype.dat} is the \code{data.frame} read in at
   section 3 containing the RIL IDs, phenotype, and any covariates.
@@ -200,7 +200,7 @@ Using the ADH example data:
 <<echo=TRUE,eval=FALSE,tidy=FALSE>>=
   data(ADHdata)
   scan.results <- DSPRscan(adh ~ 1, 
-                           design = 'inbredA', 
+                           design = "inbredA", 
                            phenotype.dat = ADHdata)
 @
 
@@ -340,7 +340,7 @@ user. FindCI can then be used to re-estimate confidence intervals.
   section 3.
   \item \code{pheno.name} The name of the column containing the
   phenotype.
-  \item \code{design} 'inbredA' or 'inbredB'
+  \item \code{design} "inbredA" or "inbredB"
 \end{itemize}
 
 The output of \code{LocalInt} is the same as the LODscores from
