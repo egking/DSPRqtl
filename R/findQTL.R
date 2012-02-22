@@ -1,7 +1,7 @@
-##' Find QTL
-##'
 ##' \code{findQTL} finds peak LOD scores that exceed the 
 ##' given threshold (identifies signficant QTL).
+##' 
+##' 
 ##' 
 ##' @title Find QTL
 ##' 

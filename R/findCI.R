@@ -1,6 +1,6 @@
-##' Calculate LOD support interval
-##'
 ##' \code{findCI} calculates the LOD support interval for a given LOD peak.
+##'
+##'
 ##' 
 ##' @title Calculate LOD support interval
 ##' 

@@ -1,7 +1,7 @@
-##' Founder genotype means and standard errors
-##'
 ##' \code{geno.means} estimates the founder genotype means and standard errors at a given position.
+##'
 ##' 
+##'   
 ##' @title Founder genotype means and standard errors
 ##' 
 ##' @param peakChr character vector of length one. 
