@@ -9,7 +9,11 @@
 
 \usepackage{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-\usepackage{url}
+
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=false,colorlinks=true]
+ {hyperref}
 
 % Macro for code
 \let\code=\texttt
@@ -97,7 +101,7 @@ e.g.,
 @
 
 
-Our list of regularly spaced positions every 10 kb is available here: \url{/http://FlyRILs.org/Data}
+Our list of regularly spaced positions every 10 kb is available here: \url{http://FlyRILs.org/Data}
 
 or within the DSPRqtl package (see below for install instructions). 
 
@@ -172,7 +176,7 @@ of inbred lines are available. Crossing design analysis is in
 development. Handling interactive covariates and analyzing multiple
 phenotypes at once is also in development. The DSPRscan function
 performs a genome scan that regresses the 8 founder genotype
-probabilities on the measured phenotype at evenly spaced 10kb
+probabilities on the measured phenotype at evenly spaced 10 kb
 positions across the genome:
 
 <<echo=TRUE,eval=FALSE,tidy=FALSE>>=
@@ -335,7 +339,7 @@ user. FindCI can then be used to re-estimate confidence intervals.
   \item \code{peakChr} Chromosome arm at the peak.
   \item \code{peakPos} Position in base pairs at the peak.
   \item \code{range} The range of positions to examine. Default is 100
-  (on either side, positions are 10kb apart)
+  (on either side, positions are 10 kb apart)
   \item \code{phenotype.dat} The phenotype \code{data.frame}. See
   section \ref{loading}.
   \item \code{pheno.name} The name of the column containing the
@@ -365,7 +369,7 @@ Using the ADH sample data:
 
 \section{Questions?}
 If you have any questions or have trouble with this tutorial, please
-contact flyrils@gmail.com.
+contact \href{mailto:flyrils@gmail.com}{flyrils@gmail.com}.
 
 
 \end{document}
