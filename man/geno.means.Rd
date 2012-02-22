@@ -34,9 +34,6 @@
   founder genotype mean after correcting for the covariate.
 }
 \description{
-  Founder genotype means and standard errors
-}
-\details{
   \code{geno.means} estimates the founder genotype means
   and standard errors at a given position.
 }

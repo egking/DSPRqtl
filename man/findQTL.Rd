@@ -20,9 +20,6 @@
   score for each significant peak.
 }
 \description{
-  Find QTL
-}
-\details{
   \code{findQTL} finds peak LOD scores that exceed the
   given threshold (identifies signficant QTL).
 }

@@ -30,9 +30,6 @@
   bound.
 }
 \description{
-  Calculate LOD support interval
-}
-\details{
   \code{findCI} calculates the LOD support interval for a
   given LOD peak.
 }

@@ -26,9 +26,6 @@
   \code{data.frame}.
 }
 \description{
-  Entropy at a position
-}
-\details{
   \code{entropy.pos} calculates the entropy (proportion of
   missing information) at a given position.
 }

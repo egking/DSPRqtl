@@ -31,9 +31,6 @@
   explained by the QTL.
 }
 \description{
-  Effect size
-}
-\details{
   \code{perct.var} calculates the percent of the variance
   explained by the QTL.
 }

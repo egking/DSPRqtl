@@ -29,9 +29,6 @@
   uncertain genotype are also returned.
 }
 \description{
-  Numbers of founder genotypes
-}
-\details{
   \code{founderNs} calculates the number of founder
   genotypes represented in the DSPR RILs at a given
   position.

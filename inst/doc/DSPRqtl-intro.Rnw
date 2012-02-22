@@ -317,7 +317,7 @@ containing:
 
 Using the ADHscan output:
 
-<<slowchunk,eval=FALSE>>=
+<<slowchunk,eval=TRUE>>=
   peaks <- DSPRpeaks(ADHscan, threshold = 6.8, LODdrop = 2)
   
   # the main QTL
