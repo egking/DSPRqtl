@@ -1,8 +1,8 @@
-##' Numbers of founder genotypes
-##'
 ##' \code{founderNs} calculates the number of founder genotypes represented in the DSPR
 ##' RILs at a given position.
+##'
 ##' 
+##'   
 ##' @title Numbers of founder genotypes
 ##' @param peakChr character vector of length one. 
 ##' Must be one of the major chromosome arms in the 

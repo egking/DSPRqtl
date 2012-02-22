@@ -1,7 +1,6 @@
-##' Entropy at a position
-##'
 ##' \code{entropy.pos} calculates the entropy (proportion of missing 
 ##' information) at a given position.
+##'
 ##' 
 ##' @title Entropy at a position
 ##' 

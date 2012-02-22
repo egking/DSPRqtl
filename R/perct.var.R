@@ -1,7 +1,9 @@
-##' Effect size
-##'
 ##' \code{perct.var} calculates the percent of the variance explained by the QTL.
+##' 
+##' 
+##' 
 ##' @title Effect size
+##' 
 ##' @param peakChr character vector of length one. 
 ##' Must be one of the major chromosome arms in the 
 ##' \emph{Drosophila} genome ('X','2L','2R','3L',or '3R').
