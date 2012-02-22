@@ -11,6 +11,9 @@
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage{url}
 
+% Macro for code
+\let\code=\texttt
+
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 %\VignetteIndexEntry{A data analysis tutorial for DSPR data}
@@ -171,10 +174,10 @@ Perform a genome scan. Currently only measurements taken on the sets of inbred l
 @
 
 \begin{itemize}
-  \item \texttt{model} is the null model.  For a phenotype with no covariates, it is of the form \texttt{phenotype $\sim$ 1}.  With a single additive covariate, it would be: \texttt{phenotype $\sim$ covariate}.
-  \item \texttt{design} is either 'inbredA' or 'inbredB' for the pA and pB RILs.
-  \item \texttt{phenotype.dat} is the \texttt{data.frame} read in at section 3 containing the RIL IDs, phenotype, and any covariates. 
-  \item \texttt{batch} is the number of positions tested at one time.  Defaults to 1000. If memory use is a problem, reduce this number.
+  \item \code{model} is the null model.  For a phenotype with no covariates, it is of the form \code{phenotype $\sim$ 1}.  With a single additive covariate, it would be: \code{phenotype $\sim$ covariate}.
+  \item \code{design} is either 'inbredA' or 'inbredB' for the pA and pB RILs.
+  \item \code{phenotype.dat} is the \code{data.frame} read in at section 3 containing the RIL IDs, phenotype, and any covariates. 
+  \item \code{batch} is the number of positions tested at one time.  Defaults to 1000. If memory use is a problem, reduce this number.
 \end{itemize}
 
 For a single phenotype with the data package installed, a genome scan should take $\sim$15-20 min.  
@@ -201,10 +204,10 @@ Using the ADH example data:
 
 The output of DSPRscan is a list containing:
 \begin{itemize}
-  \item \texttt{LODscores} This is a \texttt{data.frame} with postitions and LOD scores.
-  \item \texttt{model} This is the model statement.
-  \item \texttt{design} This is the design specified.
-  \item \texttt{phenotype} This is the phenotype data.
+  \item \code{LODscores} This is a \code{data.frame} with postitions and LOD scores.
+  \item \code{model} This is the model statement.
+  \item \code{design} This is the design specified.
+  \item \code{phenotype} This is the phenotype data.
 \end{itemize}
 
 There is example output from a finished genome scan of the ADH data in this package as well. Type:  
@@ -213,7 +216,7 @@ There is example output from a finished genome scan of the ADH data in this pack
   data(ADHscan)
 @
 
-To extract the LOD scores \texttt{data.frame}:
+To extract the LOD scores \code{data.frame}:
 
 <<>>=
   ADH.lod.scores <- ADHscan$LODscores
@@ -234,21 +237,21 @@ Perform a permutation test using the function DSPRperm to obtain a significance 
 
 \vspace*{1 pc}
 
-For \texttt{model,design,phenotype.dat,batch} see above description for \texttt{DSPRscan}. The two additional arguments to \texttt{DSPRperm} are:
+For \code{model,design,phenotype.dat,batch} see above description for \code{DSPRscan}. The two additional arguments to \code{DSPRperm} are:
 
 \begin{itemize}
-  \item \texttt{niter} The number of permutations to perform. Default is 1000.
-  \item \texttt{alpha} The desired Type I error rate. 
+  \item \code{niter} The number of permutations to perform. Default is 1000.
+  \item \code{alpha} The desired Type I error rate. 
 \end{itemize}
 
-The output of \texttt{DSPRperm} is a list containing:
+The output of \code{DSPRperm} is a list containing:
 \begin{itemize}
-  \item \texttt{maxLODs} This is a vector of maximum LOD scores for each permutation.
-  \item \texttt{alpha} The specified alpha level
-  \item \texttt{threshold} The significance threshold.
+  \item \code{maxLODs} This is a vector of maximum LOD scores for each permutation.
+  \item \code{alpha} The specified alpha level
+  \item \code{threshold} The significance threshold.
 \end{itemize}
 
-Once a permutation test is performed, the \texttt{maxLODs} can also be used to determine the significance threshold at another alpha level. For example,
+Once a permutation test is performed, the \code{maxLODs} can also be used to determine the significance threshold at another alpha level. For example,
 
 \vspace*{1 pc}
 
@@ -270,7 +273,7 @@ For an $\alpha - 0.01$:
 
 \subsection{Identify Significant QTL}
 
-Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function \texttt{DSPRpeaks}. The individual functions to get the values are also available (see the DSPRqtl manual). Once peaks are identified, it is important for the user to confirm these represent distinct peaks.
+Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function \code{DSPRpeaks}. The individual functions to get the values are also available (see the DSPRqtl manual). Once peaks are identified, it is important for the user to confirm these represent distinct peaks.
 
 \vspace*{1 pc}
 
@@ -279,21 +282,21 @@ Get a summary of the significant peaks. Finding and summarizing significant peak
 @
 
 \begin{itemize}
-  \item \texttt{qtldat} Output from DSPRscan.
-  \item \texttt{threshold} The threshold found with the permutation test. Defaults to 6.8.
-  \item \texttt{LODdrop} The desired LODdrop for support intervals.  Defaults to 2.
+  \item \code{qtldat} Output from DSPRscan.
+  \item \code{threshold} The threshold found with the permutation test. Defaults to 6.8.
+  \item \code{LODdrop} The desired LODdrop for support intervals.  Defaults to 2.
 \end{itemize}
 
-The output of \texttt{DSPRpeaks} is a list of peaks. Each peak is a list containing:
+The output of \code{DSPRpeaks} is a list of peaks. Each peak is a list containing:
 \begin{itemize}
-  \item \texttt{threshold} The specified threshold.
-  \item \texttt{peak} The peak position and LOD score.
-  \item \texttt{LODdrop} The specified LODdrop.
-  \item \texttt{CI} The confidence interval.
-  \item \texttt{founderNs} The number of RILs with each founder genotype at the peak.
-  \item \texttt{geno.means} The founder means and standard errors at the peak.
-  \item \texttt{perct.var} The percent variation explained by the QTL.
-  \item \texttt{entropy} The proportion missing information.
+  \item \code{threshold} The specified threshold.
+  \item \code{peak} The peak position and LOD score.
+  \item \code{LODdrop} The specified LODdrop.
+  \item \code{CI} The confidence interval.
+  \item \code{founderNs} The number of RILs with each founder genotype at the peak.
+  \item \code{geno.means} The founder means and standard errors at the peak.
+  \item \code{perct.var} The percent variation explained by the QTL.
+  \item \code{entropy} The proportion missing information.
 \end{itemize}
 
 Using the ADHscan output:
@@ -307,7 +310,7 @@ Using the ADHscan output:
 
 \subsection{Local Interval Mapping}
 
-The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The \texttt{LocalInt} function will perform inteval mapping for a range of positions given by the user. FindCI can then be used to re-estimate confidence intevals. 
+The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The \code{LocalInt} function will perform inteval mapping for a range of positions given by the user. FindCI can then be used to re-estimate confidence intevals. 
 
 \vspace*{1 pc}
 
@@ -316,15 +319,15 @@ The user may wish to perform local interval mapping to compare the peak location
 @
 
 \begin{itemize}
-  \item \texttt{peakChr} Chromosome arm at the peak.
-  \item \texttt{peakPos} Position in base pairs at the peak.
-  \item \texttt{range} The range of positions to examine.  Default is 100 (on either side, positions are 10kb apart)
-  \item \texttt{phenotype.dat} The phenotype \texttt{data.frame}. See section 3.
-  \item \texttt{pheno.name} The name of the column containing the phenotype.
-  \item \texttt{design} 'inbredA' or 'inbredB'
+  \item \code{peakChr} Chromosome arm at the peak.
+  \item \code{peakPos} Position in base pairs at the peak.
+  \item \code{range} The range of positions to examine.  Default is 100 (on either side, positions are 10kb apart)
+  \item \code{phenotype.dat} The phenotype \code{data.frame}. See section 3.
+  \item \code{pheno.name} The name of the column containing the phenotype.
+  \item \code{design} 'inbredA' or 'inbredB'
 \end{itemize}
 
-The output of \texttt{LocalInt} is the same as the LODscores from \texttt{DSPRscan} but only for the specified set of positions.
+The output of \code{LocalInt} is the same as the LODscores from \code{DSPRscan} but only for the specified set of positions.
 
 \vspace*{1 pc}
 
