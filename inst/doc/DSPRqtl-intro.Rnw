@@ -67,7 +67,7 @@ Within R (not recommended in RStudio), type:
 for the pA and pB data packages respectively. Note, you must use the
 repos statement. These packages are too large to be stored on CRAN.
 
-\section{Loading and Using the Data Packages}
+\section{Loading and Using the Data Packages\label{loading}}
 
 Once the data packages are installed, they can be loaded using:
 
@@ -187,7 +187,7 @@ positions across the genome:
   \item \code{design} is either "inbredA" or "inbredB" for the pA and
   pB RILs.
   \item \code{phenotype.dat} is the \code{data.frame} read in at
-  section 3 containing the RIL IDs, phenotype, and any covariates.
+  section \ref{loading} containing the RIL IDs, phenotype, and any covariates.
   \item \code{batch} is the number of positions tested at one time.
   Defaults to 1000. If memory use is a problem, reduce this number.
 \end{itemize}
@@ -313,7 +313,7 @@ containing:
 
 Using the ADHscan output:
 
-<<slowchunk>>=
+<<slowchunk,eval=FALSE>>=
   peaks <- DSPRpeaks(ADHscan, threshold = 6.8, LODdrop = 2)
   
   # the main QTL
@@ -337,7 +337,7 @@ user. FindCI can then be used to re-estimate confidence intervals.
   \item \code{range} The range of positions to examine. Default is 100
   (on either side, positions are 10kb apart)
   \item \code{phenotype.dat} The phenotype \code{data.frame}. See
-  section 3.
+  section \ref{loading}.
   \item \code{pheno.name} The name of the column containing the
   phenotype.
   \item \code{design} "inbredA" or "inbredB"
@@ -349,7 +349,7 @@ The output of \code{LocalInt} is the same as the LODscores from
 Using the ADH sample data:
 
 <<>>=
-  # the main QTL
+  # The main QTL
   main.peak <- peaks[[26]]
   peakChr <- main.peak$peak$chr
   peakPos <- main.peak$peak$Ppos
