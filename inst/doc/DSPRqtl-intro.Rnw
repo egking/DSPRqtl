@@ -75,13 +75,13 @@ repos statement. These packages are too large to be stored on CRAN.
 
 Once the data packages are installed, they can be loaded using:
 
-<<>>=
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
   library(DSPRqtlDataA)
 @
 
 \emph{and/or}
 
-<<>>=
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
   library(DSPRqtlDataB)
 @
 
@@ -95,7 +95,7 @@ for any given position can be obtained with:
 
 e.g.,
 
-<<>>=
+<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
   data(A_X_12000000)
   # This gives a data.frame named A_X_12000000
 @
