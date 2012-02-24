@@ -121,14 +121,6 @@ To install the analysis package, within R, type:
                    type = "source")
 @
 
-or simply 
-
-<<echo=TRUE,eval=FALSE,tidy=FALSE>>=
-  install.packages("DSPRqtl")
-@
-
-to install directly from CRAN.
-
 \section{Data Analysis Tutorial}
 
 Before you begin, please also obtain the DSPRqtl manual (see
