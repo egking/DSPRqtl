@@ -309,10 +309,17 @@ containing:
 
 Using the ADHscan output:
 
-<<slowchunk,eval=TRUE>>=
+<<echo=FALSE,eval=TRUE>>=
+  load("peaks.rda")
+@
+
+<<slowchunk,eval=FALSE>>=
   peaks <- DSPRpeaks(ADHscan, threshold = 6.8, LODdrop = 2)
-  
-  # the main QTL
+@
+
+And the main QTL is found at position 26 in the list:
+
+<<>>=
   peaks[[26]]
 @
 
