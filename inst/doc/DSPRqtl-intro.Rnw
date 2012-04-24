@@ -268,7 +268,7 @@ For example,
 For $\alpha = 0.01$:
 
 <<echo=TRUE,eval=FALSE,tidy=FALSE>>=
-  quantile(perm.test$maxLODs, 0.01)
+  quantile(perm.test$maxLODs, 1-0.01)
 @
 
 \subsection{Identify Significant QTL}
