@@ -88,7 +88,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
       objname<-paste("A_",poslist[1,1],"_",format(poslist[1,2], sci = FALSE),sep="")
       
     }else{
-      objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
+      objname<-paste("B_",poslist[1,1],"_",format(poslist[1,2], sci = FALSE),sep="")
     }
   }
   data(list=objname)
