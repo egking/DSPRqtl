@@ -29,7 +29,10 @@
 
 \title{A data analysis tutorial for DSPR data}
 
-\author{Elizabeth King}
+\author{Elizabeth King\\
+  Department of Ecology \& Evolutionary Biology\\
+  University of California, Irvine\\
+  \texttt{egking@uci.edu}}
 
 \maketitle
 
