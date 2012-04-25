@@ -5,7 +5,7 @@ Title: Analysis of DSPR phenotypes
 LazyData: yes
 Type: Package
 LazyLoad: yes
-Version: 1.0-2
+Version: 1.0-3
 Author: Elizabeth King
 Description: Package to analyze phenotypes measured on the Drosophila Synthetic
     Population Resource
@@ -14,7 +14,7 @@ Depends:
 Suggests:
     DSPRqtlDataA,
     DSPRqtlDataB
-Date: 2012-02-19
+Date: 2012-04-24
 Collate:
     'DSPRpeaks.R'
     'DSPRscan.R'
@@ -28,3 +28,4 @@ Collate:
     'DSPRqtl-package.R'
     'DSPRperm.R'
     'LocalInt.R'
+    'DSPRplot.R'

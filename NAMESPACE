@@ -1,5 +1,6 @@
 export(DSPRpeaks)
 export(DSPRperm)
+export(DSPRplot)
 export(DSPRscan)
 export(entropy.pos)
 export(findCI)

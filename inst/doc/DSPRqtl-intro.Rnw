@@ -323,6 +323,16 @@ And the main QTL is found at position 26 in the list:
   peaks[[26]]
 @
 
+
+The DSPRscan results can be plotted using the DSPRplot function. 
+Multiple scan results can be plotted on the same plot.  Pass the scan 
+results as a \code{list()} to the DSPRscan function.
+
+<<dev="pdf",fig.width=6.5,fig.height=3.5>>=
+  DSPRplot(list(ADHscan), threshold=6.8)
+@
+
+
 \subsection{Local Interval Mapping}
 
 The user may wish to perform local interval mapping to compare the
