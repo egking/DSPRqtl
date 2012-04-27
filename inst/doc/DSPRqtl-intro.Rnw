@@ -38,7 +38,7 @@
 
 \section{Prerequisites}
 
-If you do not have R, see (\url{http:\\www.r-project.org}) to download
+If you do not have R, see (\url{http://www.r-project.org}) to download
 and install it and obtain the reference manual.
 
 \section{Installing the DSPRqtlData Packages}
