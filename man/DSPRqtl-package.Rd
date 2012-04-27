@@ -8,8 +8,8 @@
 }
 \details{
   \tabular{ll}{ Package: \tab DSPRqtl\cr Type: \tab
-  Package\cr Version: \tab 1.0-3\cr Date: \tab
-  2012-04-24\cr License: \tab GPL-2\cr LazyLoad: \tab
+  Package\cr Version: \tab 1.0-4\cr Date: \tab
+  2012-04-26\cr License: \tab GPL-2\cr LazyLoad: \tab
   yes\cr LazyData: \tab yes\cr }
 }
 \author{
