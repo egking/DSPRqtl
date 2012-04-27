@@ -1,7 +1,3 @@
 ^\.Rproj\.user$
 ^.*Rproj$
-^.*builds
-^.*\\.aux$
-^.*\\.log$
-^.*\\.out$
-^.*\\.tex$
+^.*builds$
