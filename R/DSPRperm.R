@@ -170,7 +170,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
     }
     
     lms<-lapply(big.list, function(x) LL.multi(x,model,pheno))
-    rm(big.list)
+    
     
     all.lms <- array(dim=c(length(lms),dim(lms[[1]])[1]))
     
@@ -186,7 +186,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
     #get model likelihoods at each position (will take several minutes)
     lms<-lapply(big.list, function(x) LL.alt(x,model,pheno)) 
       
-    rm(big.list)
+   
       
     #get LOD scores
     lod.set<-unlist(lms)-L.n
@@ -195,7 +195,7 @@ DSPRperm<-function(model,design,phenotype.dat, batch=1000,niter=1000,alpha=0.05)
   
     }#niter close
    }#else close
-    
+    rm(big.list)
     
   }#batch close
   rm(poslist,pos=.GlobalEnv)
