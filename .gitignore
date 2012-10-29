@@ -12,3 +12,4 @@
 *.Rproj
 builds/*.gz
 *.md
+inst/doc/figure/*
