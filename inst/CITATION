@@ -1,0 +1,13 @@
+citHeader("To cite DSPRqtl in publications, please use:")
+
+citEntry(entry = "article",
+  author = "Elizabeth G King and Chris M Merkes and Casey L McNeil and Steven R Hoofer and Saunak Sen and Karl W Broman and Anthony D Long and Stuart J Macdonald",
+  title = "Genetic dissection of a model complex trait using the 
+           Drosophila Synthetic Population Resource",
+  year = "2012",
+  journal = "Genome Research",
+  volume = "22",
+  pages = "1558--1566",
+  url = "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3409269/",
+  textVersion = "King, E.G., Merkes, C.M., McNeil, C.L., Hoofer, S.R., Sen, S., Broman, K.W., Long, A.D., and Macdonald, S.J. 2012. Genetic dissection of a model complex trait using the Drosophila Synthetic Population Resource. Genome Research 22:1558-1566."
+)
