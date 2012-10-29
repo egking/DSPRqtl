@@ -11,3 +11,4 @@
 *.out
 *.Rproj
 builds/*.gz
+*.md
