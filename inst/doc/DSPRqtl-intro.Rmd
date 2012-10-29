@@ -1,20 +1,34 @@
-% A data analysis tutorial for DSPR data
+% A Data Analysis Tutorial for DSPR data
 % Elizabeth King  
   Department of Ecology \& Evolutionary Biology  
   University of California, Irvine  
   `egking@uci.edu`
-% 26 April 2012
+% 29 October 2012
 
 `r opts_chunk$set(fig.width=5, fig.height=5, tidy=FALSE)`
 
-# Prerequisites #
+# Prerequisites
 
-If you do not have R, see http://www.r-project.org to download and install it and obtain the reference manual.
+If you do not have R, navigate to [`http://www.r-project.org`](http://www.r-project.org) to download and install it. New users should download and read the [reference manual](http://cran.r-project.org/manuals.html).
 
-# Installing the DSPRqtlData Packages #
+# Installing the DSPRqtl Analysis Package
 
-1. Install the data package (DSPRqtlDataA/DSPRqtlDataB). If only one population was used, only one data package (A or B) needs to be installed.
-2. The data packages are ~3.2 GB each and will take several minutes to download and install depending on your connection speed. If you do not install these packages, the functions in DSPRqtl will fetch each position file from the internet. This method takes considerably longer to run.
+To install the analysis package, within R, execute:
+
+```{r eval=FALSE}
+install.packages("DSPRqtl", 
+                 repos = "http://wfitch.bio.uci.edu/R/", 
+                 type = "source")
+```
+
+*Note*: you must use the statement `repos = "http://wfitch.bio.uci.edu/R/"`.
+
+# Installing the DSPRqtlData Packages
+
+1. Install one or both data packages (`DSPRqtlDataA` and/or `DSPRqtlDataB`). If only one population was used, only one data package (A or B) needs to be installed.
+2. The data packages are ~3.2 GB each and will take several minutes (to hours) to download and install depending on your connection speed. These packages are too large to be stored on and installed from CRAN. If you do not install these packages, the functions in the \code{DSPRqtl} package will fetch each position file from the internet. This method takes considerably longer to run.
+
+## Installation within R
 
 Within R (not recommended in RStudio), type:
 
@@ -32,9 +46,27 @@ install.packages("DSPRqtlDataB",
                  type = "source")
 ```
 
-for the pA and pB data packages respectively. Note, you must use the `repos = "http://wfitch.bio.uci.edu/R/"` statement. These packages are too large to be stored on CRAN.
+for the pA and pB data packages, respectively.
 
-# Loading and Using the Data Packages #
+*Note*: you must use the statement `repos = "http://wfitch.bio.uci.edu/R/"`.
+
+## Installation from the Downloaded Package Source
+
+If installation within R fails, the packages can be downloaded manually and installed from within R from local source. Download the package source files from:
+
+* [`http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz`](http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz)
+* [`http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz`](http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz)
+
+using a web browser or command line tool (e.g., [`wget`](http://www.gnu.org/software/wget/)).
+
+After the files have downloaded, execute the following commands in R (one, the other, or both as necessary):
+
+```{r eval=FALSE}
+install.packages("DSPRqtlDataA_2.0-1.tar.gz", repos = NULL, type = "source")
+install.packages("DSPRqtlDataB_2.0-1.tar.gz", repos = NULL, type = "source")
+```
+
+# Loading and Using the Data Packages
 
 Once the data packages are installed, they can be loaded using:
 
@@ -61,8 +93,7 @@ data(A_X_12000000)
 # This gives a data.frame named A_X_12000000
 ```
 
-
-Our list of regularly spaced positions every 10 kb is available here: http://FlyRILs.org/Data or within the DSPRqtl package (see below for install instructions). 
+A list of regularly spaced positions every 10 kb is available at [`http://FlyRILs.org/Data`](http://FlyRILs.org/Data) or within the `DSPRqtl` package (see above for install instructions). 
 
 ```{r}
 library(DSPRqtl)
@@ -70,27 +101,19 @@ data(positionlist_wgenetic)
 # This gives a data.frame named poslist
 ```
 
-# Installing the DSPRqtl Analysis Package #
+# Data Analysis Tutorial
 
-To install the analysis package, within R, type:
-
-```{r eval=FALSE}
-install.packages("DSPRqtl", 
-                 repos = "http://wfitch.bio.uci.edu/R/", 
-                 type = "source")
-```
-
-# Data Analysis Tutorial #
-
-Before you begin, please also obtain the DSPRqtl manual (see http://FlyRILs.org/Tools/Tutorial) and refer to it throughout this tutorial. Also load the `DSPRqtl` package:
+Before you begin, please also obtain the DSPRqtl manual (see [`http://FlyRILs.org/Tools/Tutorial)`](http://FlyRILs.org/Tools/Tutorial) and refer to it throughout this tutorial. Also load the `DSPRqtl` package:
 
 ```{r}
 library(DSPRqtl)
 ```
 
-## Phenotype Data ##
+## Phenotype Data
 
-Format your phenotype file and read it into R. All phenotype files must have at a minimum a column named "patRIL" (and in the case of crossing designs, also one named "matRIL") containing the numeric RIL IDs (e.g., 11001, 11002, ...) and a column with phenotype measurements (with a name chosen by the user). If covariates are to be used, these should also be in this file (or added to it within R before beginning the analysis). To see an example, load the example ADH data in the DSPR package. Throughout this tutorial, the example dataset ADHdata (included in the R package) will be used to illustrate each step.
+* Format your phenotype file and read it into R. All phenotype files must have at a minimum a column named `"patRIL"` (and in the case of crossing designs, also one named `"matRIL"`) containing the numeric RIL IDs (e.g., 11001, 11002, ...) and a column with phenotype measurements (with a name chosen by the user). 
+* If covariates are to be used, these should also be in this file (or added to it within R before beginning the analysis). 
+* To view an example, load the example ADH data in the `DSPRqtl` package. Throughout this tutorial, the example dataset `ADHdata` (included in the R package) will be used to illustrate each step.
 
 ```{r}
 data(ADHdata)
@@ -99,25 +122,25 @@ data(ADHdata)
 head(ADHdata)
 ```
 
-To get your data into R, you must read the file in. R will accept many types of files. For help reading files into R, see http://cran.r-project.org/doc/manuals/R-data.html. The code to read in a text file is shown below as an example.
+To import your data into R, you must read the file in. R will accept many types of files. For help reading files into R, see [`http://cran.r-project.org/doc/manuals/R-data.html`](http://cran.r-project.org/doc/manuals/R-data.html). The code to read in a text file is shown below as an example.
 
 ```{r eval=FALSE}
-phenotype.dat <- read.table("your_file_path", 
+phenotype.dat <- read.table("/path/to/your/file.txt", 
                             header = TRUE)
 ```
 
-## Genome Scan ##
+## Genome Scan
 
-Perform a genome scan. Currently only measurements taken on the sets of inbred lines are available. Crossing design analysis is in development. Handling interactive covariates and analyzing multiple phenotypes at once is also in development. The `DSPRscan()` function performs a genome scan that regresses the 8 founder genotype probabilities on the measured phenotype at evenly spaced 10 kb positions across the genome:
+Currently only measurements taken on the sets of inbred lines are available for performing a genome scan. Crossing design analysis is in development. Handling interactive covariates and analyzing multiple phenotypes at once is also in development. The `DSPRscan()` function performs a genome scan that regresses the 8 founder genotype probabilities on the measured phenotype at evenly spaced 10 kb positions across the genome:
 
 ```{r eval=FALSE}
 DSPRscan(model, design, phenotype.dat, batch)
 ```
 
-* `model` is the null model. For a phenotype with no covariates, it is of the form `phenotype ~ 1`. With a single additive covariate, it would be: `phenotype ~ covariate`.
+* `model` is the null model in formula notation. For a phenotype with no covariates, it is of the form `phenotype ~ 1`. With a single additive covariate, it is: `phenotype ~ covariate`.
 * `design` is either `"inbredA"` or `"inbredB"` for the pA and pB RILs.
 * `phenotype.dat` is the `data.frame` read in the section *Loading and Using the Data Packages* containing the RIL IDs, phenotype, and any covariates.
-* `batch` is the number of positions tested at one time. Defaults to 1000. If memory use is a problem, reduce this number.
+* `batch` is the number of positions tested at one time. Defaults to 1,000. If memory use is a problem, reduce this number.
 
 For a single phenotype with the data package installed, a genome scan should take ~15--20 min.
 
@@ -151,9 +174,9 @@ ADH.lod.scores <- ADHscan$LODscores
 ADH.lod.scores[100:105, ]
 ```
 
-## Permutation Test ##
+## Permutation Test
 
-Perform a permutation test using the function DSPRperm to obtain a significance threshold. For initial data exploration, the value 6.8 can be used. This threshold seems to be fairly stable for multiple phenotypes we've tested but we recommend each user performs a permutation test for their specific data set.
+Perform a permutation test using the function `DSPRperm()` to obtain a significance threshold. For initial data exploration, the value 6.8 can be used. This threshold seems to be fairly stable for multiple phenotypes that we have tested, but we recommend each user perform a permutation test for their specific data set.
 
 ```{r eval=FALSE}
 DSPRperm(model, design, phenotype.dat, batch, niter, alpha)
@@ -162,16 +185,16 @@ DSPRperm(model, design, phenotype.dat, batch, niter, alpha)
 For `model, design, phenotype.dat, batch` see above description for
 `DSPRscan()`. The two additional arguments to `DSPRperm()` are:
 
-* `niter The number of permutations to perform. Default is 1000.
+* `niter` The number of permutations to perform. Default is 1,000.
 * `alpha` The desired Type I error rate. 
 
 The output of `DSPRperm()` is a list containing:
 
-* `maxLODs` This is a vector of maximum LOD scores for each permutation.
+* `maxLODs` A vector of maximum LOD scores for each permutation.
 * `alpha` The specified alpha level
 * `threshold` The significance threshold.
 
-Once a permutation test is performed, the `maxLODs` can also be used to determine the significance threshold at another alpha level. For example,
+After a permutation test is performed, the `maxLODs` can also be used to determine the significance threshold at another alpha level. For example,
 
 ```{r eval=FALSE}
 perm.test <- DSPRperm(adh ~ 1, 
@@ -185,9 +208,9 @@ For $\alpha = 0.01$:
 quantile(perm.test$maxLODs, 1-0.01)
 ```
 
-## Identify Significant QTL ##
+## Identify Significant QTL
 
-Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function `DSPRpeaks()`. The individual functions to get the values are also available (see the DSPRqtl manual). Once peaks are identified, it is important for the user to confirm these represent distinct peaks.
+Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function `DSPRpeaks()`. The individual functions to get the values are also available (see the `DSPRqtl` manual). After peaks are identified, it is important for the user to confirm these represent distinct peaks.
 
 ```{r eval=FALSE}
 DSPRpeaks(qtldat, threshold, LODdrop)
@@ -224,13 +247,13 @@ And the main QTL is found at position 26 in the list:
 peaks[[26]]
 ```
 
-The `DSPRscan()` results can be plotted using the `DSPRplot()` function.  Multiple scan results can be plotted on the same plot.  Pass the scan  results as a `list()` to the `DSPRscan()` function.
+The `DSPRscan()` results can be plotted using the `DSPRplot()` function.  Multiple scan results can be plotted on the same plot.  Pass the scan results as a `list()` to the `DSPRscan()` function.
 
 ```{r dev="png", fig.width=6.5, fig.height=3.5, fig.cap="Output of `DSPRplot()`"}
 DSPRplot(list(ADHscan), threshold=6.8)
 ```
 
-## Local Interval Mapping ##
+## Local Interval Mapping
 
 The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The `LocalInt()` function will perform interval mapping for a range of positions given by the user. `FindCI()` can then be used to re-estimate confidence intervals.
 
@@ -241,10 +264,9 @@ LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)
 * `peakChr` Chromosome arm at the peak.
 * `peakPos` Position in base pairs at the peak.
 * `range` The range of positions to examine. Default is 100 (on either side, positions are 10 kb apart)
-* `phenotype.dat` The phenotype `data.frame`. See the section *Loading and Using the Data Packages*.
+* `phenotype.dat` The phenotype `data.frame`. See the section _Loading and Using the Data Packages_.
 * `pheno.name` The name of the column containing the phenotype.
-Packages*.
-* `design` "inbredA" or "inbredB"
+* `design` `"inbredA"` or `"inbredB"`
 
 The output of `LocalInt` is the same as the LODscores from `DSPRscan` but only for the specified set of positions.
 
@@ -265,6 +287,6 @@ peak.int <- LocalInt(peakChr,
                      design = "inbredA")
 ```
 
-# Questions? #
+# Questions?
 
-If you have any questions or have trouble with this tutorial, please contact flyrils@gmail.com.
+If you have any questions or have trouble with this tutorial, please contact [flyrils@gmail.com](mailto:flyrils@gmail.com).
