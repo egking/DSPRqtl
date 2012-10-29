@@ -2,3 +2,11 @@
 ^.*Rproj$
 ^.*builds$
 ^.*Vignette$
+^.*\.Rproj$
+^.*README.markdown$
+^.*\.gitignore$
+^.*figure$
+^.*peaks.rda$
+^.*DSPRqtl-intro.md$
+^.*header.tex$
+^.*make_tutorial.sh$
