@@ -1,0 +1,4 @@
+%\VignetteIndexEntry{Tutorial}
+\documentclass{article}
+\begin{document}
+\end{document}
