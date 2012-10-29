@@ -1,9 +1,0 @@
-%\VignetteIndexEntry{A data analysis tutorial for DSPR data}
-%\VignettePackage{DSPRqtl}
-%\VignetteKeywords{DSPRqtl}
-
-\documentclass{article}
-\usepackage{pdfpages}
-\begin{document}
-\includepdf[pages=-, fitpaper=true]{DSPRqtl-intro-src.pdf}
-\end{document}
