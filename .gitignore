@@ -13,3 +13,4 @@
 builds/*.gz
 *.md
 inst/doc/figure/*
+inst/doc/DSPRqtl-intro.html

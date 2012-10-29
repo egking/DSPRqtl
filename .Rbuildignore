@@ -8,5 +8,6 @@
 ^.*figure$
 ^.*peaks.rda$
 ^.*DSPRqtl-intro.md$
+^.*DSPRqtl-intro.html$
 ^.*header.tex$
 ^.*make_tutorial.sh$
