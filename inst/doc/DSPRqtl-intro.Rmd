@@ -66,6 +66,8 @@ install.packages("DSPRqtlDataA_2.0-1.tar.gz", repos = NULL, type = "source")
 install.packages("DSPRqtlDataB_2.0-1.tar.gz", repos = NULL, type = "source")
 ```
 
+*Note*: You may have to modify the path to the package file.
+
 # Loading and Using the Data Packages
 
 Once the data packages are installed, they can be loaded using:
