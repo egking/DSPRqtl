@@ -13,11 +13,11 @@
 
   \item{design}{a character string. One of either 'inbredA'
   or 'inbredB' corresponding to the pA and pB set of inbred
-  RILs. Other crossing designs will be supported in the
+  RILs.  Other crossing designs will be supported in the
   future.}
 
   \item{phenotype.dat}{\code{data.frame} containing a
-  column of ril ids (must be named patRIL) and phenotypes.}
+  column of RIL ids (must be named patRIL) and phenotypes.}
 
   \item{batch}{A numeric vector of length one specifying
   the number of positions to be examined at a time. A

@@ -25,9 +25,10 @@ NULL
 
 ##' Positionlist
 ##' 
-##' List of regularly spaced positions every 10kb used for data analysis of DSPR data.
-##' chr is the chromosome arm, Ppos is the position in base pairs, Gpos is the position 
-##' in centiMorgans, and Gaxis is used for plotting the entire genome on a single axis.
+##' List of regularly spaced positions every 10kb used for data
+##' analysis of DSPR data. chr is the chromosome arm, Ppos is the
+##' position in base pairs, Gpos is the position in centiMorgans, and
+##' Gaxis is used for plotting the entire genome on a single axis.
 ##' 
 ##' @name positionlist_wgenetic
 ##' 
@@ -80,11 +81,11 @@ NULL
 ##' 
 ##' @format A list with 4 variables.
 ##' \describe{
-  ##' \item{\code{LODscores}}{data.frame containing positions and LODscores}
-      ##' \item{\code{model}}{formula}
-      ##' \item{\code{design}}{character vector}
-      ##' \item{\code{phenotype}}{data.frame containing RIL ids and phenotypes}
-      ##' }
+##' \item{\code{LODscores}}{data.frame containing positions and LODscores}
+##' \item{\code{model}}{formula}
+##' \item{\code{design}}{character vector}
+##' \item{\code{phenotype}}{data.frame containing RIL ids and phenotypes}
+##' }
 ##' 
 ##' @keywords datasets
 ##' 

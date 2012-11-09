@@ -15,7 +15,7 @@
 
   \item{design}{a character string. One of either 'inbredA'
   or 'inbredB' corresponding to the pA and pB set of inbred
-  RILs. Other crossing designs will be supported in the
+  RILs.  Other crossing designs will be supported in the
   future.}
 
   \item{phenotype.dat}{\code{data.frame} containing a

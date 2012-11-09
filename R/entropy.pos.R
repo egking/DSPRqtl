@@ -1,33 +1,34 @@
 ##' \code{entropy.pos} calculates the entropy (proportion of missing 
 ##' information) at a given position.
-##'
 ##' 
 ##' @title Entropy at a position
-##' 
+##'   
 ##' @aliases entropy.pos
-##' 
-##' @param peakChr character vector of length one. 
-##' Must be one of the major chromosome arms in the 
-##' \emph{Drosophila} genome ('X','2L','2R','3L',or '3R').
-##' 
-##' @param peakPos numeric vector of length one. A position in 
-##' base pairs in the DSPR position list (every 10kb). 
-##' 
-##' @param phenotype.dat \code{data.frame} containing a column of 
-##' ril ids (must be named patRIL) and phenotypes.
-##' 
-##' @param design a character string. One of either 'inbredA' or 'inbredB'
-##' corresponding to the pA and pB set of inbred RILs. Other crossing designs 
-##' will be supported in the future.
-##' 
-##' @return A numeric vector of length one: the entropy at the given position 
-##' for the set of RILs in the phenotype.dat \code{data.frame}.  
-##' 
+##'   
+##' @param peakChr character vector of length one. Must be one of the
+##'   major chromosome arms in the \emph{Drosophila} genome
+##'   ('X','2L','2R','3L',or '3R').
+##'   
+##' @param peakPos numeric vector of length one. A position in base
+##'   pairs in the DSPR position list (every 10kb).
+##'   
+##' @param phenotype.dat \code{data.frame} containing a column of ril
+##'   ids (must be named patRIL) and phenotypes.
+##'   
+##' @param design a character string. One of either 'inbredA' or
+##'   'inbredB' corresponding to the pA and pB set of inbred RILs.
+##'   Other crossing designs will be supported in the future.
+##'   
+##' @return A numeric vector of length one: the entropy at the given
+##'   position for the set of RILs in the phenotype.dat
+##'   \code{data.frame}.
+##'   
 ##' @author Elizabeth King (\email{egking@@uci.edu})
-##' 
-##' @references Shannon, C.E. 1984. A mathematical theory of communication. 
-##' \emph{Bell System Technical Journal} 27(3): 379-423.
-##' \url{http://en.wikipedia.org/wiki/Information_theory#Entropy}
+##'   
+##' @references Shannon, C.E. 1984. A mathematical theory of
+##'   communication. \emph{Bell System Technical Journal} 27(3):
+##'   379-423. 
+##'   \url{http://en.wikipedia.org/wiki/Information_theory#Entropy}
 ##' 
 ##' @export
 ##' 
