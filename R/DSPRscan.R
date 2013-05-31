@@ -32,12 +32,47 @@
 ##' 
 ##' @export
 ##'
-DSPRscan<-function(model,design,phenotype.dat, batch=1000)
+DSPRscan<-function(model,design,phenotype.dat, sex, id.col, batch=1000,...)
 {
    
-  if(design=='inbredA'|design=='inbredB')
+   #CHECK THAT ABCROSS HAS SPECIFIED SEX
+   if(design=='ABcross')
+   {
+   	if(exists('sex')==FALSE)
+   	{
+   		stop("If using the ABcross design, you must specify the 
+   		sex of the offspring so the genotypes on the X chromosome 
+   		can be specified correctly")
+   	}
+   }
+   
+   ##ASSIGN ID COLUMN
+phenotype.dat$id<-phenotype.dat[,id.col]
+
+##CHECK FOR REQUIRED COLUMNS
+if(design=='inbredA'|design=='inbredB')
   {
-    if(design=='inbredA')
+  	
+  	if(!('patRIL' %in% colnames(phenotype.dat)))
+  	{
+  		stop("phenotype data frame must contain a patRIL column")
+  	}
+  }
+
+if(design=='ABcross'|design=='AAcross'|design=='BBcross')
+  {
+  	if(!(c('patRIL','matRIL','sex') %in% colnames(phenotype.dat)))
+  	{
+  		stop("for cross designs, phenotype data frame must 
+  		contain the following columns: patRIL, matRIL, and sex")
+  	}
+  }
+
+
+   
+  if(design=='inbredA'|design=='inbredB'|design=='ABcross')
+  {
+    if(design=='inbredA'|design=='ABcross')
     {
       if(require(DSPRqtlDataA)){
         
@@ -49,6 +84,8 @@ DSPRscan<-function(model,design,phenotype.dat, batch=1000)
         use.package <- FALSE
       }
     }else{
+    	if(design=='inbredB'|design=='ABcross')
+    	{
       if(require(DSPRqtlDataB)){
         
         use.package <- TRUE
@@ -58,14 +95,16 @@ DSPRscan<-function(model,design,phenotype.dat, batch=1000)
                 for faster performance.\n")
         use.package <- FALSE
       }
+      }
     }
     
+  }else{
+  	stop("must specify valid design: inbredA, inbredB, or ABcross")
   }
   
   
   #get list of positions
   data(positionlist_wgenetic)
-  names(poslist)<-c('chr','Ppos','Gpos','Gaxis')
   
   if(batch=='full'){batch=nrow(poslist)}
   
@@ -120,23 +159,94 @@ DSPRscan<-function(model,design,phenotype.dat, batch=1000)
 
           genotypes<-get(objname)
           patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
-          genos<-as.matrix(patgeno[order(patgeno$patRIL),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
-          row.names(genos)<-patgeno$patRIL
+          genos<-as.matrix(patgeno[order(patgeno$idL),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
+          row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
           rm(list=objname,pos=.GlobalEnv)
           counter<-counter+1
-      }
+      }#B else close
       
-    }
+    }else{
+    	objnameA<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
+          
+          if(use.package){
+            data(list=objname)
+          } else{
+            con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
+                             objname, ".rda", sep = ""))
+            load(con)
+            close(con)
+          }
+          objnameB<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
+          
+          if(use.package){
+            data(list=objname)
+          } else{
+            con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
+                             objname, ".rda", sep = ""))
+            load(con)
+            close(con)
+          }
+          Agenotypes<-get(objnameA)
+          Bgenotypes<-get(objnameB)
+          
+          	ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
+          	BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
+			
+			if(poslist[i,1]=='X' & sex=='m')
+            {
+
+            if(nrow(ABphenotype.dat)>0 & nrow(BAphenotype.dat)>0){stop("ABcross designs measuring males must all be a single type: 
+            	either A males to B females or B males to A females.")}
+
+			if(nrow(BAphenotype.dat)>0)
+            {
+	          matgeno<-merge(ABphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril') 
+	          genos<-as.matrix(matgeno[order(matgeno$idL),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
+          	  row.names(genos)<-matgeno$id
+          	  big.list[[counter]]<-genos
+          	  rm(list=objnameA,pos=.GlobalEnv)
+          	  rm(list=objnameB,pos=.GlobalEnv)
+
+            }
+            
+            if(nrow(ABphenotype.dat)>0)
+            {
+	          matgeno<-merge(ABphenotype.dat,Bgenotypes,by.x='matRIL',by.y='ril') 
+	          genos<-as.matrix(matgeno[order(matgeno$idL),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
+          	  row.names(genos)<-matgeno$id
+          	  big.list[[counter]]<-genos
+          	  rm(list=objnameA,pos=.GlobalEnv)
+          	  rm(list=objnameB,pos=.GlobalEnv)
+            }
+            	
+            }else{	         
+            ABgenotypes<-merge(ABphenotype.dat,Agenotypes,by.x='patRIL',by.y='ril') 
+            ABgenotypes<-merge(ABgenotypes, Bgenotypes, by.x='matRIL',by.y='ril',sort=FALSE)
+ 
+            BAgenotypes<-merge(BAphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril') 
+            BAgenotypes<-merge(BAgenotypes, Bgenotypes, by.x='patRIL',by.y='ril',sort=FALSE)
+            
+            genotypes<-rbind(ABgenotypes,BAgenotypes)
+            genotypes<-genotypes[order(genotypes$id),]
+            
+            genos<-as.matrix(genotypes[,c("AA1","AA2","AA3","AA4","AA5","AA6","AA7","AA8")])
+            row.names(genos)<-genotypes$id 
+            big.list[[counter]]<-genos
+          	rm(list=objnameA,pos=.GlobalEnv)
+          	rm(list=objnameB,pos=.GlobalEnv)
+
+            }#else X/sex close
+                        
+    }# AB else close
     
     
-    
-  }
+  }# i close
   
   #order phenotype.dat by ril
-  phenotype.dat<-phenotype.dat[order(phenotype.dat$patRIL),]
+  phenotype.dat<-phenotype.dat[order(phenotype.dat$id),]
   #this makes sure all your phenotyped rils are in the matrix of genotypes
-  phenotype.dat<-phenotype.dat[phenotype.dat$patRIL %in% rownames(big.list[[1]]),]
+  phenotype.dat<-phenotype.dat[phenotype.dat$id %in% rownames(big.list[[1]]),]
   
   #get null likelihood
   null.mod<-lm(model,data=phenotype.dat)

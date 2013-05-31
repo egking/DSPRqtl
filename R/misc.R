@@ -1,12 +1,38 @@
 LL.alt<-function(mat,model,phenotype.dat)
 {
+  if(ncol(mat)==8){
   qtlmodel<-as.formula(paste(deparse(model),"+mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]",sep=""))
+  }else{
+  	if(ncol(mat==16))
+  	{
+  		  qtlmodel<-as.formula(paste(deparse(model),
+  		  "+mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]
+  		  +mat[,9]+mat[,10]+mat[,11]+mat[,12]+mat[,13]+mat[,14]+mat[,15]
+  		  ",sep=""))
+
+  	}else{
+  		stop("problem with creating genotype matrix")	
+  	}#catch else
+  	}#initial else
   logLik(lm(qtlmodel,data=phenotype.dat))/log(10)
 }
 
+
 LL.multi<-function(mat,model,pheno)
 {
-  qtlmodel<-as.formula("pheno~mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]")
+	if(ncol(mat)==8){
+  	qtlmodel<-as.formula("pheno~mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]")
+  	}else{
+  	if(ncol(mat==16))
+  	{
+  		  qtlmodel<-as.formula("pheno~mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]
+  		  +mat[,9]+mat[,10]+mat[,11]+mat[,12]+mat[,13]+mat[,14]+mat[,15]")
+
+  	}else{
+  		stop("problem with creating genotype matrix")	
+  	}#catch else
+  	}#initial else
+  	
   logLik.multi(lm(qtlmodel))/log(10)
 }
 
