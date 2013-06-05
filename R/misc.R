@@ -32,7 +32,7 @@ LL.multi<-function(mat,model,pheno)
       stop("problem with creating genotype matrix")	
     }#catch else
   }#initial else
-  
+}
 
 logLik.multi <- function(object, REML = FALSE, ...)
 {

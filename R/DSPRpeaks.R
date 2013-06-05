@@ -9,13 +9,24 @@
 ##'   \code{\link{DSPRscan}}.
 ##'   
 ##' @param threshold numeric vector of length one consisting of the 
-##'   signficance threshold. Default is 6.8. Use
-##'   \code{\link{DSPRperm}} to get a threshold specific to a given
-##'   dataset.
-##'   
+##'   signficance threshold. Default is 6.8 for inbred designs and 10.1 
+##'   for the ABcross. Use \code{\link{DSPRperm}} to get a threshold 
+##'   specific to a given dataset.
+##'
+##' @param method a character string specifying the method to use for 
+##'   the confidence interval. Options are: 'LODdrop' calculates a LOD 
+##'   drop interval for the drop amount specified, 'BCI' calculates the 
+##'   Bayesian credible interval for the fraction specified, and 'both' 
+##'   calculates and returns both. 
+##'      
 ##' @param LODdrop numeric vector of length one consisting of the LOD
-##'   drop to be used. Default value is 2 which approximates a 95\%
-##'   confidence interval.
+##'   drop to be used when using method 'LODdrop'. Default value is 2 
+##'   which approximates a 95\% confidence interval for the inbred 
+##'   designs. Users of the ABcross design should consider using a 
+##'   larger LOD drop.
+##'   
+##' @param BCIprob numeric vector of length one consisting of the nominal
+##' Bayes fraction. Default value is 0.95. 
 ##' 
 ##' @return A list of class \code{peaks} containing a list for each
 ##'   significant peak, each containing:
@@ -34,27 +45,62 @@
 ##' @export
 ##'
 ##' @S3method print peaks
-DSPRpeaks<-function(qtldat,threshold=6.8,LODdrop=2)
+DSPRpeaks<-function(qtldat,method,threshold,LODdrop,BCIprob)
 {
+  if(missing(method))
+  {
+    method<-'both'
+  }
+  
+  if(missing(LODdrop))
+  {
+    if(method=='LODdrop'|method=='both')
+    {
+      LODdrop<-2
+    }else{
+      LODdrop<-NA
+    } 
+  }  
+  
+  if(missing(BCIprob))
+  {
+    if(method=='BCI'|method=='both')
+    {
+      BCIprob<-0.95
+    }else{
+      BCIprob<-NA
+    } 
+  }  
+  
+  if(missing(threshold))
+  {
+    if(qtldat$design=='ABcross')
+    {
+      threshold<-10.1
+    }else{
+      threshold<-6.8
+    }
+  }
+  
   peakmat<-findQTL(qtldat$LODscores,threshold)
   peaks.obj<-vector('list',nrow(peakmat))
   for (p in 1:nrow(peakmat))
   {
-    peak<-peakmat[p,'LOD']
     peakChr<-peakmat[p,'chr']
     peakPos<-peakmat[p,'Ppos']
     model<-qtldat$model
     design<-qtldat$design
     phenotype.dat<-qtldat$phenotype
-    ci<-findCI(peakChr,peakPos,qtldat$LODscores,peak,LODdrop)
-    gmeans<-geno.means(peakChr,peakPos,model,phenotype.dat,design)
-    pvar<-perct.var(peakChr,peakPos,model,phenotype.dat,design)
-    Ns<-founderNs(peakChr,peakPos,design,phenotype.dat)
-    ent<-entropy.pos(peakChr,peakPos,phenotype.dat,design)
+    ci<-findCI(peakChr,peakPos,qtldat$LODscores,method,LODdrop,BCIprob)
+    gmeans<-geno.means(peakChr,peakPos,model,design,phenotype.dat,id.col='id',sex=qtldat$sex)
+    pvar<-perct.var(peakChr,peakPos,model,design,phenotype.dat,id.col='id',sex=qtldat$sex)
+    Ns<-founderNs(peakChr,peakPos,design,phenotype.dat,id.col='id')
+    ent<-entropy.pos(peakChr,peakPos,design,phenotype.dat,id.col='id',sex=qtldat$sex)
     peaks.obj[[p]]<-list(
                     "threshold"=threshold,
                     "peak"=peakmat[p,],
                     "LODdrop"=LODdrop,
+                    "BCIprob"=BCIprob,
                     "CI"=ci,
                     "founderNs"=Ns,
                     "geno.means"=gmeans,
@@ -83,7 +129,7 @@ print.peaks <- function(x, ...){
   print(xi$peak)
   cat("\n")
   
-  cat("Confidence Interval(LOD drop = ",xi$LODdrop,"):\n")
+  cat("Confidence Interval(LOD drop = ",xi$LODdrop,", BCI fraction = ",xi$BCIprob,"):\n")
   print(xi$CI)
   cat("\n")
   

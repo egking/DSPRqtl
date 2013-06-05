@@ -8,9 +8,9 @@
 ##'   from \code{\link{DSPRscan}}.
 ##'   
 ##' @param threshold numeric vector of length one consisting of the 
-##'   signficance threshold. Default is 6.8. Use
-##'   \code{\link{DSPRperm}} to get a threshold specific to a given
-##'   dataset.
+##'   signficance threshold. Default is 6.8 for inbred designs and 10.1 
+##'   for the ABcross. Use \code{\link{DSPRperm}} to get a threshold 
+##'   specific to a given dataset.
 ##'   
 ##'   
 ##' @return A \code{data.frame} consisting of the chromosome, physical
@@ -21,8 +21,21 @@
 ##' 
 ##' @export
 ##'
-findQTL<-function(qtldat,threshold=6.8)
+findQTL<-function(qtldat,threshold)
 {
+
+  ##Set default values for threshold if not specified
+  if(missing(threshold))
+  {
+    if(design=='ABcross')
+    {
+      threshold<-10.1
+    }else{
+      threshold<-6.8
+    }
+  }
+  
+  
   output<-data.frame('chr'=numeric(length=0),'Ppos'=numeric(length=0),'Gpos'=numeric(length=0),'LOD'=numeric(length=0))
   for(i in 1:nrow(qtldat))
   {

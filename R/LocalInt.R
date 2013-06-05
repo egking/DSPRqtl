@@ -22,7 +22,7 @@
 ##'   
 ##' @param design a character string. One of either 'inbredA' or
 ##'   'inbredB' corresponding to the pA and pB set of inbred RILs.
-##'   Other crossing designs will be supported in the future.##'
+##'   Other crossing designs may be supported in the future.
 ##'   
 ##' @return A \code{data.frame} consisting of the chromosome, physical
 ##'   position (bp), genetic position (cM) and LOD score for each

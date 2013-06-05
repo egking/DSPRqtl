@@ -1,5 +1,7 @@
 ##' Function to perform a genome scan for data generated with the DSPR
-##' RILs.
+##' RILs. This function is capable of fitting standard models. Users 
+##' requiring more flexibility should use the \code{\link{DSPRgenos}} 
+##' function along with standard model fitting functions in R.
 ##' 
 ##' @title DSPR Genome Scan
 ##'   
@@ -8,16 +10,29 @@
 ##'   \code{phenotype ~ 1}). The genotype effects to be fitted will be
 ##'   added based on \code{design}.
 ##'   
-##' @param design a character string. One of either 'inbredA' or
-##'   'inbredB' corresponding to the pA and pB set of inbred RILs.
-##'   Other crossing designs will be supported in the future.
+##' @param design a character string. One of either 'inbredA', 
+##'   'inbredB', or 'ABcross' corresponding to the pA and pB set of 
+##'   inbred RILs or the pA-pB cross design. For round robin designs
+##'   or other cross designs, use the more flexible DSPRgenos and 
+##'   standard model fitting functions in R.   
 ##'   
-##' @param phenotype.dat \code{data.frame} containing a column of RIL
-##'   ids (must be named patRIL) and phenotypes.
+##' @param phenotype.dat \code{data.frame} containing phenotype data. 
+##' For inbred designs, there must be a column of numeric RIL ids 
+##' (must be named patRIL). For the ABcross design, there must be both
+##' a patRIL and matRIL column specifying the pA and pB RIL ids.
+##'
+##' @param id.col a character string identifying the name of the 
+##' column containing unique ids for the samples. e.g. for an inbred
+##' design, the patRIL column can be used as the id.  
 ##'   
 ##' @param batch A numeric vector of length one specifying the number
 ##'   of positions to be examined at a time. A larger number will use
 ##'   more memory but can be faster. Default is 1000.
+##'   
+##' @param sex a character string (either 'm' or 'f') specifying the 
+##' sex of the measured individuals. This argument must be supplied 
+##' for a cross design for correct specification of the genotypes on 
+##' the X chromosome.   
 ##' 
 ##' @return A list of class \code{gscan} containing:
 ##' \item{LODscores}{A \code{data.frame} consisting of the chromosome,
@@ -32,19 +47,21 @@
 ##' 
 ##' @export
 ##'
-DSPRscanT<-function(model,design,phenotype.dat, id.col, batch=1000,sex)
+DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
 {
   
   #CHECK THAT ABCROSS HAS SPECIFIED SEX
-  if(design=='ABcross')
-  {
-    if(exists('sex')==FALSE)
+  if(missing(sex)){
+    if(design=='ABcross')
     {
       stop("If using the ABcross design, you must specify the 
            sex of the offspring so the genotypes on the X chromosome 
            can be specified correctly")
+    }else{
+      sex<-NA
     }
-    }
+    
+  }
   
   ##ASSIGN ID COLUMN
   phenotype.dat$id<-phenotype.dat[,id.col]
@@ -174,7 +191,7 @@ DSPRscanT<-function(model,design,phenotype.dat, id.col, batch=1000,sex)
           data(list=objnameA)
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
-                           objname, ".rda", sep = ""))
+                           objnameA, ".rda", sep = ""))
           load(con)
           close(con)
         }
@@ -184,7 +201,7 @@ DSPRscanT<-function(model,design,phenotype.dat, id.col, batch=1000,sex)
           data(list=objnameB)
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
-                           objname, ".rda", sep = ""))
+                           objnameB, ".rda", sep = ""))
           load(con)
           close(con)
         }
@@ -202,23 +219,27 @@ DSPRscanT<-function(model,design,phenotype.dat, id.col, batch=1000,sex)
           
           if(nrow(BAphenotype.dat)>0)
           {
-            matgeno<-merge(ABphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril') 
+            matgeno<-merge(BAphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril')
+            matgeno<-merge(matgeno,Bgenotypes,by.x='patRIL',by.y='ril',sort=FALSE)
             genos<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
             rm(list=objnameA,pos=.GlobalEnv)
             rm(list=objnameB,pos=.GlobalEnv)
+            counter<-counter+1
             
           }
           
           if(nrow(ABphenotype.dat)>0)
           {
             matgeno<-merge(ABphenotype.dat,Bgenotypes,by.x='matRIL',by.y='ril') 
+            matgeno<-merge(matgeno,Agenotypes,by.x='patRIL',by.y='ril') 
             genos<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
             rm(list=objnameA,pos=.GlobalEnv)
             rm(list=objnameB,pos=.GlobalEnv)
+            counter<-counter+1
           }
           
           }else{           
@@ -266,10 +287,11 @@ DSPRscanT<-function(model,design,phenotype.dat, id.col, batch=1000,sex)
   
   #put position and LOD scores in a data frame
   #qtl.results<-data.frame('chr'=poslist$chr,'Ppos'=poslist$Ppos,'Gpos'=poslist$Gpos,'LOD'=lod.set)
-  qtl.results<-list("LODscores"=data.frame('chr'=poslist$chr,'Ppos'=poslist$Ppos,'Gpos'=poslist$Gpos,'LOD'=full.lod.set),
+  qtl.results<-list("LODscores"=data.frame('chr'=poslist$chr,'Ppos'=poslist$Ppos,'Gpos'=poslist$Gpos,'LOD'=full.lod.set,stringsAsFactors=FALSE),
                     "model"=model,
                     "design"=design,
-                    "phenotype"=phenotype.dat
+                    "phenotype"=phenotype.dat,
+                    "sex"=sex
   )
   
   class(qtl.results)<-'gscan'

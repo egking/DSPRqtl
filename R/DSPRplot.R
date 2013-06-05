@@ -8,22 +8,35 @@
 ##'   list(scan1,scan2)}
 ##'   
 ##' @param threshold numeric vector of length one consisting of the 
-##'   signficance threshold. Default is 6.8. Use
-##'   \code{\link{DSPRperm}} to get a threshold specific to a given
+##'   signficance threshold. Default is 6.8 for inbred designs and 10.1 
+##'   for the ABcross. Use \code{\link{DSPRperm}} to get a threshold 
+##'   specific to a given dataset.
 ##'   dataset.
 ##'   
 ##' @param legNames a character vector with names for each DSPRscan 
 ##'   result to be plotted. Defaults to the phenotype column names
 ##'   used in DSPRscan.
 ##'   
-##' @param ... Additional arguments. Currently unused.
 ##' 
 ##' @author Elizabeth King (\email{egking@@uci.edu})
 ##' 
 ##' @export
 ##'
-DSPRplot<-function(qtldata,threshold=6.8,legNames=NULL,...)
+DSPRplot<-function(qtldata,threshold,legNames=NULL)
 {
+  
+  if(missing(threshold))
+  {
+    if(qtldat$design=='ABcross')
+    {
+      threshold<-10.1
+    }else{
+      threshold<-6.8
+    }
+  }
+  
+  
+  
 if(length(names(qtldata))>0){qtldata<-list(qtldata)}
   
 dots <- list(...)
