@@ -3,7 +3,7 @@
   Department of Ecology \& Evolutionary Biology  
   University of California, Irvine  
   `egking@uci.edu`
-% 29 October 2012
+% 06 June 2013
 
 `r opts_chunk$set(fig.width=5, fig.height=5, tidy=FALSE)`
 
@@ -113,7 +113,7 @@ library(DSPRqtl)
 
 ## Phenotype Data
 
-* Format your phenotype file and read it into R. All phenotype files must have at a minimum a column named `"patRIL"` (and in the case of crossing designs, also one named `"matRIL"`) containing the numeric RIL IDs (e.g., 11001, 11002, ...) and a column with phenotype measurements (with a name chosen by the user). 
+* Format your phenotype file and read it into R. All phenotype files must have at a minimum a column named `"patRIL"` (and in the case of crossing designs, also one named `"matRIL"`) containing the numeric RIL IDs (e.g., 11001, 11002, ...) and a column with phenotype measurements (with a name chosen by the user). Cross designs must also contain a column specifying the sex of the individuals measured so the X chromosome is handled correctly.
 * If covariates are to be used, these should also be in this file (or added to it within R before beginning the analysis). 
 * To view an example, load the example ADH data in the `DSPRqtl` package. Throughout this tutorial, the example dataset `ADHdata` (included in the R package) will be used to illustrate each step.
 
@@ -133,16 +133,18 @@ phenotype.dat <- read.table("/path/to/your/file.txt",
 
 ## Genome Scan
 
-Currently only measurements taken on the sets of inbred lines are available for performing a genome scan. Crossing design analysis is in development. Handling interactive covariates and analyzing multiple phenotypes at once is also in development. The `DSPRscan()` function performs a genome scan that regresses the 8 founder genotype probabilities on the measured phenotype at evenly spaced 10 kb positions across the genome:
+One can perform a genome scan using the `DSPRscan()` function for experimental designs where the inbred RILs are measured directly, crosses to a standard, or the pA-pB cross design. For users requiring more flexibility, see the _Advanced Analysis_ section below. Handling interactive covariates and analyzing multiple phenotypes at once is in development. The `DSPRscan()` function performs a genome scan that regresses the 8 founder genotype probabilities (or 16 in the case of the pA-pB cross) on the measured phenotype at evenly spaced 10 kb positions across the genome:
 
 ```{r eval=FALSE}
-DSPRscan(model, design, phenotype.dat, batch)
+DSPRscan(model,design,phenotype.dat,id.col,batch,sex)
 ```
 
 * `model` is the null model in formula notation. For a phenotype with no covariates, it is of the form `phenotype ~ 1`. With a single additive covariate, it is: `phenotype ~ covariate`.
-* `design` is either `"inbredA"` or `"inbredB"` for the pA and pB RILs.
-* `phenotype.dat` is the `data.frame` read in the section *Loading and Using the Data Packages* containing the RIL IDs, phenotype, and any covariates.
+* `design` is either `"inbredA"` or `"inbredB"` for inbred designs pA and pB RILs and crosses to a standard. For the pA-pB cross, use `"ABcross"`. 
+* `phenotype.dat` is the `data.frame` read in the section *Phenotype Data* containing the RIL IDs, phenotype, and any covariates.
+* `id.col` identifies the column to use as unique ids for the measurements. For an inbred design, this column could be the patRIL column. For a cross design, a unique id column should be included.
 * `batch` is the number of positions tested at one time. Defaults to 1,000. If memory use is a problem, reduce this number.
+* `sex` is the sex of the individuals measured and must be specified for the ABcross. It is either `"m"` or `"f"`. For inbred designs, it can be left out.
 
 For a single phenotype with the data package installed, a genome scan should take ~15--20 min.
 
@@ -152,7 +154,8 @@ Using the ADH example data:
 data(ADHdata)
 scan.results <- DSPRscan(adh ~ 1, 
                          design = "inbredA", 
-                         phenotype.dat = ADHdata)
+                         phenotype.dat = ADHdata,
+                         id.col='patRIL')
 ```
 
 The output of `DSPRscan()` is a list containing:
@@ -161,6 +164,7 @@ The output of `DSPRscan()` is a list containing:
 * `model` This is the model statement.
 * `design` This is the design specified.
 * `phenotype` This is the phenotype data.
+* `sex` This is the sex of the individuals measured.
 
 There is example output from a finished genome scan of the ADH data in this package as well. Type:
 
@@ -178,13 +182,13 @@ ADH.lod.scores[100:105, ]
 
 ## Permutation Test
 
-Perform a permutation test using the function `DSPRperm()` to obtain a significance threshold. For initial data exploration, the value 6.8 can be used. This threshold seems to be fairly stable for multiple phenotypes that we have tested, but we recommend each user perform a permutation test for their specific data set.
+Perform a permutation test using the function `DSPRperm()` to obtain a significance threshold. For initial data exploration, the value 6.8 can be used for inbred designs and 10.1 for the ABcross. This threshold seems to be fairly stable for multiple phenotypes that we have tested, but we recommend each user perform a permutation test for their specific data set.
 
 ```{r eval=FALSE}
-DSPRperm(model, design, phenotype.dat, batch, niter, alpha)
+DSPRperm(model,design,phenotype.dat,id.col, batch,niter,alpha,sex)
 ```
 
-For `model, design, phenotype.dat, batch` see above description for
+For `model, design, phenotype.dat, id.col, batch, sex` see above description for
 `DSPRscan()`. The two additional arguments to `DSPRperm()` are:
 
 * `niter` The number of permutations to perform. Default is 1,000.
@@ -215,18 +219,20 @@ quantile(perm.test$maxLODs, 1-0.01)
 Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function `DSPRpeaks()`. The individual functions to get the values are also available (see the `DSPRqtl` manual). After peaks are identified, it is important for the user to confirm these represent distinct peaks.
 
 ```{r eval=FALSE}
-DSPRpeaks(qtldat, threshold, LODdrop)
+DSPRpeaks(qtldat,method,threshold,LODdrop,BCIprob)
 ```
 
 * `qtldat` Output from `DSPRscan()`.
-* `threshold` The threshold found with the permutation test. Defaults to 6.8.
+* `threshold` The threshold found with the permutation test. Defaults to 6.8 or 10.1 for inbred and ABcross designs respectively.
 * `LODdrop` The desired LODdrop for support intervals. Defaults to 2.
+* `BCIprob` The desired nominal Bayes fraction for support intervals. Defaults to 0.95.
 
 The output of `DSPRpeaks()` is a list of peaks. Each peak is a list containing:
 
 * `threshold` The specified threshold.
 * `peak` The peak position and LOD score.
 * `LODdrop` The specified LODdrop.
+* `BCIprob` The specified BCIprob.
 * `CI` The confidence interval.
 * `founderNs` The number of RILs with each founder genotype at the peak.
 * `geno.means` The founder means and standard errors at the peak.
@@ -257,7 +263,7 @@ DSPRplot(list(ADHscan), threshold=6.8)
 
 ## Local Interval Mapping
 
-The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The `LocalInt()` function will perform interval mapping for a range of positions given by the user. `FindCI()` can then be used to re-estimate confidence intervals.
+The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The `LocalInt()` function will perform interval mapping for a range of positions given by the user. `FindCI()` can then be used to re-estimate confidence intervals. This function is only available for the `"inbredA"` or `"inbredB"` designs.
 
 ```{r eval=FALSE}
 LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)
@@ -266,7 +272,7 @@ LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)
 * `peakChr` Chromosome arm at the peak.
 * `peakPos` Position in base pairs at the peak.
 * `range` The range of positions to examine. Default is 100 (on either side, positions are 10 kb apart)
-* `phenotype.dat` The phenotype `data.frame`. See the section _Loading and Using the Data Packages_.
+* `phenotype.dat` The phenotype `data.frame`. See the section _Phenotype Data_.
 * `pheno.name` The name of the column containing the phenotype.
 * `design` `"inbredA"` or `"inbredB"`
 
@@ -288,6 +294,48 @@ peak.int <- LocalInt(peakChr,
                      pheno.name = "adh", 
                      design = "inbredA")
 ```
+
+# Advanced Analysis
+
+##Generate genotype information
+
+This package helps automate analysis for simple DSPR designs. Many users (especially those with complex interactions or complex cross designs) will require more flexibility. To aid those users, the `DSPRgenos()` function is available to set up the genotype information using a given phenotype data file. This function can handle the following designs:
+* `"inbredA"` and `"inbredB"` Direct measurements on the RILs or crosses to a standard
+* `"AAcross"` and `"BBcross"` Crosses within the pA or pB RIL panels (e.g. round robin design)
+* `"ABcross"` Crosses between the pA and pB RIL panels. 
+
+The function can handle multiple measurments, a mix of males and females, and a mix of cross directions in the case of the pA-pB cross (i.e. A males to B females and vice versa). The function outputs either a list or a 3 dimensional array and the user can then use the many built in analysis tools in R to fit a model across the genome.  
+
+```{r eval=FALSE}
+DSPRgenos(design,phenotype.dat,id.col,output)
+```
+
+* `design` `"inbredA"`,`"inbredB"`,`"AAcross"`,`"BBcross"`, or `"ABcross"`.
+* `phenotype.dat` The phenotype `data.frame`. See the section _Phenotype Data_.
+* `id.col` identifies the column to use as unique ids for the measurements. For an inbred design, this column could be the patRIL column. For a cross design, a unique id column should be included.
+* `output` Format for the genotype output. Either `"list"` or `"array"`. Default is `"list"`. 
+
+The output of `DSPRgenos()` is a list containing:
+
+* `genolist` a list containing the matrix of additive genotype probabilities at each position in the genome. The list is in the same order as the list of positions described below. Column names are the different DSPR haplotypes and row names are the unique ids provided in id.col. Alternatively, if output='array', the output is a 3 dimensional array [samples,haplotypes,positions]. Haplotypes and samples are named while positions are in the order of the list of positions described below. 
+* `positions` a `data.frame` containing regularly spaced positions (every 10KB) in the genome where the genotype probabilities are calculated. Columns are: chr = chromosome, Ppos = physical position (zero offset), Gpos = genetic position, Gaxis = cummulative genetic position.
+* `phenotype` the phenotype `data.frame` ordered by the specified id column and in the same order as the genotype information at each position in the genome in the geno list described above.
+
+The user can easily use apply (in the case of an array), lapply (in the case of list), or a loop to do a genome scan of whatever type they wish. Future tutorials will provide sample code for specific senarios (e.g. the round robin design). 
+
+The DSPRgenos function is somewhat time consuming to run (~30min - 1 hour). However genome scans using the output should be fast (2-10 min for simple designs). The user will likely wish to save the output especially if planning to run genome scans with multiple different models. Because the output is a large object (~11,000 positions in the genome), it is much more efficient to use the `save` function in R as shown below: 
+
+```{r eval=FALSE}
+myGenos<-DSPRgenos(design,phenotype.dat,id.col,output)
+save(myGenos, file="my file path")
+```
+
+To return to these results later, use `load`:
+```{r eval=FALSE}
+load(file="my file path")
+#the object will load into the workspace with the same name as when save was used. In this example, this is myGenos
+```
+
 
 # Questions?
 

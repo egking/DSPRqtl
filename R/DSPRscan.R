@@ -95,12 +95,12 @@ DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
     {
       if(require(DSPRqtlDataA)){
         
-        use.package <- TRUE
+        use.packageA <- TRUE
       } else {
         message("Loading data from flyrils.org.\n
                 Consider installing DSPRqtlData[A/B] packages
                 for faster performance.\n")
-        use.package <- FALSE
+        use.packageA <- FALSE
       }
     }
     
@@ -108,12 +108,12 @@ DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
     {
       if(require(DSPRqtlDataB)){
         
-        use.package <- TRUE
+        use.packageB <- TRUE
       } else {
         message("Loading data from flyrils.org.\n
                 Consider installing DSPRqtlData[A/B] packages
                 for faster performance.\n")
-        use.package <- FALSE
+        use.packageB <- FALSE
       }
     }
     }else{
@@ -147,7 +147,7 @@ DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
         {
           # time1<-Sys.time()
           objname<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
-          if(use.package){
+          if(use.packageA){
             data(list=objname)
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
@@ -166,7 +166,7 @@ DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
         }else{
           objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
           
-          if(use.package){
+          if(use.packageB){
             data(list=objname)
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
@@ -187,7 +187,7 @@ DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
       }else{
         objnameA<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
-        if(use.package){
+        if(use.packageA){
           data(list=objnameA)
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
@@ -197,7 +197,7 @@ DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
         }
         objnameB<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
-        if(use.package){
+        if(use.packageB){
           data(list=objnameB)
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",

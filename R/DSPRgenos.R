@@ -20,12 +20,19 @@
 ##' column containing unique ids for the samples. e.g. for an inbred
 ##' design, the patRIL column can be used as the id. 
 ##' 
+##' @param output a character string identifying the preferred format 
+##' for the output of genolist. Options are 'list' or 'array'. Default 
+##' is 'list'.
+##' 
 ##' @return A list containing:
 ##' \item{genolist}{a list containing the matrix of additive genotype 
 ##' probabilities at each position in the genome. The list is in the 
 ##' same order as the list of positions described below. Column names 
 ##' are the different DSPR haplotypes and row names are the unique ids 
-##' provided in id.col}
+##' provided in id.col. Alternatively, if output='array', the output is
+##' a 3 dimensional array [samples,haplotypes,positions]. Haplotypes 
+##' and samples are named while positions are in the order of the list 
+##' of positions described below.}
 ##' \item{positions}{a \code{data.frame} containing regularly spaced 
 ##' positions (every 10KB) in the genome where the genotype probabilities 
 ##' are calculated. Columns are: chr = chromosome, Ppos = physical position 
@@ -41,7 +48,7 @@
 ##'
 
 
-DSPRgenos<-function(design,phenotype.dat,id.col)
+DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
 {
   
   ##ASSIGN ID COLUMN
@@ -55,18 +62,23 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
     {
       stop("phenotype data frame must contain a patRIL column")
     }
-  }
-  
-  if(design=='ABcross'|design=='AAcross'|design=='BBcross')
-  {
-    if(!('patRIL' %in% colnames(phenotype.dat)) | 
-         !('matRIL' %in% colnames(phenotype.dat)) |
-         !('sex' %in% colnames(phenotype.dat)))
+  }else{
+    
+    if(design=='ABcross'|design=='AAcross'|design=='BBcross')
     {
-      stop("for cross designs, phenotype data frame must 
-           contain the following columns: patRIL, matRIL, and sex")
+      if(!('patRIL' %in% colnames(phenotype.dat)) | 
+           !('matRIL' %in% colnames(phenotype.dat)) |
+           !('sex' %in% colnames(phenotype.dat)))
+      {
+        stop("for cross designs, phenotype data frame must 
+             contain the following columns: patRIL, matRIL, and sex")
+      }
+      }else{
+        stop("Design not valid. 
+             Must be one of inbredA, inbredB, ABcross, 
+             AAcross, or BBcross")
     }
-    }
+      }
   
   
   ## CHECK IF DATA PACKAGES ARE INSTALLED AND LOAD THEM
@@ -74,34 +86,31 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
   {
     if(require(DSPRqtlDataA)){
       
-      use.package <- TRUE
+      use.packageA <- TRUE
       
     } else {
       message("Loading data from flyrils.org.\n
               Consider installing DSPRqtlData[A/B] packages
               for faster performance.\n")
-      use.package <- FALSE
+      use.packageA <- FALSE
     }
-  }else{
-    if(design=='inbredB'|design=='ABcross'|design=='BBcross')
-    {
-      if(require(DSPRqtlDataB)){
-        
-        use.package <- TRUE
-        
-      } else {
-        message("Loading data from flyrils.org.\n
-                Consider installing DSPRqtlData[A/B] packages
-                for faster performance.\n")
-        use.package <- FALSE
-      }
-    }else{
-      stop("Design not valid. 
-           Must be one of inbredA, inbredB, ABcross, 
-           AAcross, or BBcross")
+  }
+  if(design=='inbredB'|design=='ABcross'|design=='BBcross')
+  {
+    if(require(DSPRqtlDataB)){
+      
+      use.packageB <- TRUE
+      
+    } else {
+      message("Loading data from flyrils.org.\n
+              Consider installing DSPRqtlData[A/B] packages
+              for faster performance.\n")
+      use.packageB <- FALSE
     }
-    
-    }
+  }
+  
+  
+  
   
   #GET POSITION DATA 
   data(positionlist_wgenetic)
@@ -115,7 +124,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
     for (i in 1:length(big.list)) 
     {  
       objname<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
-      if(use.package){
+      if(use.packageA){
         data(list=objname)
       } else{
         con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
@@ -138,7 +147,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
       {
         objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
-        if(use.package){
+        if(use.packageB){
           data(list=objname)
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
@@ -162,7 +171,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
         for (i in 1:length(big.list)) 
         {  
           objname<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
-          if(use.package){
+          if(use.packageA){
             data(list=objname)
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
@@ -209,7 +218,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
           {
             objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
             
-            if(use.package){
+            if(use.packageB){
               data(list=objname)
             } else{
               con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
@@ -256,7 +265,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
             {
               objnameA<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
               
-              if(use.package){
+              if(use.packageA){
                 data(list=objnameA)
               } else{
                 con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
@@ -266,7 +275,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
               }
               objnameB<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
               
-              if(use.package){
+              if(use.packageB){
                 data(list=objnameB)
               } else{
                 con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
@@ -320,5 +329,13 @@ DSPRgenos<-function(design,phenotype.dat,id.col)
   phenotype.dat<-phenotype.dat[phenotype.dat$id %in% rownames(big.list[[1]]),]
   #order phenotype.dat by id
   phenotype.dat<-phenotype.dat[order(phenotype.dat$id),]
-  return(list('genolist'=big.list,'positions','phenotype'=phenotype.dat))
-    }#function close
+  
+  if(output=='array'){
+    genoprob <- array(dim=c(dim(big.list[[1]]), length(big.list)),
+                      dimnames=list(phenotype.dat$id,colnames(big.list[[1]]),NULL))
+    for(i in seq(along=big.list)) genoprob[,,i] <- as.matrix(big.list[[i]])
+    return(list('genolist'=genoprob,'positions'=poslist,'phenotype'=phenotype.dat))
+  }else{
+    return(list('genolist'=big.list,'positions'=poslist,'phenotype'=phenotype.dat)) 
+  }
+  }#function close

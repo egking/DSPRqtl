@@ -364,7 +364,22 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
     
   }#batch close
   rm(poslist,pos=.GlobalEnv)
-  
+
+ if(design=='ABcross' & sex=='m')
+ {
+   maxlodsX<-apply(full.lod.set[poslist$chr=='X',],2,max)
+   maxlodsA<-apply(full.lod.set[poslist$chr!='X',],2,max)
+   mm<-list(maxlodsX,maxlodsA)
+   names(mm)<-c('X','Autosomes')
+   th<-list(quantile(maxlodsX,1-alpha),quantile(maxlodsA,1-alpha))
+   names(th)<-c('X','Autosomes')
+   perm.list<-list("maxLODs"=mm,
+                   "alpha"=alpha,
+                   "threshold"=th
+   )
+   class(perm.list)<-'pt'
+   return(perm.list)
+ }else{
   maxlods<-apply(full.lod.set,2,max)
   
   perm.list<-list("maxLODs"=maxlods,
@@ -373,7 +388,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
                   )
   class(perm.list)<-'pt'
   return(perm.list)
-        
+}      
 } #function close
 
 print.pt <- function(x, digits = 4, ...){

@@ -136,7 +136,7 @@ findCI<-function(peakChr,peakPos,qtldat,method,LODdrop,BCIprob)
   }
 }
 
-#code modified from the qtl package
+#the following function was modified from the qtl package
 bayesint <-
   function(results, chr, qtl.index,prob)
   {    
