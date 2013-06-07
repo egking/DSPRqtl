@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Prerequisites</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>Prerequisites</h1>
+
+<p>If you do not have R, navigate to <a href="http://www.r-project.org"><code>http://www.r-project.org</code></a> to download and install it. New users should download and read the <a href="http://cran.r-project.org/manuals.html">reference manual</a>.</p>
+
+<h1>Installing the DSPRqtl Analysis Package</h1>
+
+<p>To install the analysis package, within R, execute:</p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtl&quot;, 
+                 repos = &quot;http://wfitch.bio.uci.edu/R/&quot;, 
+                 type = &quot;source&quot;)
+</code></pre>
+
+<p><em>Note</em>: you must use the statement <code>repos = &quot;http://wfitch.bio.uci.edu/R/&quot;</code>.</p>
+
+<h1>Installing the DSPRqtlData Packages</h1>
+
+<ol>
+<li>Install one or both data packages (<code>DSPRqtlDataA</code> and/or <code>DSPRqtlDataB</code>). If only one population was used, only one data package (A or B) needs to be installed.</li>
+<li>The data packages are ~3.2 GB each and will take several minutes (to hours) to download and install depending on your connection speed. These packages are too large to be stored on and installed from CRAN. If you do not install these packages, the functions in the \code{DSPRqtl} package will fetch each position file from the internet. This method takes considerably longer to run.</li>
+</ol>
+
+<h2>Installation within R</h2>
+
+<p>Within R (not recommended in RStudio), type:</p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtlDataA&quot;, 
+                 repos = &quot;http://wfitch.bio.uci.edu/R/&quot;, 
+                 type = &quot;source&quot;)
+</code></pre>
+
+<p><em>and/or</em></p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtlDataB&quot;, 
+                 repos = &quot;http://wfitch.bio.uci.edu/R/&quot;, 
+                 type = &quot;source&quot;)
+</code></pre>
+
+<p>for the pA and pB data packages, respectively.</p>
+
+<p><em>Note</em>: you must use the statement <code>repos = &quot;http://wfitch.bio.uci.edu/R/&quot;</code>.</p>
+
+<h2>Installation from the Downloaded Package Source</h2>
+
+<p>If installation within R fails, the packages can be downloaded manually and installed from within R from local source. Download the package source files from:</p>
+
+<ul>
+<li><a href="http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz"><code>http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz</code></a></li>
+<li><a href="http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz"><code>http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz</code></a></li>
+</ul>
+
+<p>using a web browser or command line tool (e.g., <a href="http://www.gnu.org/software/wget/"><code>wget</code></a>).</p>
+
+<p>After the files have downloaded, execute the following commands in R (one, the other, or both as necessary):</p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtlDataA_2.0-1.tar.gz&quot;, repos = NULL, type = &quot;source&quot;)
+install.packages(&quot;DSPRqtlDataB_2.0-1.tar.gz&quot;, repos = NULL, type = &quot;source&quot;)
+</code></pre>
+
+<p><em>Note</em>: You may have to modify the path to the package file.</p>
+
+<h1>Loading and Using the Data Packages</h1>
+
+<p>Once the data packages are installed, they can be loaded using:</p>
+
+<pre><code class="r">library(DSPRqtlDataA)
+</code></pre>
+
+<p><em>and/or</em></p>
+
+<pre><code class="r">library(DSPRqtlDataB)
+</code></pre>
+
+<p>Then, the set of additive HMM probabilities and raw HMM probabilities for any given position can be obtained with:</p>
+
+<pre><code class="r">data(A_chromosome.arm_position.in.base.pairs)
+</code></pre>
+
+<p>e.g.,</p>
+
+<pre><code class="r">data(A_X_12000000)
+# This gives a data.frame named A_X_12000000
+</code></pre>
+
+<p>A list of regularly spaced positions every 10 kb is available at <a href="http://FlyRILs.org/Data"><code>http://FlyRILs.org/Data</code></a> or within the <code>DSPRqtl</code> package (see above for install instructions). </p>
+
+<pre><code class="r">library(DSPRqtl)
+data(positionlist_wgenetic)
+# This gives a data.frame named poslist
+</code></pre>
+
+<h1>Data Analysis Tutorial</h1>
+
+<p>Before you begin, please also obtain the DSPRqtl manual (see <a href="http://FlyRILs.org/Tools/Tutorial"><code>http://FlyRILs.org/Tools/Tutorial)</code></a> and refer to it throughout this tutorial. Also load the <code>DSPRqtl</code> package:</p>
+
+<pre><code class="r">library(DSPRqtl)
+</code></pre>
+
+<h2>Phenotype Data</h2>
+
+<ul>
+<li>Format your phenotype file and read it into R. All phenotype files must have at a minimum a column named <code>&quot;patRIL&quot;</code> (and in the case of crossing designs, also one named <code>&quot;matRIL&quot;</code>) containing the numeric RIL IDs (e.g., 11001, 11002, &hellip;) and a column with phenotype measurements (with a name chosen by the user). Cross designs must also contain a column specifying the sex of the individuals measured so the X chromosome is handled correctly.</li>
+<li>If covariates are to be used, these should also be in this file (or added to it within R before beginning the analysis). </li>
+<li>To view an example, load the example ADH data in the <code>DSPRqtl</code> package. Throughout this tutorial, the example dataset <code>ADHdata</code> (included in the R package) will be used to illustrate each step.</li>
+</ul>
+
+<pre><code class="r">data(ADHdata)
+# a data.frame named ADHdata
+
+head(ADHdata)
+</code></pre>
+
+<pre><code>##   patRIL matRIL    adh
+## 1  11001  11001 -44.09
+## 2  11002  11002 -55.76
+## 3  11003  11003 -47.58
+## 5  11005  11005 -39.89
+## 6  11006  11006 -56.91
+## 7  11007  11007 -73.39
+</code></pre>
+
+<p>To import your data into R, you must read the file in. R will accept many types of files. For help reading files into R, see <a href="http://cran.r-project.org/doc/manuals/R-data.html"><code>http://cran.r-project.org/doc/manuals/R-data.html</code></a>. The code to read in a text file is shown below as an example.</p>
+
+<pre><code class="r">phenotype.dat &lt;- read.table(&quot;/path/to/your/file.txt&quot;, 
+                            header = TRUE)
+</code></pre>
+
+<h2>Genome Scan</h2>
+
+<p>One can perform a genome scan using the <code>DSPRscan()</code> function for experimental designs where the inbred RILs are measured directly, crosses to a standard, or the pA-pB cross design. For users requiring more flexibility, see the <em>Advanced Analysis</em> section below. Handling interactive covariates and analyzing multiple phenotypes at once is in development. The <code>DSPRscan()</code> function performs a genome scan that regresses the 8 founder genotype probabilities (or 16 in the case of the pA-pB cross) on the measured phenotype at evenly spaced 10 kb positions across the genome:</p>
+
+<pre><code class="r">DSPRscan(model,design,phenotype.dat,id.col,batch,sex)
+</code></pre>
+
+<ul>
+<li><code>model</code> is the null model in formula notation. For a phenotype with no covariates, it is of the form <code>phenotype ~ 1</code>. With a single additive covariate, it is: <code>phenotype ~ covariate</code>.</li>
+<li><code>design</code> is either <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code> for inbred designs pA and pB RILs and crosses to a standard. For the pA-pB cross, use <code>&quot;ABcross&quot;</code>. </li>
+<li><code>phenotype.dat</code> is the <code>data.frame</code> read in the section <em>Phenotype Data</em> containing the RIL IDs, phenotype, and any covariates.</li>
+<li><code>id.col</code> identifies the column to use as unique ids for the measurements. For an inbred design, this column could be the patRIL column. For a cross design, a unique id column should be included.</li>
+<li><code>batch</code> is the number of positions tested at one time. Defaults to 1,000. If memory use is a problem, reduce this number.</li>
+<li><code>sex</code> is the sex of the individuals measured and must be specified for the ABcross. It is either <code>&quot;m&quot;</code> or <code>&quot;f&quot;</code>. For inbred designs, it can be left out.</li>
+</ul>
+
+<p>For a single phenotype with the data package installed, a genome scan should take ~15&ndash;20 min.</p>
+
+<p>Using the ADH example data:</p>
+
+<pre><code class="r">data(ADHdata)
+scan.results &lt;- DSPRscan(adh ~ 1, 
+                         design = &quot;inbredA&quot;, 
+                         phenotype.dat = ADHdata,
+                         id.col=&#39;patRIL&#39;)
+</code></pre>
+
+<p>The output of <code>DSPRscan()</code> is a list containing:</p>
+
+<ul>
+<li><code>LODscores</code> This is a <code>data.frame</code> with positions and LOD scores.</li>
+<li><code>model</code> This is the model statement.</li>
+<li><code>design</code> This is the design specified.</li>
+<li><code>phenotype</code> This is the phenotype data.</li>
+<li><code>sex</code> This is the sex of the individuals measured.</li>
+</ul>
+
+<p>There is example output from a finished genome scan of the ADH data in this package as well. Type:</p>
+
+<pre><code class="r">data(ADHscan)
+</code></pre>
+
+<p>To extract the LOD scores <code>data.frame</code>:</p>
+
+<pre><code class="r">ADH.lod.scores &lt;- ADHscan$LODscores
+
+ADH.lod.scores[100:105, ]
+</code></pre>
+
+<pre><code>##     chr    Ppos   Gpos   LOD
+## 100   X 1150000 0.1359 1.662
+## 101   X 1160000 0.1419 1.661
+## 102   X 1170000 0.1479 1.661
+## 103   X 1180000 0.1540 1.661
+## 104   X 1190000 0.1601 1.663
+## 105   X 1200000 0.1663 1.664
+</code></pre>
+
+<h2>Permutation Test</h2>
+
+<p>Perform a permutation test using the function <code>DSPRperm()</code> to obtain a significance threshold. For initial data exploration, the value 6.8 can be used for inbred designs and 10.1 for the ABcross. This threshold seems to be fairly stable for multiple phenotypes that we have tested, but we recommend each user perform a permutation test for their specific data set.</p>
+
+<pre><code class="r">DSPRperm(model,design,phenotype.dat,id.col, batch,niter,alpha,sex)
+</code></pre>
+
+<p>For <code>model, design, phenotype.dat, id.col, batch, sex</code> see above description for
+<code>DSPRscan()</code>. The two additional arguments to <code>DSPRperm()</code> are:</p>
+
+<ul>
+<li><code>niter</code> The number of permutations to perform. Default is 1,000.</li>
+<li><code>alpha</code> The desired Type I error rate. </li>
+</ul>
+
+<p>The output of <code>DSPRperm()</code> is a list containing:</p>
+
+<ul>
+<li><code>maxLODs</code> A vector of maximum LOD scores for each permutation.</li>
+<li><code>alpha</code> The specified alpha level</li>
+<li><code>threshold</code> The significance threshold.</li>
+</ul>
+
+<p>After a permutation test is performed, the <code>maxLODs</code> can also be used to determine the significance threshold at another alpha level. For example,</p>
+
+<pre><code class="r">perm.test &lt;- DSPRperm(adh ~ 1, 
+                      design = &quot;inbredA&quot;, 
+                      phenotype.dat = ADHdata)
+</code></pre>
+
+<p>For \( \alpha = 0.01 \):</p>
+
+<pre><code class="r">quantile(perm.test$maxLODs, 1-0.01)
+</code></pre>
+
+<h2>Identify Significant QTL</h2>
+
+<p>Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function <code>DSPRpeaks()</code>. The individual functions to get the values are also available (see the <code>DSPRqtl</code> manual). After peaks are identified, it is important for the user to confirm these represent distinct peaks.</p>
+
+<pre><code class="r">DSPRpeaks(qtldat,method,threshold,LODdrop,BCIprob)
+</code></pre>
+
+<ul>
+<li><code>qtldat</code> Output from <code>DSPRscan()</code>.</li>
+<li><code>threshold</code> The threshold found with the permutation test. Defaults to 6.8 or 10.1 for inbred and ABcross designs respectively.</li>
+<li><code>LODdrop</code> The desired LODdrop for support intervals. Defaults to 2.</li>
+<li><code>BCIprob</code> The desired nominal Bayes fraction for support intervals. Defaults to 0.95.</li>
+</ul>
+
+<p>The output of <code>DSPRpeaks()</code> is a list of peaks. Each peak is a list containing:</p>
+
+<ul>
+<li><code>threshold</code> The specified threshold.</li>
+<li><code>peak</code> The peak position and LOD score.</li>
+<li><code>LODdrop</code> The specified LODdrop.</li>
+<li><code>BCIprob</code> The specified BCIprob.</li>
+<li><code>CI</code> The confidence interval.</li>
+<li><code>founderNs</code> The number of RILs with each founder genotype at the peak.</li>
+<li><code>geno.means</code> The founder means and standard errors at the peak.</li>
+<li><code>perct.var</code> The percent variation explained by the QTL.</li>
+<li><code>entropy</code> The proportion missing information.</li>
+</ul>
+
+<p>Using the <code>ADHscan</code> output:</p>
+
+<pre><code class="r">peaks &lt;- DSPRpeaks(ADHscan, threshold = 6.8, LODdrop = 2)
+</code></pre>
+
+<p>And the main QTL is found at position 26 in the list:</p>
+
+<pre><code class="r">peaks[[26]]
+</code></pre>
+
+<pre><code>## $threshold
+## [1] 6.8
+## 
+## $peak
+##    chr     Ppos  Gpos   LOD
+## 26  2L 14500000 49.91 107.4
+## 
+## $LODdrop
+## [1] 2
+## 
+## $CI
+##             chr     Ppos  Gpos   LOD
+## Lower Bound  2L 14410000 49.79 105.4
+## Upper Bound  2L 14620000 50.07 105.4
+## 
+## $founderNs
+##        A1        A2        A3        A4        A5        A6        A7 
+##        94        21         1       355       186        20         9 
+##        A8      Hets Uncertain 
+##        42        10        84 
+## 
+## $geno.means
+##    Estimate Std. Error
+## A1   -29.03     0.8126
+## A2   -32.61     1.7962
+## A3   -58.39     6.2789
+## A4   -50.40     0.4272
+## A5   -49.55     0.5805
+## A6   -51.30     1.7197
+## A7   -55.61     2.4104
+## A8   -53.16     1.2484
+## 
+## $perct.var
+## [1] 45.22
+## 
+## $entropy
+## [1] 0.03688
+</code></pre>
+
+<p>The <code>DSPRscan()</code> results can be plotted using the <code>DSPRplot()</code> function.  Multiple scan results can be plotted on the same plot.  Pass the scan results as a <code>list()</code> to the <code>DSPRscan()</code> function.</p>
+
+<pre><code class="r">DSPRplot(list(ADHscan), threshold=6.8)
+</code></pre>
+
+<pre><code>## Error: &#39;...&#39; used in an incorrect context
+</code></pre>
+
+<h2>Local Interval Mapping</h2>
+
+<p>The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The <code>LocalInt()</code> function will perform interval mapping for a range of positions given by the user. <code>FindCI()</code> can then be used to re-estimate confidence intervals. This function is only available for the <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code> designs.</p>
+
+<pre><code class="r">LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)
+</code></pre>
+
+<ul>
+<li><code>peakChr</code> Chromosome arm at the peak.</li>
+<li><code>peakPos</code> Position in base pairs at the peak.</li>
+<li><code>range</code> The range of positions to examine. Default is 100 (on either side, positions are 10 kb apart)</li>
+<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section <em>Phenotype Data</em>.</li>
+<li><code>pheno.name</code> The name of the column containing the phenotype.</li>
+<li><code>design</code> <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code></li>
+</ul>
+
+<p>The output of <code>LocalInt</code> is the same as the LODscores from <code>DSPRscan</code> but only for the specified set of positions.</p>
+
+<p>Using the ADH sample data:</p>
+
+<pre><code class="r"># The main QTL
+main.peak &lt;- peaks[[26]]
+peakChr &lt;- main.peak$peak$chr
+peakPos &lt;- main.peak$peak$Ppos
+</code></pre>
+
+<pre><code class="r">peak.int &lt;- LocalInt(peakChr, 
+                     peakPos, 
+                     phenotype.dat = ADHdata, 
+                     pheno.name = &quot;adh&quot;, 
+                     design = &quot;inbredA&quot;)
+</code></pre>
+
+<h1>Advanced Analysis</h1>
+
+<p>##Generate genotype information</p>
+
+<p>This package helps automate analysis for simple DSPR designs. Many users (especially those with complex interactions or complex cross designs) will require more flexibility. To aid those users, the <code>DSPRgenos()</code> function is available to set up the genotype information using a given phenotype data file. This function can handle the following designs:</p>
+
+<ul>
+<li><code>&quot;inbredA&quot;</code> and <code>&quot;inbredB&quot;</code> Direct measurements on the RILs or crosses to a standard</li>
+<li><code>&quot;AAcross&quot;</code> and <code>&quot;BBcross&quot;</code> Crosses within the pA or pB RIL panels (e.g. round robin design)</li>
+<li><code>&quot;ABcross&quot;</code> Crosses between the pA and pB RIL panels. </li>
+</ul>
+
+<p>The function can handle multiple measurments, a mix of males and females, and a mix of cross directions in the case of the pA-pB cross (i.e. A males to B females and vice versa). The function outputs either a list or a 3 dimensional array and the user can then use the many built in analysis tools in R to fit a model across the genome.  </p>
+
+<pre><code class="r">DSPRgenos(design,phenotype.dat,id.col,output)
+</code></pre>
+
+<ul>
+<li><code>design</code> <code>&quot;inbredA&quot;</code>,<code>&quot;inbredB&quot;</code>,<code>&quot;AAcross&quot;</code>,<code>&quot;BBcross&quot;</code>, or <code>&quot;ABcross&quot;</code>.</li>
+<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section <em>Phenotype Data</em>.</li>
+<li><code>id.col</code> identifies the column to use as unique ids for the measurements. For an inbred design, this column could be the patRIL column. For a cross design, a unique id column should be included.</li>
+<li><code>output</code> Format for the genotype output. Either <code>&quot;list&quot;</code> or <code>&quot;array&quot;</code>. Default is <code>&quot;list&quot;</code>. </li>
+</ul>
+
+<p>The output of <code>DSPRgenos()</code> is a list containing:</p>
+
+<ul>
+<li><code>genolist</code> a list containing the matrix of additive genotype probabilities at each position in the genome. The list is in the same order as the list of positions described below. Column names are the different DSPR haplotypes and row names are the unique ids provided in id.col. Alternatively, if output=&#39;array&#39;, the output is a 3 dimensional array [samples,haplotypes,positions]. Haplotypes and samples are named while positions are in the order of the list of positions described below. </li>
+<li><code>positions</code> a <code>data.frame</code> containing regularly spaced positions (every 10KB) in the genome where the genotype probabilities are calculated. Columns are: chr = chromosome, Ppos = physical position (zero offset), Gpos = genetic position, Gaxis = cummulative genetic position.</li>
+<li><code>phenotype</code> the phenotype <code>data.frame</code> ordered by the specified id column and in the same order as the genotype information at each position in the genome in the geno list described above.</li>
+</ul>
+
+<p>The user can easily use apply (in the case of an array), lapply (in the case of list), or a loop to do a genome scan of whatever type they wish. Future tutorials will provide sample code for specific senarios (e.g. the round robin design). </p>
+
+<p>The DSPRgenos function is somewhat time consuming to run (~30min - 1 hour). However genome scans using the output should be fast (2-10 min for simple designs). The user will likely wish to save the output especially if planning to run genome scans with multiple different models. Because the output is a large object (~11,000 positions in the genome), it is much more efficient to use the <code>save</code> function in R as shown below: </p>
+
+<pre><code class="r">myGenos&lt;-DSPRgenos(design,phenotype.dat,id.col,output)
+save(myGenos, file=&quot;my file path&quot;)
+</code></pre>
+
+<p>To return to these results later, use <code>load</code>:</p>
+
+<pre><code class="r">load(file=&quot;my file path&quot;)
+#the object will load into the workspace with the same name as when save was used. In this example, this is myGenos
+</code></pre>
+
+<h1>Questions?</h1>
+
+<p>If you have any questions or have trouble with this tutorial, please contact <a href="mailto:flyrils@gmail.com">flyrils@gmail.com</a>.</p>
+
+</body>
+
+</html>
+

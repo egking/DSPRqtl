@@ -6,11 +6,9 @@
 *.aux
 *.log
 *.tex
-*.pdf
 *.synctex
 *.out
 *.Rproj
 builds/*.gz
 *.md
 inst/doc/figure/*
-inst/doc/DSPRqtl-intro.html
