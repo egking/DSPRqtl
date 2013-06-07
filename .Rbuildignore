@@ -9,5 +9,6 @@
 ^.*peaks.rda$
 ^.*DSPRqtl-intro.md$
 ^.*DSPRqtl-intro.html$
+^.*DSPRqtl-intro.R$
 ^.*header.tex$
 ^.*make_tutorial.sh$
