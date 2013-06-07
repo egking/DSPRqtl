@@ -2,7 +2,7 @@
 \alias{findQTL}
 \title{Find QTL}
 \usage{
-  findQTL(qtldat, threshold)
+  findQTL(qtldat, threshold, design)
 }
 \arguments{
   \item{qtldat}{\code{data.frame} of chromosome, position,
@@ -14,6 +14,10 @@
   designs and 10.1 for the ABcross. Use
   \code{\link{DSPRperm}} to get a threshold specific to a
   given dataset.}
+
+  \item{design}{a character string. One of either
+  'inbredA', 'inbredB', or 'ABcross' corresponding to the
+  pA and pB set of inbred RILs or the pA-pB cross design.}
 }
 \value{
   A \code{data.frame} consisting of the chromosome,
