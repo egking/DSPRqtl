@@ -47,7 +47,7 @@
 ##' 
 ##' @export
 ##'
-DSPRscanT<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
+DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
 {
   
   #CHECK THAT ABCROSS HAS SPECIFIED SEX

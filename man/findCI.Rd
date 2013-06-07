@@ -2,7 +2,8 @@
 \alias{findCI}
 \title{Calculate LOD support interval}
 \usage{
-  findCI(peakChr, peakPos, qtldat, peak, LODdrop)
+  findCI(peakChr, peakPos, qtldat, method, LODdrop,
+    BCIprob)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -16,18 +17,28 @@
   and LOD scores (column names chr,Ppos,Gpos,LOD). List
   element LODscores from \code{\link{DSPRscan}}.}
 
-  \item{peak}{numeric vector of length one consisting of
-  the peak LOD score.}
+  \item{method}{a character string specifying the method to
+  use for the confidence interval. Options are: 'LODdrop'
+  calculates a LOD drop interval for the drop amount
+  specified, 'BCI' calculates the Bayesian credible
+  interval for the fraction specified, and 'both'
+  calculates and returns both.}
 
   \item{LODdrop}{numeric vector of length one consisting of
-  the LOD drop to be used. Default value is 2 which
-  approximates a 95\% confidence interval.}
+  the LOD drop to be used when using method 'LODdrop'.
+  Default value is 2 which approximates a 95\% confidence
+  interval for the inbred designs. Users of the ABcross
+  design should consider using a larger LOD drop.}
+
+  \item{BCIprob}{numeric vector of length one consisting of
+  the nominal Bayes fraction. Default value is 0.95.}
 }
 \value{
   A \code{data.frame} with two rows containing the
   chromosome, physical position (bp), genetic position (cM)
   and LOD scores corresponding to the lower and upper
-  bound.
+  bound. A list of two \code{data.frames} are returned when
+  the method used is 'both'.
 }
 \description{
   \code{findCI} calculates the LOD support interval for a
@@ -35,5 +46,11 @@
 }
 \author{
   Elizabeth King (\email{egking@uci.edu})
+}
+\references{
+  Manichaikul, A., J. Dupuis, S. Sen, and K.W. Broman.
+  2006.  Performance of bootstrap confidence intervals for
+  the location of a quantitative trait locus.
+  \emph{Genetics} 174: 481-489.
 }
 

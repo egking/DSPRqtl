@@ -2,7 +2,8 @@
 \alias{founderNs}
 \title{Numbers of founder genotypes}
 \usage{
-  founderNs(peakChr, peakPos, design, phenotype.dat)
+  founderNs(peakChr, peakPos, design, phenotype.dat,
+    id.col)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -12,13 +13,23 @@
   \item{peakPos}{numeric vector of length one. A position
   in base pairs in the DSPR position list (every 10kb).}
 
-  \item{design}{a character string. One of either 'inbredA'
-  or 'inbredB' corresponding to the pA and pB set of inbred
-  RILs.  Other crossing designs will be supported in the
-  future.}
+  \item{design}{a character string. For inbred RIL designs:
+  'inbredA', 'inbredB'. For cross designs: AAcross,
+  BBcross, or 'ABcross'.  A and B refer to the pA and pB
+  set of DSPR RILs.}
 
-  \item{phenotype.dat}{\code{data.frame} containing a
-  column of ril ids (must be named patRIL) and phenotypes.}
+  \item{phenotype.dat}{\code{data.frame} containing
+  phenotype data. For inbred designs, there must be a
+  column of numeric RIL ids (must be named patRIL). For the
+  ABcross design, there must be both a patRIL and matRIL
+  column specifying the pA and pB RIL ids. Cross designs
+  also require a sex column for correct specification of
+  the genotypes on the X chromosome.}
+
+  \item{id.col}{a character string identifying the name of
+  the column containing unique ids for the samples. e.g.
+  for an inbred design, the patRIL column can be used as
+  the id.}
 }
 \value{
   A named numeric vector consisting of the numbers of RILs

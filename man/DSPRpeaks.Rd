@@ -3,20 +3,33 @@
 \alias{print.peaks}
 \title{Find and Summarize QTL}
 \usage{
-  DSPRpeaks(qtldat, threshold = 6.8, LODdrop = 2)
+  DSPRpeaks(qtldat, method, threshold, LODdrop, BCIprob)
 }
 \arguments{
   \item{qtldat}{An object of class gscan. Output from
   \code{\link{DSPRscan}}.}
 
   \item{threshold}{numeric vector of length one consisting
-  of the signficance threshold. Default is 6.8. Use
+  of the signficance threshold. Default is 6.8 for inbred
+  designs and 10.1 for the ABcross. Use
   \code{\link{DSPRperm}} to get a threshold specific to a
   given dataset.}
 
+  \item{method}{a character string specifying the method to
+  use for the confidence interval. Options are: 'LODdrop'
+  calculates a LOD drop interval for the drop amount
+  specified, 'BCI' calculates the Bayesian credible
+  interval for the fraction specified, and 'both'
+  calculates and returns both.}
+
   \item{LODdrop}{numeric vector of length one consisting of
-  the LOD drop to be used. Default value is 2 which
-  approximates a 95\% confidence interval.}
+  the LOD drop to be used when using method 'LODdrop'.
+  Default value is 2 which approximates a 95\% confidence
+  interval for the inbred designs. Users of the ABcross
+  design should consider using a larger LOD drop.}
+
+  \item{BCIprob}{numeric vector of length one consisting of
+  the nominal Bayes fraction. Default value is 0.95.}
 }
 \value{
   A list of class \code{peaks} containing a list for each

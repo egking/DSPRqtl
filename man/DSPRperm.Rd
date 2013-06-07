@@ -3,8 +3,8 @@
 \alias{print.pt}
 \title{DSPR permutation test}
 \usage{
-  DSPRperm(model, design, phenotype.dat, batch = 1000,
-    niter = 1000, alpha = 0.05)
+  DSPRperm(model, design, phenotype.dat, id.col,
+    batch = 1000, niter = 1000, alpha = 0.05, sex)
 }
 \arguments{
   \item{model}{an object of class formula: a symbolic
@@ -13,13 +13,23 @@
   effects to be fitted will be added based on
   \code{design}.}
 
-  \item{design}{a character string. One of either 'inbredA'
-  or 'inbredB' corresponding to the pA and pB set of inbred
-  RILs.  Other crossing designs will be supported in the
-  future.}
+  \item{design}{a character string. One of either
+  'inbredA', 'inbredB', or 'ABcross' corresponding to the
+  pA and pB set of inbred RILs or the pA-pB cross design.
+  For round robin designs or other cross designs, use the
+  more flexible DSPRgenos and standard model fitting
+  functions in R.}
 
-  \item{phenotype.dat}{\code{data.frame} containing a
-  column of ril ids (must be named patRIL) and phenotypes.}
+  \item{phenotype.dat}{\code{data.frame} containing
+  phenotype data. For inbred designs, there must be a
+  column of numeric RIL ids (must be named patRIL). For the
+  ABcross design, there must be both a patRIL and matRIL
+  column specifying the pA and pB RIL ids.}
+
+  \item{id.col}{a character string identifying the name of
+  the column containing unique ids for the samples. e.g.
+  for an inbred design, the patRIL column can be used as
+  the id.}
 
   \item{batch}{A numeric vector of length one specifying
   the number of positions to be examined at a time. A
@@ -33,6 +43,11 @@
   signficance threshold. Default is 0.05. Raw maximum LOD
   scores are also returned and \code{\link{quantile}} can
   be used to test other alphas.}
+
+  \item{sex}{a character string (either 'm' or 'f')
+  specifying the sex of the measured individuals. This
+  argument must be supplied for a cross design for correct
+  specification of the genotypes on the X chromosome.}
 }
 \value{
   A list of class \code{pt} containing: \item{maxLODs}{A

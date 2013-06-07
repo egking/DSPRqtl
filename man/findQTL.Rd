@@ -2,7 +2,7 @@
 \alias{findQTL}
 \title{Find QTL}
 \usage{
-  findQTL(qtldat, threshold = 6.8)
+  findQTL(qtldat, threshold)
 }
 \arguments{
   \item{qtldat}{\code{data.frame} of chromosome, position,
@@ -10,7 +10,8 @@
   element LODscores from \code{\link{DSPRscan}}.}
 
   \item{threshold}{numeric vector of length one consisting
-  of the signficance threshold. Default is 6.8. Use
+  of the signficance threshold. Default is 6.8 for inbred
+  designs and 10.1 for the ABcross. Use
   \code{\link{DSPRperm}} to get a threshold specific to a
   given dataset.}
 }

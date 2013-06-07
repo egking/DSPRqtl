@@ -1,0 +1,59 @@
+\name{DSPRgenos}
+\alias{DSPRgenos}
+\title{DSPR genotype probabilities}
+\usage{
+  DSPRgenos(design, phenotype.dat, id.col, output = "list")
+}
+\arguments{
+  \item{design}{a character string. For inbred RIL designs:
+  'inbredA', 'inbredB'. For cross designs: AAcross,
+  BBcross, or 'ABcross'.  A and B refer to the pA and pB
+  set of DSPR RILs.}
+
+  \item{phenotype.dat}{\code{data.frame} containing
+  phenotype data. For inbred designs, there must be a
+  column of numeric RIL ids (must be named patRIL). For
+  cross designs, there must be both a patRIL and matRIL
+  column specifying the maternal and paternal RIL ids.
+  Cross designs also require a sex column for correct
+  specification of the genotypes on the X chromosome.}
+
+  \item{id.col}{a character string identifying the name of
+  the column containing unique ids for the samples. e.g.
+  for an inbred design, the patRIL column can be used as
+  the id.}
+
+  \item{output}{a character string identifying the
+  preferred format for the output of genolist. Options are
+  'list' or 'array'. Default is 'list'.}
+}
+\value{
+  A list containing: \item{genolist}{a list containing the
+  matrix of additive genotype probabilities at each
+  position in the genome. The list is in the same order as
+  the list of positions described below. Column names are
+  the different DSPR haplotypes and row names are the
+  unique ids provided in id.col. Alternatively, if
+  output='array', the output is a 3 dimensional array
+  [samples,haplotypes,positions]. Haplotypes and samples
+  are named while positions are in the order of the list of
+  positions described below.} \item{positions}{a
+  \code{data.frame} containing regularly spaced positions
+  (every 10KB) in the genome where the genotype
+  probabilities are calculated. Columns are: chr =
+  chromosome, Ppos = physical position (zero offset), Gpos
+  = genetic position, Gaxis = cummulative genetic
+  position.} \item{phenotype}{the phenotype.dat
+  \code{data.frame} ordered by the specified id column and
+  in the same order as the genotype information at each
+  position in the genome in the geno list described above}
+}
+\description{
+  Function to generate genotype probabilities across the
+  genome for a given DSPR dataset. This function is most
+  useful for those wishing to fit their own models.
+}
+\author{
+  Elizabeth King (\email{egking@uci.edu})
+}
+

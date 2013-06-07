@@ -45,7 +45,7 @@
 ##' @author Elizabeth King (\email{egking@@uci.edu})
 ##' 
 ##' @export
-geno.meansT<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
+geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
 {
   #CHECK THAT ABCROSS HAS SPECIFIED SEX
   if(missing(sex)){

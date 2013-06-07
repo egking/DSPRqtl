@@ -2,6 +2,8 @@
 
 suppressPackageStartupMessages(library("roxygen2"))
 suppressPackageStartupMessages(library("optparse"))
+suppressPackageStartupMessages(library("methods"))
+suppressPackageStartupMessages(library("utils"))
 
 # specify our desired options in a list
 # by default OptionParser will add an help option equivalent to

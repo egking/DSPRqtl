@@ -25,8 +25,8 @@
 
   \item{design}{a character string. One of either 'inbredA'
   or 'inbredB' corresponding to the pA and pB set of inbred
-  RILs.  Other crossing designs will be supported in the
-  future.##'}
+  RILs.  Other crossing designs may be supported in the
+  future.}
 }
 \value{
   A \code{data.frame} consisting of the chromosome,

@@ -2,7 +2,8 @@
 \alias{perct.var}
 \title{Effect size}
 \usage{
-  perct.var(peakChr, peakPos, model, phenotype.dat, design)
+  perct.var(peakChr, peakPos, model, design, phenotype.dat,
+    id.col, sex)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -18,13 +19,28 @@
   effects to be fitted will be added based on
   \code{design}.}
 
-  \item{phenotype.dat}{\code{data.frame} containing a
-  column of ril ids (must be named patRIL) and phenotypes.}
+  \item{design}{a character string. One of either
+  'inbredA', 'inbredB', or 'ABcross' corresponding to the
+  pA and pB set of inbred RILs or the pA-pB cross design.
+  For round robin designs or other cross designs, use the
+  more flexible DSPRgenos and standard model fitting
+  functions in R.}
 
-  \item{design}{a character string. One of either 'inbredA'
-  or 'inbredB' corresponding to the pA and pB set of inbred
-  RILs.  Other crossing designs will be supported in the
-  future.}
+  \item{phenotype.dat}{\code{data.frame} containing
+  phenotype data. For inbred designs, there must be a
+  column of numeric RIL ids (must be named patRIL). For the
+  ABcross design, there must be both a patRIL and matRIL
+  column specifying the pA and pB RIL ids.}
+
+  \item{id.col}{a character string identifying the name of
+  the column containing unique ids for the samples. e.g.
+  for an inbred design, the patRIL column can be used as
+  the id.}
+
+  \item{sex}{a character string (either 'm' or 'f')
+  specifying the sex of the measured individuals. This
+  argument must be supplied for a cross design for correct
+  specification of the genotypes on the X chromosome.}
 }
 \value{
   A numeric vector of length one: the percent variance
