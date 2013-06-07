@@ -297,7 +297,7 @@ peak.int <- LocalInt(peakChr,
 
 # Advanced Analysis
 
-##Generate genotype information
+## Generate Genotype Information
 
 This package helps automate analysis for simple DSPR designs. Many users (especially those with complex interactions or complex cross designs) will require more flexibility. To aid those users, the `DSPRgenos()` function is available to set up the genotype information using a given phenotype data file. This function can handle the following designs:
 * `"inbredA"` and `"inbredB"` Direct measurements on the RILs or crosses to a standard
@@ -333,7 +333,8 @@ save(myGenos, file="my file path")
 To return to these results later, use `load`:
 ```{r eval=FALSE}
 load(file="my file path")
-#the object will load into the workspace with the same name as when save was used. In this example, this is myGenos
+# The object will load into the workspace with the same name as
+# when save was used. In this example, this is myGenos.
 ```
 
 

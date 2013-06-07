@@ -5,7 +5,6 @@
 *.gz
 *.aux
 *.log
-*.tex
 *.synctex
 *.out
 *.Rproj
