@@ -11,7 +11,10 @@
 ##'   signficance threshold. Default is 6.8 for inbred designs and 10.1 
 ##'   for the ABcross. Use \code{\link{DSPRperm}} to get a threshold 
 ##'   specific to a given dataset.
-##'   
+##' 
+##' @param design a character string. One of either 'inbredA', 
+##'   'inbredB', or 'ABcross' corresponding to the pA and pB set of 
+##'   inbred RILs or the pA-pB cross design.   
 ##'   
 ##' @return A \code{data.frame} consisting of the chromosome, physical
 ##'   position (bp), genetic position (cM) and LOD score for each
@@ -21,7 +24,7 @@
 ##' 
 ##' @export
 ##'
-findQTL<-function(qtldat,threshold)
+findQTL<-function(qtldat,threshold,design)
 {
 
   ##Set default values for threshold if not specified

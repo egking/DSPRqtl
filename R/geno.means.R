@@ -204,9 +204,8 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
           {
             matgeno<-merge(BAphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril') 
             matgeno<-merge(matgeno,Bgenotypes,by.x='patRIL',by.y='ril',sort=FALSE)
-            genos<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
-            row.names(genos)<-matgeno$id
-            big.list[[counter]]<-genos
+            mat<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
+            row.names(mat)<-matgeno$id
             rm(list=objnameA,pos=.GlobalEnv)
             rm(list=objnameB,pos=.GlobalEnv)
             
@@ -216,9 +215,8 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
           {
             matgeno<-merge(ABphenotype.dat,Bgenotypes,by.x='matRIL',by.y='ril')
             matgeno<-merge(matgeno,Agenotypes,by.x='patRIL',by.y='ril') 
-            genos<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
-            row.names(genos)<-matgeno$id
-            big.list[[counter]]<-genos
+            mat<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
+            row.names(mat)<-matgeno$id
             rm(list=objnameA,pos=.GlobalEnv)
             rm(list=objnameB,pos=.GlobalEnv)
           }

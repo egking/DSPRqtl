@@ -82,7 +82,7 @@ DSPRpeaks<-function(qtldat,method,threshold,LODdrop,BCIprob)
     }
   }
   
-  peakmat<-findQTL(qtldat$LODscores,threshold)
+  peakmat<-findQTL(qtldat$LODscores,threshold,qtldat$design)
   peaks.obj<-vector('list',nrow(peakmat))
   for (p in 1:nrow(peakmat))
   {

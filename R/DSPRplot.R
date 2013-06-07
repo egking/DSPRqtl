@@ -27,7 +27,7 @@ DSPRplot<-function(qtldata,threshold,legNames=NULL)
   
   if(missing(threshold))
   {
-    if(qtldat$design=='ABcross')
+    if(qtldata$design=='ABcross')
     {
       threshold<-10.1
     }else{
@@ -38,8 +38,7 @@ DSPRplot<-function(qtldata,threshold,legNames=NULL)
   
   
 if(length(names(qtldata))>0){qtldata<-list(qtldata)}
-  
-dots <- list(...)
+
 
 data(positionlist_wgenetic)
 
