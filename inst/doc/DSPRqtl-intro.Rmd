@@ -111,7 +111,7 @@ Before you begin, please also obtain the DSPRqtl manual (see [`http://FlyRILs.or
 library(DSPRqtl)
 ```
 
-## Phenotype Data
+## Phenotype Data {#PhenoDat}
 
 * Format your phenotype file and read it into R. All phenotype files must have at a minimum a column named `"patRIL"` (and in the case of crossing designs, also one named `"matRIL"`) containing the numeric RIL IDs (e.g., 11001, 11002, ...) and a column with phenotype measurements (with a name chosen by the user). Cross designs must also contain a column specifying the sex of the individuals measured so the X chromosome is handled correctly.
 * If covariates are to be used, these should also be in this file (or added to it within R before beginning the analysis). 
@@ -133,7 +133,7 @@ phenotype.dat <- read.table("/path/to/your/file.txt",
 
 ## Genome Scan
 
-One can perform a genome scan using the `DSPRscan()` function for experimental designs where the inbred RILs are measured directly, crosses to a standard, or the pA-pB cross design. For users requiring more flexibility, see the _Advanced Analysis_ section below. Handling interactive covariates and analyzing multiple phenotypes at once is in development. The `DSPRscan()` function performs a genome scan that regresses the 8 founder genotype probabilities (or 16 in the case of the pA-pB cross) on the measured phenotype at evenly spaced 10 kb positions across the genome:
+One can perform a genome scan using the `DSPRscan()` function for experimental designs where the inbred RILs are measured directly, crosses to a standard, or the pA-pB cross design. For users requiring more flexibility, see the [_Advanced Analysis_](#AvdAnal) section below. Handling interactive covariates and analyzing multiple phenotypes at once is in development. The `DSPRscan()` function performs a genome scan that regresses the 8 founder genotype probabilities (or 16 in the case of the pA-pB cross) on the measured phenotype at evenly spaced 10 kb positions across the genome:
 
 ```{r eval=FALSE}
 DSPRscan(model,design,phenotype.dat,id.col,batch,sex)
@@ -141,7 +141,7 @@ DSPRscan(model,design,phenotype.dat,id.col,batch,sex)
 
 * `model` is the null model in formula notation. For a phenotype with no covariates, it is of the form `phenotype ~ 1`. With a single additive covariate, it is: `phenotype ~ covariate`.
 * `design` is either `"inbredA"` or `"inbredB"` for inbred designs pA and pB RILs and crosses to a standard. For the pA-pB cross, use `"ABcross"`. 
-* `phenotype.dat` is the `data.frame` read in the section *Phenotype Data* containing the RIL IDs, phenotype, and any covariates.
+* `phenotype.dat` is the `data.frame` read in the section [_Phenotype Data_](#PhenoDat) containing the RIL IDs, phenotype, and any covariates.
 * `id.col` identifies the column to use as unique ids for the measurements. For an inbred design, this column could be the patRIL column. For a cross design, a unique id column should be included.
 * `batch` is the number of positions tested at one time. Defaults to 1,000. If memory use is a problem, reduce this number.
 * `sex` is the sex of the individuals measured and must be specified for the ABcross. It is either `"m"` or `"f"`. For inbred designs, it can be left out.
@@ -185,7 +185,7 @@ ADH.lod.scores[100:105, ]
 Perform a permutation test using the function `DSPRperm()` to obtain a significance threshold. For initial data exploration, the value 6.8 can be used for inbred designs and 10.1 for the ABcross. This threshold seems to be fairly stable for multiple phenotypes that we have tested, but we recommend each user perform a permutation test for their specific data set.
 
 ```{r eval=FALSE}
-DSPRperm(model,design,phenotype.dat,id.col, batch,niter,alpha,sex)
+DSPRperm(model, design, phenotype.dat, id.col, batch, niter, alpha, sex)
 ```
 
 For `model, design, phenotype.dat, id.col, batch, sex` see above description for
@@ -295,7 +295,7 @@ peak.int <- LocalInt(peakChr,
                      design = "inbredA")
 ```
 
-# Advanced Analysis
+# Advanced Analysis {#AvdAnal}
 
 ## Generate Genotype Information
 
