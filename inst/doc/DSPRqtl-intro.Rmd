@@ -176,7 +176,7 @@ probabilities (or 16 in the case of the pA-pB cross) on the measured
 phenotype at evenly spaced 10 kb positions across the genome:
 
 ```{r eval=FALSE}
-DSPRscan(model,design,phenotype.dat,id.col,batch,sex)
+DSPRscan(model, design, phenotype.dat, id.col, batch, sex)
 ```
 
 * `model` is the null model in formula notation. For a phenotype with
@@ -398,7 +398,7 @@ either a list or a 3 dimensional array and the user can then use the
 many built in analysis tools in R to fit a model across the genome.
 
 ```{r eval=FALSE}
-DSPRgenos(design,phenotype.dat,id.col,output)
+DSPRgenos(design, phenotype.dat, id.col, output)
 ```
 
 * `design` `"inbredA"`,`"inbredB"`,`"AAcross"`,`"BBcross"`, or

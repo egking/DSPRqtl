@@ -184,7 +184,10 @@ hljs.initHighlightingOnLoad();
 <body>
 <h1>Prerequisites</h1>
 
-<p>If you do not have R, navigate to <a href="http://www.r-project.org"><code>http://www.r-project.org</code></a> to download and install it. New users should download and read the <a href="http://cran.r-project.org/manuals.html">reference manual</a>.</p>
+<p>If you do not have R, navigate to
+<a href="http://www.r-project.org"><code>http://www.r-project.org</code></a> to download
+and install it. New users should download and read the <a href="http://cran.r-project.org/manuals.html">reference
+manual</a>.</p>
 
 <h1>Installing the DSPRqtl Analysis Package</h1>
 
@@ -195,13 +198,21 @@ hljs.initHighlightingOnLoad();
                  type = &quot;source&quot;)
 </code></pre>
 
-<p><em>Note</em>: you must use the statement <code>repos = &quot;http://wfitch.bio.uci.edu/R/&quot;</code>.</p>
+<p><em>Note</em>: you must use the statement <code>repos =
+&quot;http://wfitch.bio.uci.edu/R/&quot;</code>.</p>
 
 <h1>Installing the DSPRqtlData Packages</h1>
 
 <ol>
-<li>Install one or both data packages (<code>DSPRqtlDataA</code> and/or <code>DSPRqtlDataB</code>). If only one population was used, only one data package (A or B) needs to be installed.</li>
-<li>The data packages are ~3.2 GB each and will take several minutes (to hours) to download and install depending on your connection speed. These packages are too large to be stored on and installed from CRAN. If you do not install these packages, the functions in the \code{DSPRqtl} package will fetch each position file from the internet. This method takes considerably longer to run.</li>
+<li>Install one or both data packages (<code>DSPRqtlDataA</code> and/or
+<code>DSPRqtlDataB</code>). If only one population was used, only one data
+package (A or B) needs to be installed.</li>
+<li>The data packages are ~3.2 GB each and will take several minutes
+(to hours) to download and install depending on your connection
+speed. These packages are too large to be stored on and installed
+from CRAN. If you do not install these packages, the functions in the
+\code{DSPRqtl} package will fetch each position file from the
+internet. This method takes considerably longer to run.</li>
 </ol>
 
 <h2>Installation within R</h2>
@@ -226,16 +237,19 @@ hljs.initHighlightingOnLoad();
 
 <h2>Installation from the Downloaded Package Source</h2>
 
-<p>If installation within R fails, the packages can be downloaded manually and installed from within R from local source. Download the package source files from:</p>
+<p>If installation within R fails, the packages can be downloaded
+manually and installed from within R from local source. Download the
+package source files from:</p>
 
 <ul>
 <li><a href="http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz"><code>http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz</code></a></li>
 <li><a href="http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz"><code>http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz</code></a></li>
 </ul>
 
-<p>using a web browser or command line tool (e.g., <a href="http://www.gnu.org/software/wget/"><code>wget</code></a>).</p>
-
-<p>After the files have downloaded, execute the following commands in R (one, the other, or both as necessary):</p>
+<p>using a web browser or command line tool (e.g.,
+<a href="http://www.gnu.org/software/wget/"><code>wget</code></a>). After the files have
+downloaded, execute the following commands in R (one, the other, or
+both as necessary):</p>
 
 <pre><code class="r">install.packages(&quot;DSPRqtlDataA_2.0-1.tar.gz&quot;, repos = NULL, type = &quot;source&quot;)
 install.packages(&quot;DSPRqtlDataB_2.0-1.tar.gz&quot;, repos = NULL, type = &quot;source&quot;)
@@ -255,7 +269,8 @@ install.packages(&quot;DSPRqtlDataB_2.0-1.tar.gz&quot;, repos = NULL, type = &qu
 <pre><code class="r">library(DSPRqtlDataB)
 </code></pre>
 
-<p>Then, the set of additive HMM probabilities and raw HMM probabilities for any given position can be obtained with:</p>
+<p>Then, the set of additive HMM probabilities and raw HMM probabilities
+for any given position can be obtained with:</p>
 
 <pre><code class="r">data(A_chromosome.arm_position.in.base.pairs)
 </code></pre>
@@ -266,7 +281,9 @@ install.packages(&quot;DSPRqtlDataB_2.0-1.tar.gz&quot;, repos = NULL, type = &qu
 # This gives a data.frame named A_X_12000000
 </code></pre>
 
-<p>A list of regularly spaced positions every 10 kb is available at <a href="http://FlyRILs.org/Data"><code>http://FlyRILs.org/Data</code></a> or within the <code>DSPRqtl</code> package (see above for install instructions). </p>
+<p>A list of regularly spaced positions every 10 kb is available at
+<a href="http://FlyRILs.org/Data"><code>http://FlyRILs.org/Data</code></a> or within the
+<code>DSPRqtl</code> package (see above for install instructions).</p>
 
 <pre><code class="r">library(DSPRqtl)
 data(positionlist_wgenetic)
@@ -275,17 +292,28 @@ data(positionlist_wgenetic)
 
 <h1>Data Analysis Tutorial</h1>
 
-<p>Before you begin, please also obtain the DSPRqtl manual (see <a href="http://FlyRILs.org/Tools/Tutorial"><code>http://FlyRILs.org/Tools/Tutorial)</code></a> and refer to it throughout this tutorial. Also load the <code>DSPRqtl</code> package:</p>
+<p>Before you begin, please also obtain the DSPRqtl manual (see
+<a href="http://FlyRILs.org/Tools/Tutori%0Aal"><code>http://FlyRILs.org/Tools/Tutorial)</code></a> and refer to it throughout this tutorial. Also load the <code>DSPRqtl</code>
+package:</p>
 
 <pre><code class="r">library(DSPRqtl)
 </code></pre>
 
-<h2>Phenotype Data</h2>
+<h2>Phenotype Data {#PhenoDat}</h2>
 
 <ul>
-<li>Format your phenotype file and read it into R. All phenotype files must have at a minimum a column named <code>&quot;patRIL&quot;</code> (and in the case of crossing designs, also one named <code>&quot;matRIL&quot;</code>) containing the numeric RIL IDs (e.g., 11001, 11002, &hellip;) and a column with phenotype measurements (with a name chosen by the user). Cross designs must also contain a column specifying the sex of the individuals measured so the X chromosome is handled correctly.</li>
-<li>If covariates are to be used, these should also be in this file (or added to it within R before beginning the analysis). </li>
-<li>To view an example, load the example ADH data in the <code>DSPRqtl</code> package. Throughout this tutorial, the example dataset <code>ADHdata</code> (included in the R package) will be used to illustrate each step.</li>
+<li>Format your phenotype file and read it into R. All phenotype files
+must have at a minimum a column named <code>&quot;patRIL&quot;</code> (and in the case
+of crossing designs, also one named <code>&quot;matRIL&quot;</code>) containing the
+numeric RIL IDs (e.g., 11001, 11002, &hellip;) and a column with
+phenotype measurements (with a name chosen by the user). Cross
+designs must also contain a column specifying the sex of the
+individuals measured so the X chromosome is handled correctly.</li>
+<li>If covariates are to be used, these should also be in this file (or
+added to it within R before beginning the analysis).</li>
+<li>To view an example, load the example ADH data in the <code>DSPRqtl</code>
+package. Throughout this tutorial, the example dataset <code>ADHdata</code>
+(included in the R package) will be used to illustrate each step.</li>
 </ul>
 
 <pre><code class="r">data(ADHdata)
@@ -303,7 +331,10 @@ head(ADHdata)
 ## 7  11007  11007 -73.39
 </code></pre>
 
-<p>To import your data into R, you must read the file in. R will accept many types of files. For help reading files into R, see <a href="http://cran.r-project.org/doc/manuals/R-data.html"><code>http://cran.r-project.org/doc/manuals/R-data.html</code></a>. The code to read in a text file is shown below as an example.</p>
+<p>To import your data into R, you must read the file in. R will accept
+many types of files. For help reading files into R, see
+<a href="http://cran.r-pr%0Aoject.org/doc/manuals/R-data.html"><code>http://cran.r-project.org/doc/manuals/R-data.html</code></a>. The code to read in a text file
+is shown below as an example.</p>
 
 <pre><code class="r">phenotype.dat &lt;- read.table(&quot;/path/to/your/file.txt&quot;, 
                             header = TRUE)
@@ -311,21 +342,41 @@ head(ADHdata)
 
 <h2>Genome Scan</h2>
 
-<p>One can perform a genome scan using the <code>DSPRscan()</code> function for experimental designs where the inbred RILs are measured directly, crosses to a standard, or the pA-pB cross design. For users requiring more flexibility, see the <em>Advanced Analysis</em> section below. Handling interactive covariates and analyzing multiple phenotypes at once is in development. The <code>DSPRscan()</code> function performs a genome scan that regresses the 8 founder genotype probabilities (or 16 in the case of the pA-pB cross) on the measured phenotype at evenly spaced 10 kb positions across the genome:</p>
+<p>One can perform a genome scan using the <code>DSPRscan()</code> function for
+experimental designs where the inbred RILs are measured directly,
+crosses to a standard, or the pA-pB cross design. For users requiring
+more flexibility, see the <a href="#AvdAnal"><em>Advanced Analysis</em></a> section
+below. Handling interactive covariates and analyzing multiple
+phenotypes at once is in development. The <code>DSPRscan()</code> function
+performs a genome scan that regresses the 8 founder genotype
+probabilities (or 16 in the case of the pA-pB cross) on the measured
+phenotype at evenly spaced 10 kb positions across the genome:</p>
 
-<pre><code class="r">DSPRscan(model,design,phenotype.dat,id.col,batch,sex)
+<pre><code class="r">DSPRscan(model, design, phenotype.dat, id.col, batch, sex)
 </code></pre>
 
 <ul>
-<li><code>model</code> is the null model in formula notation. For a phenotype with no covariates, it is of the form <code>phenotype ~ 1</code>. With a single additive covariate, it is: <code>phenotype ~ covariate</code>.</li>
-<li><code>design</code> is either <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code> for inbred designs pA and pB RILs and crosses to a standard. For the pA-pB cross, use <code>&quot;ABcross&quot;</code>. </li>
-<li><code>phenotype.dat</code> is the <code>data.frame</code> read in the section <em>Phenotype Data</em> containing the RIL IDs, phenotype, and any covariates.</li>
-<li><code>id.col</code> identifies the column to use as unique ids for the measurements. For an inbred design, this column could be the patRIL column. For a cross design, a unique id column should be included.</li>
-<li><code>batch</code> is the number of positions tested at one time. Defaults to 1,000. If memory use is a problem, reduce this number.</li>
-<li><code>sex</code> is the sex of the individuals measured and must be specified for the ABcross. It is either <code>&quot;m&quot;</code> or <code>&quot;f&quot;</code>. For inbred designs, it can be left out.</li>
+<li><code>model</code> is the null model in formula notation. For a phenotype with
+no covariates, it is of the form <code>phenotype ~ 1</code>. With a single
+additive covariate, it is: <code>phenotype ~ covariate</code>.</li>
+<li><code>design</code> is either <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code> for inbred designs pA
+and pB RILs and crosses to a standard. For the pA-pB cross, use
+<code>&quot;ABcross&quot;</code>.</li>
+<li><code>phenotype.dat</code> is the <code>data.frame</code> read in the section <a href="#PhenoDat"><em>Phenotype
+Data</em></a> containing the RIL IDs, phenotype, and any
+covariates.</li>
+<li><code>id.col</code> identifies the column to use as unique ids for the
+measurements. For an inbred design, this column could be the patRIL
+column. For a cross design, a unique id column should be included.</li>
+<li><code>batch</code> is the number of positions tested at one time. Defaults to
+1,000. If memory use is a problem, reduce this number.</li>
+<li><code>sex</code> is the sex of the individuals measured and must be specified
+for the ABcross. It is either <code>&quot;m&quot;</code> or <code>&quot;f&quot;</code>. For inbred designs,
+it can be left out.</li>
 </ul>
 
-<p>For a single phenotype with the data package installed, a genome scan should take ~15&ndash;20 min.</p>
+<p>For a single phenotype with the data package installed, a genome scan
+should take ~15&ndash;20 min.</p>
 
 <p>Using the ADH example data:</p>
 
@@ -346,7 +397,8 @@ scan.results &lt;- DSPRscan(adh ~ 1,
 <li><code>sex</code> This is the sex of the individuals measured.</li>
 </ul>
 
-<p>There is example output from a finished genome scan of the ADH data in this package as well. Type:</p>
+<p>There is example output from a finished genome scan of the ADH data
+in this package as well. Type:</p>
 
 <pre><code class="r">data(ADHscan)
 </code></pre>
@@ -369,13 +421,19 @@ ADH.lod.scores[100:105, ]
 
 <h2>Permutation Test</h2>
 
-<p>Perform a permutation test using the function <code>DSPRperm()</code> to obtain a significance threshold. For initial data exploration, the value 6.8 can be used for inbred designs and 10.1 for the ABcross. This threshold seems to be fairly stable for multiple phenotypes that we have tested, but we recommend each user perform a permutation test for their specific data set.</p>
+<p>Perform a permutation test using the function <code>DSPRperm()</code> to obtain
+a significance threshold. For initial data exploration, the value 6.8
+can be used for inbred designs and 10.1 for the ABcross. This
+threshold seems to be fairly stable for multiple phenotypes that we
+have tested, but we recommend each user perform a permutation test
+for their specific data set.</p>
 
-<pre><code class="r">DSPRperm(model,design,phenotype.dat,id.col, batch,niter,alpha,sex)
+<pre><code class="r">DSPRperm(model, design, phenotype.dat, id.col, batch, niter, alpha, sex)
 </code></pre>
 
-<p>For <code>model, design, phenotype.dat, id.col, batch, sex</code> see above description for
-<code>DSPRscan()</code>. The two additional arguments to <code>DSPRperm()</code> are:</p>
+<p>For <code>model, design, phenotype.dat, id.col, batch, sex</code> see above
+description for <code>DSPRscan()</code>. The two additional arguments to
+<code>DSPRperm()</code> are:</p>
 
 <ul>
 <li><code>niter</code> The number of permutations to perform. Default is 1,000.</li>
@@ -390,33 +448,42 @@ ADH.lod.scores[100:105, ]
 <li><code>threshold</code> The significance threshold.</li>
 </ul>
 
-<p>After a permutation test is performed, the <code>maxLODs</code> can also be used to determine the significance threshold at another alpha level. For example,</p>
+<p>After a permutation test is performed, the <code>maxLODs</code> can also be used
+to determine the significance threshold at another alpha level. For
+example,</p>
 
-<pre><code class="r">perm.test &lt;- DSPRperm(adh ~ 1, 
-                      design = &quot;inbredA&quot;, 
+<pre><code class="r">perm.test &lt;- DSPRperm(adh ~ 1,
+                      design = &quot;inbredA&quot;,
                       phenotype.dat = ADHdata)
 </code></pre>
 
 <p>For \( \alpha = 0.01 \):</p>
 
-<pre><code class="r">quantile(perm.test$maxLODs, 1-0.01)
+<pre><code class="r">quantile(perm.test$maxLODs, 1 - 0.01)
 </code></pre>
 
 <h2>Identify Significant QTL</h2>
 
-<p>Get a summary of the significant peaks. Finding and summarizing significant peaks can be done in a single step using the function <code>DSPRpeaks()</code>. The individual functions to get the values are also available (see the <code>DSPRqtl</code> manual). After peaks are identified, it is important for the user to confirm these represent distinct peaks.</p>
+<p>Get a summary of the significant peaks. Finding and summarizing
+significant peaks can be done in a single step using the function
+<code>DSPRpeaks()</code>. The individual functions to get the values are also
+available (see the <code>DSPRqtl</code> manual). After peaks are identified, it
+is important for the user to confirm these represent distinct peaks.</p>
 
-<pre><code class="r">DSPRpeaks(qtldat,method,threshold,LODdrop,BCIprob)
+<pre><code class="r">DSPRpeaks(qtldat, method, threshold, LODdrop, BCIprob)
 </code></pre>
 
 <ul>
 <li><code>qtldat</code> Output from <code>DSPRscan()</code>.</li>
-<li><code>threshold</code> The threshold found with the permutation test. Defaults to 6.8 or 10.1 for inbred and ABcross designs respectively.</li>
+<li><code>threshold</code> The threshold found with the permutation test. Defaults
+to 6.8 or 10.1 for inbred and ABcross designs respectively.</li>
 <li><code>LODdrop</code> The desired LODdrop for support intervals. Defaults to 2.</li>
-<li><code>BCIprob</code> The desired nominal Bayes fraction for support intervals. Defaults to 0.95.</li>
+<li><code>BCIprob</code> The desired nominal Bayes fraction for support intervals.
+Defaults to 0.95.</li>
 </ul>
 
-<p>The output of <code>DSPRpeaks()</code> is a list of peaks. Each peak is a list containing:</p>
+<p>The output of <code>DSPRpeaks()</code> is a list of peaks. Each peak is a list
+containing:</p>
 
 <ul>
 <li><code>threshold</code> The specified threshold.</li>
@@ -424,7 +491,8 @@ ADH.lod.scores[100:105, ]
 <li><code>LODdrop</code> The specified LODdrop.</li>
 <li><code>BCIprob</code> The specified BCIprob.</li>
 <li><code>CI</code> The confidence interval.</li>
-<li><code>founderNs</code> The number of RILs with each founder genotype at the peak.</li>
+<li><code>founderNs</code> The number of RILs with each founder genotype at the
+peak.</li>
 <li><code>geno.means</code> The founder means and standard errors at the peak.</li>
 <li><code>perct.var</code> The percent variation explained by the QTL.</li>
 <li><code>entropy</code> The proportion missing information.</li>
@@ -479,17 +547,23 @@ ADH.lod.scores[100:105, ]
 ## [1] 0.03688
 </code></pre>
 
-<p>The <code>DSPRscan()</code> results can be plotted using the <code>DSPRplot()</code> function.  Multiple scan results can be plotted on the same plot.  Pass the scan results as a <code>list()</code> to the <code>DSPRscan()</code> function.</p>
+<p>The <code>DSPRscan()</code> results can be plotted using the <code>DSPRplot()</code>
+function. Multiple scan results can be plotted on the same plot. Pass
+the scan results as a <code>list()</code> to the <code>DSPRscan()</code> function.</p>
 
 <pre><code class="r">DSPRplot(list(ADHscan), threshold=6.8)
 </code></pre>
 
-<pre><code>## Error: &#39;...&#39; used in an incorrect context
-</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdQAAAD8CAYAAADOr1WDAAAEJGlDQ1BJQ0MgUHJvZmlsZQAAOBGFVd9v21QUPolvUqQWPyBYR4eKxa9VU1u5GxqtxgZJk6XtShal6dgqJOQ6N4mpGwfb6baqT3uBNwb8AUDZAw9IPCENBmJ72fbAtElThyqqSUh76MQPISbtBVXhu3ZiJ1PEXPX6yznfOec7517bRD1fabWaGVWIlquunc8klZOnFpSeTYrSs9RLA9Sr6U4tkcvNEi7BFffO6+EdigjL7ZHu/k72I796i9zRiSJPwG4VHX0Z+AxRzNRrtksUvwf7+Gm3BtzzHPDTNgQCqwKXfZwSeNHHJz1OIT8JjtAq6xWtCLwGPLzYZi+3YV8DGMiT4VVuG7oiZpGzrZJhcs/hL49xtzH/Dy6bdfTsXYNY+5yluWO4D4neK/ZUvok/17X0HPBLsF+vuUlhfwX4j/rSfAJ4H1H0qZJ9dN7nR19frRTeBt4Fe9FwpwtN+2p1MXscGLHR9SXrmMgjONd1ZxKzpBeA71b4tNhj6JGoyFNp4GHgwUp9qplfmnFW5oTdy7NamcwCI49kv6fN5IAHgD+0rbyoBc3SOjczohbyS1drbq6pQdqumllRC/0ymTtej8gpbbuVwpQfyw66dqEZyxZKxtHpJn+tZnpnEdrYBbueF9qQn93S7HQGGHnYP7w6L+YGHNtd1FJitqPAR+hERCNOFi1i1alKO6RQnjKUxL1GNjwlMsiEhcPLYTEiT9ISbN15OY/jx4SMshe9LaJRpTvHr3C/ybFYP1PZAfwfYrPsMBtnE6SwN9ib7AhLwTrBDgUKcm06FSrTfSj187xPdVQWOk5Q8vxAfSiIUc7Z7xr6zY/+hpqwSyv0I0/QMTRb7RMgBxNodTfSPqdraz/sDjzKBrv4zu2+a2t0/HHzjd2Lbcc2sG7GtsL42K+xLfxtUgI7YHqKlqHK8HbCCXgjHT1cAdMlDetv4FnQ2lLasaOl6vmB0CMmwT/IPszSueHQqv6i/qluqF+oF9TfO2qEGTumJH0qfSv9KH0nfS/9TIp0Wboi/SRdlb6RLgU5u++9nyXYe69fYRPdil1o1WufNSdTTsp75BfllPy8/LI8G7AUuV8ek6fkvfDsCfbNDP0dvRh0CrNqTbV7LfEEGDQPJQadBtfGVMWEq3QWWdufk6ZSNsjG2PQjp3ZcnOWWing6noonSInvi0/Ex+IzAreevPhe+CawpgP1/pMTMDo64G0sTCXIM+KdOnFWRfQKdJvQzV1+Bt8OokmrdtY2yhVX2a+qrykJfMq4Ml3VR4cVzTQVz+UoNne4vcKLoyS+gyKO6EHe+75Fdt0Mbe5bRIf/wjvrVmhbqBN97RD1vxrahvBOfOYzoosH9bq94uejSOQGkVM6sN/7HelL4t10t9F4gPdVzydEOx83Gv+uNxo7XyL/FtFl8z9ZAHF4bBsrEwAAOkVJREFUeAHtnQe8FcW9xw+CgKggCNhQr2BsMYpRo6ioKGB5tmjsGFusRGPUaBILtuhTn8/eNbE30OgzMXaxx65RsRJApYqI9H7f97f37M1yOI179vTffD6/O7Mzs1O+s7v/ndm9e1o1NjYm7EzABEzABEzABAojsExhu3tvEzABEzABEzABEbBB9XFgAiZgAiZgAjEQsEGNAaKLMAETMAETMAEbVB8DJmACJmACJhADARvUGCC6CBMwARMwAROwQfUxYAImYAImYAIxELBBjQGiizABEzABEzABG1QfAyZgAiZgAiYQAwEb1BgguggTMAETMAETsEH1MWACJmACJmACMRCwQY0BooswARMwARMwARtUHwMmYAImYAImEAMBG9QYILoIEzABEzABE7BB9TFgAiZgAiZgAjEQsEGNAaKLMAETMAETMAEbVB8DJmACJmACJhADARvUGCC6CBMwARMwAROwQfUxYAImYAImYAIxELBBjQGiizABEzABEzABG1QfAyZgAiZgAiYQAwEb1BgguggTMAETMAETsEH1MWACJmACJmACMRCwQY0BooswARMwARMwARtUHwMmYAImYAImEAMBG9QYILoIEzABEzABE7BB9TFgAiZgAiZgAjEQsEGNAaKLMAETMAETMAEbVB8DJmACJmACJhADARvUGCC6CBMwARMwAROwQfUxYAImYAImYAIxELBBjQGiizABEzABEzABG1QfAyZgAiZgAiYQAwEb1BgguggTMAETMAETsEH1MWACJmACJmACMRCwQY0BooswARMwARMwARtUHwMmYAImYAImEAMBG9QYILoIEzABEzABE7BB9TFgAiZgAiZgAjEQsEGNAaKLMAETMAETMAEbVB8DJmACJmACJhADARvUGCC6CBMwARMwAROwQfUxYAIm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" alt="Output of `DSPRplot()`"/> </p>
 
 <h2>Local Interval Mapping</h2>
 
-<p>The user may wish to perform local interval mapping to compare the peak locations and confidence intervals. The <code>LocalInt()</code> function will perform interval mapping for a range of positions given by the user. <code>FindCI()</code> can then be used to re-estimate confidence intervals. This function is only available for the <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code> designs.</p>
+<p>The user may wish to perform local interval mapping to compare the
+peak locations and confidence intervals. The <code>LocalInt()</code> function
+will perform interval mapping for a range of positions given by the
+user. <code>FindCI()</code> can then be used to re-estimate confidence
+intervals. This function is only available for the <code>&quot;inbredA&quot;</code> or
+<code>&quot;inbredB&quot;</code> designs.</p>
 
 <pre><code class="r">LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)
 </code></pre>
@@ -497,13 +571,16 @@ ADH.lod.scores[100:105, ]
 <ul>
 <li><code>peakChr</code> Chromosome arm at the peak.</li>
 <li><code>peakPos</code> Position in base pairs at the peak.</li>
-<li><code>range</code> The range of positions to examine. Default is 100 (on either side, positions are 10 kb apart)</li>
-<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section <em>Phenotype Data</em>.</li>
+<li><code>range</code> The range of positions to examine. Default is 100 (on
+either side, positions are 10 kb apart)</li>
+<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section
+<a href="#PhenoDat"><em>Phenotype Data</em></a>.</li>
 <li><code>pheno.name</code> The name of the column containing the phenotype.</li>
 <li><code>design</code> <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code></li>
 </ul>
 
-<p>The output of <code>LocalInt</code> is the same as the LODscores from <code>DSPRscan</code> but only for the specified set of positions.</p>
+<p>The output of <code>LocalInt</code> is the same as the LODscores from <code>DSPRscan</code>
+but only for the specified set of positions.</p>
 
 <p>Using the ADH sample data:</p>
 
@@ -513,62 +590,102 @@ peakChr &lt;- main.peak$peak$chr
 peakPos &lt;- main.peak$peak$Ppos
 </code></pre>
 
-<pre><code class="r">peak.int &lt;- LocalInt(peakChr, 
-                     peakPos, 
-                     phenotype.dat = ADHdata, 
-                     pheno.name = &quot;adh&quot;, 
+<pre><code class="r">peak.int &lt;- LocalInt(peakChr,
+                     peakPos,
+                     phenotype.dat = ADHdata,
+                     pheno.name = &quot;adh&quot;,
                      design = &quot;inbredA&quot;)
 </code></pre>
 
-<h1>Advanced Analysis</h1>
+<h1>Advanced Analysis {#AvdAnal}</h1>
 
-<p>##Generate genotype information</p>
+<h2>Generate Genotype Information</h2>
 
-<p>This package helps automate analysis for simple DSPR designs. Many users (especially those with complex interactions or complex cross designs) will require more flexibility. To aid those users, the <code>DSPRgenos()</code> function is available to set up the genotype information using a given phenotype data file. This function can handle the following designs:</p>
+<p>This package helps automate analysis for simple DSPR designs. Many
+users (especially those with complex interactions or complex cross
+designs) will require more flexibility. To aid those users, the
+<code>DSPRgenos()</code> function is available to set up the genotype
+information using a given phenotype data file. This function can
+handle the following designs:</p>
 
 <ul>
-<li><code>&quot;inbredA&quot;</code> and <code>&quot;inbredB&quot;</code> Direct measurements on the RILs or crosses to a standard</li>
-<li><code>&quot;AAcross&quot;</code> and <code>&quot;BBcross&quot;</code> Crosses within the pA or pB RIL panels (e.g. round robin design)</li>
+<li><code>&quot;inbredA&quot;</code> and <code>&quot;inbredB&quot;</code> Direct measurements on the RILs or
+crosses to a standard</li>
+<li><code>&quot;AAcross&quot;</code> and <code>&quot;BBcross&quot;</code> Crosses within the pA or pB RIL panels
+(e.g., round robin design)</li>
 <li><code>&quot;ABcross&quot;</code> Crosses between the pA and pB RIL panels. </li>
 </ul>
 
-<p>The function can handle multiple measurments, a mix of males and females, and a mix of cross directions in the case of the pA-pB cross (i.e. A males to B females and vice versa). The function outputs either a list or a 3 dimensional array and the user can then use the many built in analysis tools in R to fit a model across the genome.  </p>
+<p>The function can handle multiple measurments, a mix of males and
+females, and a mix of cross directions in the case of the pA-pB cross
+(i.e. A males to B females and vice versa). The function outputs
+either a list or a 3 dimensional array and the user can then use the
+many built in analysis tools in R to fit a model across the genome.</p>
 
-<pre><code class="r">DSPRgenos(design,phenotype.dat,id.col,output)
+<pre><code class="r">DSPRgenos(design, phenotype.dat, id.col, output)
 </code></pre>
 
 <ul>
-<li><code>design</code> <code>&quot;inbredA&quot;</code>,<code>&quot;inbredB&quot;</code>,<code>&quot;AAcross&quot;</code>,<code>&quot;BBcross&quot;</code>, or <code>&quot;ABcross&quot;</code>.</li>
-<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section <em>Phenotype Data</em>.</li>
-<li><code>id.col</code> identifies the column to use as unique ids for the measurements. For an inbred design, this column could be the patRIL column. For a cross design, a unique id column should be included.</li>
-<li><code>output</code> Format for the genotype output. Either <code>&quot;list&quot;</code> or <code>&quot;array&quot;</code>. Default is <code>&quot;list&quot;</code>. </li>
+<li><code>design</code> <code>&quot;inbredA&quot;</code>,<code>&quot;inbredB&quot;</code>,<code>&quot;AAcross&quot;</code>,<code>&quot;BBcross&quot;</code>, or
+<code>&quot;ABcross&quot;</code>.</li>
+<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section
+<a href="#PhenoDat"><em>Phenotype Data</em></a>.</li>
+<li><code>id.col</code> identifies the column to use as unique ids for the
+measurements. For an inbred design, this column could be the patRIL
+column. For a cross design, a unique id column should be included.</li>
+<li><code>output</code> Format for the genotype output. Either <code>&quot;list&quot;</code> or
+<code>&quot;array&quot;</code>. Default is <code>&quot;list&quot;</code>.</li>
 </ul>
 
 <p>The output of <code>DSPRgenos()</code> is a list containing:</p>
 
 <ul>
-<li><code>genolist</code> a list containing the matrix of additive genotype probabilities at each position in the genome. The list is in the same order as the list of positions described below. Column names are the different DSPR haplotypes and row names are the unique ids provided in id.col. Alternatively, if output=&#39;array&#39;, the output is a 3 dimensional array [samples,haplotypes,positions]. Haplotypes and samples are named while positions are in the order of the list of positions described below. </li>
-<li><code>positions</code> a <code>data.frame</code> containing regularly spaced positions (every 10KB) in the genome where the genotype probabilities are calculated. Columns are: chr = chromosome, Ppos = physical position (zero offset), Gpos = genetic position, Gaxis = cummulative genetic position.</li>
-<li><code>phenotype</code> the phenotype <code>data.frame</code> ordered by the specified id column and in the same order as the genotype information at each position in the genome in the geno list described above.</li>
+<li><code>genolist</code> a list containing the matrix of additive genotype
+probabilities at each position in the genome. The list is in the
+same order as the list of positions described below. Column names
+are the different DSPR haplotypes and row names are the unique ids
+provided in id.col. Alternatively, if output=&#39;array&#39;, the output is
+a 3 dimensional array [samples,haplotypes,positions]. Haplotypes
+and samples are named while positions are in the order of the list
+of positions described below.</li>
+<li><code>positions</code> a <code>data.frame</code> containing regularly spaced positions
+(every 10KB) in the genome where the genotype probabilities are
+calculated. Columns are: chr = chromosome, Ppos = physical position
+(zero offset), Gpos = genetic position, Gaxis = cummulative genetic
+position.</li>
+<li><code>phenotype</code> the phenotype <code>data.frame</code> ordered by the specified id
+column and in the same order as the genotype information at each
+position in the genome in the geno list described above.</li>
 </ul>
 
-<p>The user can easily use apply (in the case of an array), lapply (in the case of list), or a loop to do a genome scan of whatever type they wish. Future tutorials will provide sample code for specific senarios (e.g. the round robin design). </p>
+<p>The user can easily use apply (in the case of an array), lapply (in
+the case of list), or a loop to do a genome scan of whatever type
+they wish. Future tutorials will provide sample code for specific
+senarios (e.g., the round robin design).</p>
 
-<p>The DSPRgenos function is somewhat time consuming to run (~30min - 1 hour). However genome scans using the output should be fast (2-10 min for simple designs). The user will likely wish to save the output especially if planning to run genome scans with multiple different models. Because the output is a large object (~11,000 positions in the genome), it is much more efficient to use the <code>save</code> function in R as shown below: </p>
+<p>The <code>DSPRgenos()</code> function is somewhat time consuming to run (~30
+min. - 1 hour). However genome scans using the output should be fast
+(2-10 min for simple designs). The user will likely wish to save the
+output especially if planning to run genome scans with multiple
+different models. Because the output is a large object (~11,000
+positions in the genome), it is much more efficient to use the <code>save</code>
+function in R as shown below:</p>
 
-<pre><code class="r">myGenos&lt;-DSPRgenos(design,phenotype.dat,id.col,output)
-save(myGenos, file=&quot;my file path&quot;)
+<pre><code class="r">myGenos &lt;- DSPRgenos(design, phenotype.dat, id.col, output)
+save(myGenos, file = &quot;my file path&quot;)
 </code></pre>
 
 <p>To return to these results later, use <code>load</code>:</p>
 
 <pre><code class="r">load(file=&quot;my file path&quot;)
-#the object will load into the workspace with the same name as when save was used. In this example, this is myGenos
+# The object will load into the workspace with the same name as
+# when save was used. In this example, this is myGenos.
 </code></pre>
 
 <h1>Questions?</h1>
 
-<p>If you have any questions or have trouble with this tutorial, please contact <a href="mailto:flyrils@gmail.com">flyrils@gmail.com</a>.</p>
+<p>If you have any questions or have trouble with this tutorial, please
+contact <a href="mailto:flyrils@gmail.com">flyrils@gmail.com</a>.</p>
 
 </body>
 
