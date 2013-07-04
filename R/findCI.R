@@ -94,7 +94,7 @@ findCI<-function(peakChr,peakPos,qtldat,method,LODdrop,BCIprob)
       Bchr[Bchr=='2R'|Bchr=='2L']<-'2'
       Bchr[Bchr=='3R'|Bchr=='3L']<-'3'
       startIndex<-which(qtldat$chr==peakChr & qtldat$Ppos==peakPos)
-      BCI<-bayesint(qtldat,Bchr,startIndex,BCIprob)
+      BCI<-bayesint(CIdat,Bchr,startIndex,BCIprob)
       rownames(BCI)<-c('Lower Bound','Upper Bound')      
       return(BCI)
       
@@ -127,7 +127,7 @@ findCI<-function(peakChr,peakPos,qtldat,method,LODdrop,BCIprob)
         Bchr[Bchr=='2R'|Bchr=='2L']<-'2'
         Bchr[Bchr=='3R'|Bchr=='3L']<-'3'
         startIndex<-which(qtldat$chr==peakChr & qtldat$Ppos==peakPos)
-        BCI<-bayesint(qtldat,Bchr,startIndex,BCIprob)
+        BCI<-bayesint(CIdat,Bchr,startIndex,BCIprob)
         rownames(BCI)<-c('Lower Bound','Upper Bound')  
         allCI<-list(CIs,BCI)
         names(allCI)<-c('LODdrop','BCI')
