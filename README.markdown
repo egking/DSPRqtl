@@ -37,7 +37,7 @@ You can install the most recent version directly from github using
 package](https://github.com/hadley/devtools).
 
 ```R
-require(devtools)
+require("devtools")
 install_github("DSPRqtl", "egking", branch = "develop")
 ```
 
