@@ -245,6 +245,9 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
   #this makes sure all your phenotyped rils are in the matrix of genotypes
   phenotype.dat<-phenotype.dat[phenotype.dat$id %in% rownames(mat),]
   
+  #are there covariates?
+  if(grepl("~\\s*1\\s*$", deparse(model)))
+  {
   if(ncol(mat)==8){
     qtlmeanmod<-as.formula(paste(deparse(model),"+mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]+mat[,8]-1",sep=""))
     qtlmean<-lm(qtlmeanmod,data=phenotype.dat)
@@ -273,5 +276,41 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
     return(list(Ageno.means,Bgeno.means))
     
   }
-  
-  }
+  }else{
+    #remove covariate effects
+    p.resid<-lm(as.formula(model),data=phenotype.dat)$residuals
+    pheno.name<-strsplit(deparse(model)," ~ ",fixed=TRUE)[[1]][1]    
+    mean.pheno<-mean(phenotype.dat[,pheno.name])
+    
+    if(ncol(mat)==8){
+      qtlmeanmod<-as.formula(p.resid~mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]+mat[,8]-1)
+      qtlmean<-lm(qtlmeanmod,data=phenotype.dat)
+      qtlmean.sum<-summary(qtlmean)
+      geno.means<-data.frame(qtlmean.sum$coef[(nrow(qtlmean.sum$coef)-7):nrow(qtlmean.sum$coef),1:2])   
+      
+      rownames(geno.means)<-colnames(mat)
+      colnames(geno.means)<-c('Estimate','Std. Error')
+      geno.means['Estimate']<-geno.means[,'Estimate']+mean.pheno
+      return(geno.means)
+    }else{
+      qtlmeanmod<-as.formula(p.resid~mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]+mat[,8]-1)
+      qtlmean<-lm(qtlmeanmod,data=phenotype.dat)
+      qtlmean.sum<-summary(qtlmean)
+      Ageno.means<-data.frame(qtlmean.sum$coef[(nrow(qtlmean.sum$coef)-7):nrow(qtlmean.sum$coef),1:2])   
+      rownames(Ageno.means)<-colnames(mat)[1:8]
+      colnames(Ageno.means)<-c('Estimate','Std. Error')
+      Ageno.means['Estimate']<-Ageno.means[,'Estimate']+mean.pheno
+      
+      qtlmeanmod<-as.formula(p.resid~mat[,9]+mat[,10]+mat[,11]+mat[,12]+mat[,13]+mat[,14]+mat[,15]+mat[,16]-1)
+      qtlmean<-lm(qtlmeanmod,data=phenotype.dat)
+      qtlmean.sum<-summary(qtlmean)
+      Bgeno.means<-data.frame(qtlmean.sum$coef[(nrow(qtlmean.sum$coef)-7):nrow(qtlmean.sum$coef),1:2])   
+      rownames(Bgeno.means)<-colnames(mat)[9:16]
+      colnames(Bgeno.means)<-c('Estimate','Std. Error')
+      Bgeno.means['Estimate']<-Bgeno.means[,'Estimate']+mean.pheno
+      
+      return(list(Ageno.means,Bgeno.means))
+      
+    }
+  }#if/else covariate close
+  }#function close
