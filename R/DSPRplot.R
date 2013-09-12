@@ -40,7 +40,7 @@ DSPRplot<-function(qtldata,threshold,legNames=NULL)
 if(length(names(qtldata))>0){qtldata<-list(qtldata)}
 
 
-data(positionlist_wgenetic)
+data(positionlist_wgenetic, envir=environment())
 
 LODscores<-vector("list",length=length(qtldata))
 allLODs<-numeric(0)

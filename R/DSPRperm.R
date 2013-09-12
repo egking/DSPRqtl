@@ -128,7 +128,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
   }
     
   #get list of positions
-  data(positionlist_wgenetic)
+  data(positionlist_wgenetic,envir=environment())
   
   
   
@@ -143,20 +143,20 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
     }else{
       objname<-paste("B_",poslist[1,1],"_",format(poslist[1,2], sci = FALSE),sep="")
     }
-    data(list=objname)
+    data(list=objname,envir=environment())
     genotypes<-get(objname)
     #this makes sure all your phenotyped rils are in the matrix of genotypes
     phenotype.dat<-phenotype.dat[phenotype.dat$patRIL %in% genotypes$ril,]
     #order phenotype.dat by id
     phenotype.dat<-phenotype.dat[order(phenotype.dat$id),]
-    rm(list=objname,pos=.GlobalEnv)
+    rm(list=objname)
     
   }else{
     objnameA<-paste("A_",poslist[1,1],"_",format(poslist[1,2], sci = FALSE),sep="")
     objnameB<-paste("B_",poslist[1,1],"_",format(poslist[1,2], sci = FALSE),sep="")
-    data(list=objnameA)
+    data(list=objnameA,envir=environment())
     Agenotypes<-get(objnameA)
-    data(list=objnameB)
+    data(list=objnameB,envir=environment())
     Bgenotypes<-get(objnameB)
     ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
     BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
@@ -165,8 +165,8 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
     phenotype.dat<-rbind(ABphenotype.dat,BAphenotype.dat)
     #order phenotype.dat by id
     phenotype.dat<-phenotype.dat[order(phenotype.dat$id),]
-    rm(list=objnameA,pos=.GlobalEnv)
-    rm(list=objnameB,pos=.GlobalEnv)    
+    rm(list=objnameA)
+    rm(list=objnameB)    
   }
   
   #set up index to sample
@@ -202,7 +202,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
           # time1<-Sys.time()
           objname<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
           if(use.package){
-            data(list=objname)
+            data(list=objname,envir=environment())
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                              objname, ".rda", sep = ""))
@@ -214,14 +214,14 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
           genos<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
-          rm(list=objname,pos=.GlobalEnv)
+          rm(list=objname)
           counter<-counter+1
           #time2<-Sys.time()
         }else{
           objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
           
           if(use.package){
-            data(list=objname)
+            data(list=objname,envir=environment())
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                              objname, ".rda", sep = ""))
@@ -234,7 +234,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
           genos<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
-          rm(list=objname,pos=.GlobalEnv)
+          rm(list=objname)
           counter<-counter+1
         }#B else close
         
@@ -242,7 +242,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
         objnameA<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
         if(use.package){
-          data(list=objnameA)
+          data(list=objnameA,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                            objnameA, ".rda", sep = ""))
@@ -252,7 +252,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
         objnameB<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
         if(use.package){
-          data(list=objnameB)
+          data(list=objnameB,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                            objnameB, ".rda", sep = ""))
@@ -278,8 +278,8 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
             genos<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
             counter<-counter+1
             
           }
@@ -291,8 +291,8 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
             genos<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
             counter<-counter+1
           }
           
@@ -310,8 +310,8 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
                                           "BB1","BB2","BB3","BB4","BB5","BB6","BB7","BB8")])
             row.names(genos)<-genotypes$id 
             big.list[[counter]]<-genos
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
             counter<-counter+1
             
           }#else X/sex close
@@ -356,14 +356,14 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
     #get LOD scores
     lod.set<-unlist(lms)-L.n
     
-    full.lod.set[pstart:pend,j]<-lod.set  
+    full.lod.set[pstart:pend,jj]<-lod.set  
   
     }#niter close
    }#else close
     rm(big.list)
     
   }#batch close
-  rm(poslist,pos=.GlobalEnv)
+  rm(poslist)
 
  if(design=='ABcross' & sex=='m')
  {

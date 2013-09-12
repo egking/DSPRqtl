@@ -80,7 +80,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
     objname<-paste("A_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
     
     if(use.package){
-      data(list=objname)
+      data(list=objname,envir=environment())
     } else{
       con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                        objname, ".rda", sep = ""))
@@ -89,7 +89,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
     }
     
     genotypes<-get(objname)
-    rm(list=objname,pos=.GlobalEnv)
+    rm(list=objname)
     
     genotypes<-merge(genotypes, phenotype.dat,by.x="ril",by.y="patRIL")
     allgenotypes<-as.matrix(genotypes[,c("A1A1","A1A2","A1A3","A1A4","A1A5","A1A6","A1A7",
@@ -134,7 +134,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
       objname<-paste("B_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
       
       if(use.package){
-        data(list=objname)
+        data(list=objname,envir=environment())
       } else{
         con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                          objname, ".rda", sep = ""))
@@ -143,7 +143,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
       }
       
       genotypes<-get(objname)
-      rm(list=objname,pos=.GlobalEnv)
+      rm(list=objname)
       genotypes<-merge(genotypes, phenotype.dat,by.x="ril",by.y="patRIL")
       allgenotypes<-as.matrix(genotypes[,c("B1B1","B1B2","B1B3","B1B4","B1B5","B1B6","B1B7",
                                            "B1B8","B2B2","B2B3","B2B4","B2B5","B2B6","B2B7","B2B8","B3B3","B3B4","B3B5",
@@ -186,7 +186,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
         objname<-paste("A_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
         
         if(use.package){
-          data(list=objname)
+          data(list=objname,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                            objname, ".rda", sep = ""))
@@ -195,7 +195,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
         }
         
         genotypes<-get(objname)
-        rm(list=objname,pos=.GlobalEnv)
+        rm(list=objname)
         
         patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
         matgeno<-merge(phenotype.dat,genotypes,by.x="matRIL",by.y="ril")
@@ -270,7 +270,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
           }
           objname<-paste("B_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
           if(use.package){
-            data(list=objname)
+            data(list=objname,envir=environment())
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                              objname, ".rda", sep = ""))
@@ -278,7 +278,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
             close(con)
           }
           genotypes<-get(objname)
-          rm(list=objname,pos=.GlobalEnv)
+          rm(list=objname)
           patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
           matgeno<-merge(phenotype.dat,genotypes,by.x="matRIL",by.y="ril")
           patgeno<-patgeno[patgeno$id %in% matgeno$id,]
@@ -352,7 +352,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
             objnameA<-paste("A_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
             
             if(use.package){
-              data(list=objnameA)
+              data(list=objnameA,envir=environment())
             } else{
               con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                                objnameA, ".rda", sep = ""))
@@ -360,7 +360,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
               close(con)
             }
             Agenotypes<-get(objnameA)
-            rm(list=objnameA,pos=.GlobalEnv)
+            rm(list=objnameA)
             
             if(require(DSPRqtlDataB)){
               use.package <- TRUE
@@ -372,7 +372,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
             }
             objnameB<-paste("B_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
             if(use.package){
-              data(list=objnameB)
+              data(list=objnameB,envir=environment())
             } else{
               con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                                objnameB, ".rda", sep = ""))
@@ -380,7 +380,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
               close(con)
             }
             Bgenotypes<-get(objnameB)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameB)
             
             ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
             BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]

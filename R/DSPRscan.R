@@ -122,7 +122,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
   
   
   #get list of positions
-  data(positionlist_wgenetic)
+  data(positionlist_wgenetic,envir=environment())
   
   if(batch=='full'){batch=nrow(poslist)}
   
@@ -148,7 +148,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
           # time1<-Sys.time()
           objname<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
           if(use.packageA){
-            data(list=objname)
+            data(list=objname,envir=environment())
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                              objname, ".rda", sep = ""))
@@ -160,14 +160,14 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
           genos<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
-          rm(list=objname,pos=.GlobalEnv)
+          rm(list=objname)
           counter<-counter+1
           #time2<-Sys.time()
         }else{
           objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
           
           if(use.packageB){
-            data(list=objname)
+            data(list=objname,envir=environment())
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                              objname, ".rda", sep = ""))
@@ -180,7 +180,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
           genos<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
-          rm(list=objname,pos=.GlobalEnv)
+          rm(list=objname)
           counter<-counter+1
         }#B else close
         
@@ -188,7 +188,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
         objnameA<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
         if(use.packageA){
-          data(list=objnameA)
+          data(list=objnameA,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                            objnameA, ".rda", sep = ""))
@@ -198,7 +198,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
         objnameB<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
         if(use.packageB){
-          data(list=objnameB)
+          data(list=objnameB,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                            objnameB, ".rda", sep = ""))
@@ -224,8 +224,8 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
             genos<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
             counter<-counter+1
             
           }
@@ -237,8 +237,8 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
             genos<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
             counter<-counter+1
           }
           
@@ -256,8 +256,8 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
                                           "BB1","BB2","BB3","BB4","BB5","BB6","BB7","BB8")])
             row.names(genos)<-genotypes$id 
             big.list[[counter]]<-genos
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
             counter<-counter+1
             
           }#else X/sex close
@@ -296,7 +296,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
   
   class(qtl.results)<-'gscan'
   
-  rm(poslist,pos=.GlobalEnv)
+  rm(poslist)
   
   return(qtl.results)
     } #function close

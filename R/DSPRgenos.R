@@ -113,7 +113,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
   
   
   #GET POSITION DATA 
-  data(positionlist_wgenetic)
+  data(positionlist_wgenetic,envir=environment())
   
   #SET UP LIST FOR GENOTYPE MATRICIES
   big.list<-vector('list',nrow(poslist))
@@ -125,7 +125,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
     {  
       objname<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
       if(use.packageA){
-        data(list=objname)
+        data(list=objname,envir=environment())
       } else{
         con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                          objname, ".rda", sep = ""))
@@ -137,7 +137,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
       genos<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
       row.names(genos)<-patgeno$id
       big.list[[i]]<-genos
-      rm(list=objname,pos=.GlobalEnv)
+      rm(list=objname)
     }
     
   }else{
@@ -148,7 +148,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
         objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
         
         if(use.packageB){
-          data(list=objname)
+          data(list=objname,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                            objname, ".rda", sep = ""))
@@ -161,7 +161,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
         genos<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
         row.names(genos)<-patgeno$id
         big.list[[i]]<-genos
-        rm(list=objname,pos=.GlobalEnv)
+        rm(list=objname)
         
       }  
     }else{
@@ -172,7 +172,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
         {  
           objname<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
           if(use.packageA){
-            data(list=objname)
+            data(list=objname,envir=environment())
           } else{
             con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                              objname, ".rda", sep = ""))
@@ -208,7 +208,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
           
           row.names(genos)<-patgeno$id
           big.list[[i]]<-genos
-          rm(list=objname,pos=.GlobalEnv)
+          rm(list=objname)
         }
         
       }else{
@@ -219,7 +219,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
             objname<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
             
             if(use.packageB){
-              data(list=objname)
+              data(list=objname,envir=environment())
             } else{
               con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                                objname, ".rda", sep = ""))
@@ -255,7 +255,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
             
             row.names(genos)<-patgeno$id
             big.list[[i]]<-genos
-            rm(list=objname,pos=.GlobalEnv)          
+            rm(list=objname)          
           }
         }else{
           
@@ -266,7 +266,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
               objnameA<-paste("A_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
               
               if(use.packageA){
-                data(list=objnameA)
+                data(list=objnameA,envir=environment())
               } else{
                 con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                                  objnameA, ".rda", sep = ""))
@@ -276,7 +276,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
               objnameB<-paste("B_",poslist[i,1],"_",format(poslist[i,2], sci = FALSE),sep="")
               
               if(use.packageB){
-                data(list=objnameB)
+                data(list=objnameB,envir=environment())
               } else{
                 con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                                  objnameB, ".rda", sep = ""))
@@ -307,8 +307,8 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
               }
               
               big.list[[i]]<-genos
-              rm(list=objnameA,pos=.GlobalEnv)
-              rm(list=objnameB,pos=.GlobalEnv)
+              rm(list=objnameA)
+              rm(list=objnameB)
               
             }
             

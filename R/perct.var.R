@@ -97,7 +97,7 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
     objname<-paste("A_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
     
     if(use.package){
-      data(list=objname)
+      data(list=objname,envir=environment())
     } else{
       con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                        objname, ".rda", sep = ""))
@@ -106,7 +106,7 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
     }
     
     genotypes<-get(objname)
-    rm(list=objname,pos=.GlobalEnv)
+    rm(list=objname)
     
     patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
     mat<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
@@ -128,7 +128,7 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
       objname<-paste("B_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
       
       if(use.package){
-        data(list=objname)
+        data(list=objname,envir=environment())
       } else{
         con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                          objname, ".rda", sep = ""))
@@ -137,7 +137,7 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
       }
       
       genotypes<-get(objname)
-      rm(list=objname,pos=.GlobalEnv)
+      rm(list=objname)
       
       patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
       mat<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
@@ -158,7 +158,7 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
         objnameA<-paste("A_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
         
         if(use.package){
-          data(list=objnameA)
+          data(list=objnameA,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                            objnameA, ".rda", sep = ""))
@@ -178,7 +178,7 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
         objnameB<-paste("B_",peakChr,"_",format(peakPos, sci = FALSE),sep="")
         
         if(use.package){
-          data(list=objnameB)
+          data(list=objnameB,envir=environment())
         } else{
           con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                            objnameB, ".rda", sep = ""))
@@ -203,8 +203,8 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
             matgeno<-merge(matgeno,Bgenotypes,by.x='patRIL',by.y='ril',sort=FALSE)
             mat<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
             row.names(mat)<-matgeno$id
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
             
           }
           
@@ -214,8 +214,8 @@ perct.var<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
             matgeno<-merge(matgeno,Agenotypes,by.x='patRIL',by.y='ril') 
             mat<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
             row.names(mat)<-matgeno$id
-            rm(list=objnameA,pos=.GlobalEnv)
-            rm(list=objnameB,pos=.GlobalEnv)
+            rm(list=objnameA)
+            rm(list=objnameB)
           }
           
           }else{           

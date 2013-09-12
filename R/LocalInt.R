@@ -83,7 +83,7 @@ LocalInt<-function(peakChr,peakPos,range=100,phenotype.dat,pheno.name,design)
     
   }
 
-  data(positionlist_wgenetic)
+  data(positionlist_wgenetic,envir=environment())
   names(poslist)<-c('chr','Ppos','Gpos','Gaxis')
   
   ind.pos<-which(poslist$chr==peakChr & poslist$Ppos==peakPos)
@@ -110,7 +110,7 @@ LocalInt<-function(peakChr,peakPos,range=100,phenotype.dat,pheno.name,design)
       
       objname<-paste("A_",int.list[i,1],"_",format(int.list[i,2], sci = FALSE),sep="")
       if(use.package){
-        data(list=objname)
+        data(list=objname,envir=environment())
       } else{
         con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataA/",
                          objname, ".rda", sep = ""))
@@ -121,13 +121,13 @@ LocalInt<-function(peakChr,peakPos,range=100,phenotype.dat,pheno.name,design)
       patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
       X<-patgeno[,c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')]
       Y<-patgeno[,pheno.name]
-      rm(list=objname,pos=.GlobalEnv)
+      rm(list=objname)
      
     }else{
       objname<-paste("B_",int.list[i,1],"_",format(int.list[i,2], sci = FALSE),sep="")
       
       if(use.package){
-        data(list=objname)
+        data(list=objname,envir=environment())
       } else{
         con <- url(paste("http://wfitch.bio.uci.edu/R/DSPRqtlDataB/",
                          objname, ".rda", sep = ""))
@@ -139,7 +139,7 @@ LocalInt<-function(peakChr,peakPos,range=100,phenotype.dat,pheno.name,design)
       patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
       X<-patgeno[,c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')]
       Y<-patgeno[,pheno.name]
-      rm(list=objname,pos=.GlobalEnv)
+      rm(list=objname)
       
     }
     
