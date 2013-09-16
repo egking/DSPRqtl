@@ -59,7 +59,7 @@ logLik.multi <- function(object, REML = FALSE, ...)
     N0 <- N
     if(REML) N <- N - p
     val <- .5* (sum(log(w)) - N * (log(2 * pi) + 1 - log(N) +
-      log(sum(w*res^2))))
+                                     log(sum(w*res^2))))
     if(REML) val <- val - sum(log(abs(diag(object$qr$qr)[1L:p])))
     attr(val, "nall") <- N0 # NB, still omits zero weights
     attr(val, "nobs") <- N

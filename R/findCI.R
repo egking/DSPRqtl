@@ -1,38 +1,39 @@
-##' \code{findCI} calculates the LOD support interval for a given LOD
+##' \code{findCI} calculates the LOD support interval for a given LOD 
 ##' peak.
 ##' 
 ##' @title Calculate LOD support interval
 ##'   
-##' @param peakChr character vector of length one. Must be one of the
-##'   major chromosome arms in the \emph{Drosophila} genome
+##' @param peakChr character vector of length one. Must be one of the 
+##'   major chromosome arms in the \emph{Drosophila} genome 
 ##'   ('X','2L','2R','3L',or '3R').
 ##'   
-##' @param peakPos numeric vector of length one. A position in base
+##' @param peakPos numeric vector of length one. A position in base 
 ##'   pairs in the DSPR position list (every 10kb).
 ##'   
-##' @param qtldat \code{data.frame} of chromosome, position, and LOD
+##' @param qtldat \code{data.frame} of chromosome, position, and LOD 
 ##'   scores (column names chr,Ppos,Gpos,LOD). List element LODscores 
 ##'   from \code{\link{DSPRscan}}.
 ##'   
 ##' @param method a character string specifying the method to use for 
-##'   the confidence interval. Options are: 'LODdrop' calculates a LOD 
-##'   drop interval for the drop amount specified, 'BCI' calculates the 
-##'   Bayesian credible interval for the fraction specified, and 'both' 
-##'   calculates and returns both. 
+##'   the confidence interval. Options are: 'LODdrop' calculates a LOD
+##'   drop interval for the drop amount specified, 'BCI' calculates
+##'   the Bayesian credible interval for the fraction specified, and
+##'   'both' calculates and returns both.
 ##'   
-##' @param LODdrop numeric vector of length one consisting of the LOD
+##' @param LODdrop numeric vector of length one consisting of the LOD 
 ##'   drop to be used when using method 'LODdrop'. Default value is 2 
 ##'   which approximates a 95\% confidence interval for the inbred 
 ##'   designs. Users of the ABcross design should consider using a 
 ##'   larger LOD drop.
 ##'   
-##' @param BCIprob numeric vector of length one consisting of the nominal
-##' Bayes fraction. Default value is 0.95. 
+##' @param BCIprob numeric vector of length one consisting of the
+##'   nominal Bayes fraction. Default value is 0.95.
 ##'   
-##' @return A \code{data.frame} with two rows containing the
-##'   chromosome, physical position (bp), genetic position (cM) and
+##' @return A \code{data.frame} with two rows containing the 
+##'   chromosome, physical position (bp), genetic position (cM) and 
 ##'   LOD scores corresponding to the lower and upper bound. A list of
-##'   two \code{data.frames} are returned when the method used is 'both'.
+##'   two \code{data.frames} are returned when the method used is
+##'   'both'.
 ##' 
 ##' @author Elizabeth King (\email{egking@@uci.edu})
 ##' 

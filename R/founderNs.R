@@ -1,36 +1,35 @@
-##' \code{founderNs} calculates the number of founder genotypes
+##' \code{founderNs} calculates the number of founder genotypes 
 ##' represented in the DSPR RILs at a given position.
 ##' 
 ##' @title Numbers of founder genotypes
-##' 
-##' @param peakChr character vector of length one. Must be one of the
-##'   major chromosome arms in the \emph{Drosophila} genome
+##'   
+##' @param peakChr character vector of length one. Must be one of the 
+##'   major chromosome arms in the \emph{Drosophila} genome 
 ##'   ('X','2L','2R','3L',or '3R').
 ##'   
-##' @param peakPos numeric vector of length one. A position in base
+##' @param peakPos numeric vector of length one. A position in base 
 ##'   pairs in the DSPR position list (every 10kb).
 ##'   
-##' @param design a character string. For inbred RIL designs: 'inbredA', 
-##'   'inbredB'. For cross designs: AAcross, BBcross, or 'ABcross'. 
-##'   A and B refer to the pA and pB set of 
-##'   DSPR RILs.   
+##' @param design a character string. For inbred RIL designs:
+##'   'inbredA', 'inbredB'. For cross designs: AAcross, BBcross, or
+##'   'ABcross'. A and B refer to the pA and pB set of DSPR RILs.
 ##'   
 ##' @param phenotype.dat \code{data.frame} containing phenotype data. 
-##' For inbred designs, there must be a column of numeric RIL ids 
-##' (must be named patRIL). For the ABcross design, there must be both
-##' a patRIL and matRIL column specifying the pA and pB RIL ids. Cross 
-##' designs also require a sex column for correct 
-##' specification of the genotypes on the X chromosome.
-##'
-##' @param id.col a character string identifying the name of the 
-##' column containing unique ids for the samples. e.g. for an inbred
-##' design, the patRIL column can be used as the id.  
+##'   For inbred designs, there must be a column of numeric RIL ids 
+##'   (must be named patRIL). For the ABcross design, there must be
+##'   both a patRIL and matRIL column specifying the pA and pB RIL
+##'   ids. Cross designs also require a sex column for correct 
+##'   specification of the genotypes on the X chromosome.
 ##'   
-##' @return A named numeric vector consisting of the numbers of RILs
-##'   in the phenotype.dat \code{data.frame} with each founder
-##'   genotype at the given position. A RIl is assigned a founder
+##' @param id.col a character string identifying the name of the 
+##'   column containing unique ids for the samples. e.g. for an inbred
+##'   design, the patRIL column can be used as the id.
+##'   
+##' @return A named numeric vector consisting of the numbers of RILs 
+##'   in the phenotype.dat \code{data.frame} with each founder 
+##'   genotype at the given position. A RIl is assigned a founder 
 ##'   genotype if the HMM probability is over 0.95. The number of RILs
-##'   with a heterozygous genotype and an uncertain genotype are also
+##'   with a heterozygous genotype and an uncertain genotype are also 
 ##'   returned.
 ##' 
 ##' @author Elizabeth King (\email{egking@@uci.edu})

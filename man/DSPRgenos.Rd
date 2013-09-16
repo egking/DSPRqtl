@@ -7,11 +7,11 @@
 \arguments{
   \item{design}{a character string. For inbred RIL designs:
   'inbredA', 'inbredB'. For cross designs: AAcross,
-  BBcross, or 'ABcross'.  A and B refer to the pA and pB
-  set of DSPR RILs.}
+  BBcross, or 'ABcross'. A and B refer to the pA and pB set
+  of DSPR RILs.}
 
   \item{phenotype.dat}{\code{data.frame} containing
-  phenotype data. For inbred designs, there must be a
+  phenotype data.  For inbred designs, there must be a
   column of numeric RIL ids (must be named patRIL). For
   cross designs, there must be both a patRIL and matRIL
   column specifying the maternal and paternal RIL ids.
@@ -25,7 +25,7 @@
 
   \item{output}{a character string identifying the
   preferred format for the output of genolist. Options are
-  'list' or 'array'. Default is 'list'.}
+  'list' or 'array'.  Default is 'list'.}
 }
 \value{
   A list containing: \item{genolist}{a list containing the

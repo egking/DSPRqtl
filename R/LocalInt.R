@@ -1,31 +1,31 @@
-##' \code{LocalInt} performs standard interval mapping around a given
+##' \code{LocalInt} performs standard interval mapping around a given 
 ##' peak for a range of positions specified by the user.
 ##' 
 ##' @title Local Interval Mapping
 ##'   
-##' @param peakChr character vector of length one. Must be one of the
-##'   major chromosome arms in the \emph{Drosophila} genome
+##' @param peakChr character vector of length one. Must be one of the 
+##'   major chromosome arms in the \emph{Drosophila} genome 
 ##'   ('X','2L','2R','3L',or '3R').
 ##'   
-##' @param peakPos numeric vector of length one. A position in base
+##' @param peakPos numeric vector of length one. A position in base 
 ##'   pairs in the DSPR position list (every 10kb).
 ##'   
 ##' @param range numeric vector of length one specifying the number of
-##'   positions to test on either side of the peak (positions are
+##'   positions to test on either side of the peak (positions are 
 ##'   every 10kb). Default is 100.
 ##'   
-##' @param phenotype.dat \code{data.frame} containing a column of ril
+##' @param phenotype.dat \code{data.frame} containing a column of ril 
 ##'   ids (must be named patRIL) and phenotypes.
 ##'   
 ##' @param pheno.name a character string specifying the column name of
 ##'   the phenotype data
 ##'   
-##' @param design a character string. One of either 'inbredA' or
-##'   'inbredB' corresponding to the pA and pB set of inbred RILs.
+##' @param design a character string. One of either 'inbredA' or 
+##'   'inbredB' corresponding to the pA and pB set of inbred RILs. 
 ##'   Other crossing designs may be supported in the future.
 ##'   
 ##' @return A \code{data.frame} consisting of the chromosome, physical
-##'   position (bp), genetic position (cM) and LOD score for each
+##'   position (bp), genetic position (cM) and LOD score for each 
 ##'   position.
 ##' 
 ##' @author Elizabeth King (\email{egking@@uci.edu})

@@ -5,39 +5,41 @@
 ##'   
 ##' @aliases DSPRpeaks print.peaks
 ##'   
-##' @param qtldat An object of class gscan. Output from
+##' @param qtldat An object of class gscan. Output from 
 ##'   \code{\link{DSPRscan}}.
 ##'   
 ##' @param threshold numeric vector of length one consisting of the 
-##'   signficance threshold. Default is 6.8 for inbred designs and 10.1 
-##'   for the ABcross. Use \code{\link{DSPRperm}} to get a threshold 
-##'   specific to a given dataset.
-##'
+##'   signficance threshold. Default is 6.8 for inbred designs and
+##'   10.1 for the ABcross. Use \code{\link{DSPRperm}} to get a
+##'   threshold specific to a given dataset.
+##'   
 ##' @param method a character string specifying the method to use for 
-##'   the confidence interval. Options are: 'LODdrop' calculates a LOD 
-##'   drop interval for the drop amount specified, 'BCI' calculates the 
-##'   Bayesian credible interval for the fraction specified, and 'both' 
-##'   calculates and returns both. 
-##'      
-##' @param LODdrop numeric vector of length one consisting of the LOD
+##'   the confidence interval. Options are: 'LODdrop' calculates a LOD
+##'   drop interval for the drop amount specified, 'BCI' calculates
+##'   the Bayesian credible interval for the fraction specified, and
+##'   'both' calculates and returns both.
+##'   
+##' @param LODdrop numeric vector of length one consisting of the LOD 
 ##'   drop to be used when using method 'LODdrop'. Default value is 2 
 ##'   which approximates a 95\% confidence interval for the inbred 
 ##'   designs. Users of the ABcross design should consider using a 
 ##'   larger LOD drop.
 ##'   
-##' @param BCIprob numeric vector of length one consisting of the nominal
-##' Bayes fraction. Default value is 0.95. 
+##' @param BCIprob numeric vector of length one consisting of the
+##'   nominal Bayes fraction. Default value is 0.95.
 ##' 
 ##' @return A list of class \code{peaks} containing a list for each
 ##'   significant peak, each containing:
 ##' \item{threshold}{the specified signficance threshold}
 ##' \item{peak}{A single row \code{data.frame} with the chromosome, 
-##' physical position (bp), genetic position (cM) and LOD score for
+##' physical position (bp), genetic position (cM) and LOD score for 
 ##' the peak}
 ##' \item{LODdrop}{the specified LOD drop for the support interval}
 ##' \item{CI}{the upper and lower bounds of the confidence interval}
-##' \item{founderNs}{the number of RILs with each founder genotype at the peak}
-##' \item{geno.means}{the estimated means and standard errors for each founder genotype}
+##' \item{founderNs}{the number of RILs with each founder genotype at
+##' the peak}
+##' \item{geno.means}{the estimated means and standard errors for each
+##' founder genotype}
 ##' \item{perct.var}{the percent variation explained by the QTL}
 ##' \item{entropy}{the proporiton of missing information (entropy)}
 ##' @author Elizabeth King (\email{egking@@uci.edu})

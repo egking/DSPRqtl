@@ -15,11 +15,11 @@
 
   \item{design}{a character string. For inbred RIL designs:
   'inbredA', 'inbredB'. For cross designs: AAcross,
-  BBcross, or 'ABcross'.  A and B refer to the pA and pB
-  set of DSPR RILs.}
+  BBcross, or 'ABcross'. A and B refer to the pA and pB set
+  of DSPR RILs.}
 
   \item{phenotype.dat}{\code{data.frame} containing
-  phenotype data. For inbred designs, there must be a
+  phenotype data.  For inbred designs, there must be a
   column of numeric RIL ids (must be named patRIL). For the
   ABcross design, there must be both a patRIL and matRIL
   column specifying the pA and pB RIL ids. Cross designs

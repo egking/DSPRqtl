@@ -1,47 +1,49 @@
 ##' \code{DSPRperm} performs a permutation test for a DSPR dataset.
-##'
-##' The permutation test can take a very long time to run (over 24 hrs).
+##' 
+##' The permutation test can take a very long time to run (over 24
+##' hrs).
 ##' 
 ##' @title DSPR permutation test
-##' 
+##'   
 ##' @aliases DSPRperm print.pt
-##' 
+##'   
 ##' @param model an object of class formula: a symbolic description of
-##'   the null model to be fitted at each position (e.g.,
-##'   \code{phenotype \~ 1}). The genotype effects to be fitted will
+##'   the null model to be fitted at each position (e.g., 
+##'   \code{phenotype \~ 1}). The genotype effects to be fitted will 
 ##'   be added based on \code{design}.
-##' 
+##'   
 ##' @param design a character string. One of either 'inbredA', 
 ##'   'inbredB', or 'ABcross' corresponding to the pA and pB set of 
-##'   inbred RILs or the pA-pB cross design. For round robin designs
+##'   inbred RILs or the pA-pB cross design. For round robin designs 
 ##'   or other cross designs, use the more flexible DSPRgenos and 
-##'   standard model fitting functions in R.   
+##'   standard model fitting functions in R.
 ##'   
 ##' @param phenotype.dat \code{data.frame} containing phenotype data. 
-##' For inbred designs, there must be a column of numeric RIL ids 
-##' (must be named patRIL). For the ABcross design, there must be both
-##' a patRIL and matRIL column specifying the pA and pB RIL ids.
-##'
-##' @param id.col a character string identifying the name of the 
-##' column containing unique ids for the samples. e.g. for an inbred
-##' design, the patRIL column can be used as the id. 
+##'   For inbred designs, there must be a column of numeric RIL ids 
+##'   (must be named patRIL). For the ABcross design, there must be
+##'   both a patRIL and matRIL column specifying the pA and pB RIL
+##'   ids.
 ##'   
-##' @param batch A numeric vector of length one specifying the number
-##'   of positions to be examined at a time. A larger number will use
+##' @param id.col a character string identifying the name of the 
+##'   column containing unique ids for the samples. e.g. for an inbred
+##'   design, the patRIL column can be used as the id.
+##'   
+##' @param batch A numeric vector of length one specifying the number 
+##'   of positions to be examined at a time. A larger number will use 
 ##'   more memory but can be faster. Default is 1000.
 ##'   
-##' @param niter A numeric vector of length one specifying the number
+##' @param niter A numeric vector of length one specifying the number 
 ##'   of permutations to run. Default is 1000.
 ##'   
-##' @param alpha The alpha level for the genome-wide signficance
-##'   threshold. Default is 0.05. Raw maximum LOD scores are also
-##'   returned and \code{\link{quantile}} can be used to test other
+##' @param alpha The alpha level for the genome-wide signficance 
+##'   threshold. Default is 0.05. Raw maximum LOD scores are also 
+##'   returned and \code{\link{quantile}} can be used to test other 
 ##'   alphas.
 ##'   
 ##' @param sex a character string (either 'm' or 'f') specifying the 
-##' sex of the measured individuals. This argument must be supplied 
-##' for a cross design for correct specification of the genotypes on 
-##' the X chromosome.  
+##'   sex of the measured individuals. This argument must be supplied 
+##'   for a cross design for correct specification of the genotypes on
+##'   the X chromosome.
 ##' 
 ##' @return A list of class \code{pt} containing:
 ##' \item{maxLODs}{A vector containing the maximum LOD score obtained

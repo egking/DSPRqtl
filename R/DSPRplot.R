@@ -1,22 +1,20 @@
 ##' Function to plot genome scan results for the DSPR RILs
-##'
-##' @title Genome Scan Plot
 ##' 
+##' @title Genome Scan Plot
+##'   
 ##' @param qtldata a \code{list} of output from DSPRscan with each 
 ##'   list element corrsponding to one DSPRscan result. e.g. to plot 
-##'   multple genome scans on a single plot: \code{qtldata <-
+##'   multple genome scans on a single plot: \code{qtldata <- 
 ##'   list(scan1,scan2)}
 ##'   
 ##' @param threshold numeric vector of length one consisting of the 
-##'   signficance threshold. Default is 6.8 for inbred designs and 10.1 
-##'   for the ABcross. Use \code{\link{DSPRperm}} to get a threshold 
-##'   specific to a given dataset.
-##'   dataset.
+##'   signficance threshold. Default is 6.8 for inbred designs and
+##'   10.1 for the ABcross. Use \code{\link{DSPRperm}} to get a
+##'   threshold specific to a given dataset. dataset.
 ##'   
 ##' @param legNames a character vector with names for each DSPRscan 
-##'   result to be plotted. Defaults to the phenotype column names
+##'   result to be plotted. Defaults to the phenotype column names 
 ##'   used in DSPRscan.
-##'   
 ##' 
 ##' @author Elizabeth King (\email{egking@@uci.edu})
 ##' 
