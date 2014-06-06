@@ -9,7 +9,7 @@
 ##'   
 ##' @param model an object of class formula: a symbolic description of
 ##'   the null model to be fitted at each position (e.g., 
-##'   \code{phenotype \~ 1}). The genotype effects to be fitted will 
+##'   \code{phenotype ~ 1}). The genotype effects to be fitted will 
 ##'   be added based on \code{design}.
 ##'   
 ##' @param design a character string. One of either 'inbredA', 
