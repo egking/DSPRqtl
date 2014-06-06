@@ -2,8 +2,7 @@
 \alias{DSPRscan}
 \title{DSPR Genome Scan}
 \usage{
-  DSPRscan(model, design, phenotype.dat, id.col,
-    batch = 1000, sex)
+DSPRscan(model, design, phenotype.dat, id.col, batch = 1000, sex)
 }
 \arguments{
   \item{model}{an object of class formula: a symbolic
@@ -41,22 +40,21 @@
   specification of the genotypes on the X chromosome.}
 }
 \value{
-  A list of class \code{gscan} containing:
-  \item{LODscores}{A \code{data.frame} consisting of the
-  chromosome, physical position (bp), genetic position (cM)
-  and LOD score for each position.} \item{model}{the model
-  specification} \item{design}{the design specification}
-  \item{phenotype}{the phenotype \code{data.frame}
-  specified}
+A list of class \code{gscan} containing: \item{LODscores}{A
+\code{data.frame} consisting of the chromosome, physical
+position (bp), genetic position (cM) and LOD score for each
+position.} \item{model}{the model specification}
+\item{design}{the design specification}
+\item{phenotype}{the phenotype \code{data.frame} specified}
 }
 \description{
-  Function to perform a genome scan for data generated with
-  the DSPR RILs. This function is capable of fitting
-  standard models. Users requiring more flexibility should
-  use the \code{\link{DSPRgenos}} function along with
-  standard model fitting functions in R.
+Function to perform a genome scan for data generated with
+the DSPR RILs. This function is capable of fitting standard
+models. Users requiring more flexibility should use the
+\code{\link{DSPRgenos}} function along with standard model
+fitting functions in R.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

@@ -2,8 +2,7 @@
 \alias{findCI}
 \title{Calculate LOD support interval}
 \usage{
-  findCI(peakChr, peakPos, qtldat, method, LODdrop,
-    BCIprob)
+findCI(peakChr, peakPos, qtldat, method, LODdrop, BCIprob)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -34,23 +33,23 @@
   the nominal Bayes fraction. Default value is 0.95.}
 }
 \value{
-  A \code{data.frame} with two rows containing the
-  chromosome, physical position (bp), genetic position (cM)
-  and LOD scores corresponding to the lower and upper
-  bound. A list of two \code{data.frames} are returned when
-  the method used is 'both'.
+A \code{data.frame} with two rows containing the
+chromosome, physical position (bp), genetic position (cM)
+and LOD scores corresponding to the lower and upper bound.
+A list of two \code{data.frames} are returned when the
+method used is 'both'.
 }
 \description{
-  \code{findCI} calculates the LOD support interval for a
-  given LOD peak.
+\code{findCI} calculates the LOD support interval for a
+given LOD peak.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 \references{
-  Manichaikul, A., J. Dupuis, S. Sen, and K.W. Broman.
-  2006.  Performance of bootstrap confidence intervals for
-  the location of a quantitative trait locus.
-  \emph{Genetics} 174: 481-489.
+Manichaikul, A., J. Dupuis, S. Sen, and K.W. Broman. 2006.
+Performance of bootstrap confidence intervals for the
+location of a quantitative trait locus. \emph{Genetics}
+174: 481-489.
 }
 

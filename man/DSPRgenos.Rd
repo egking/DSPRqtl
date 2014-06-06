@@ -2,7 +2,7 @@
 \alias{DSPRgenos}
 \title{DSPR genotype probabilities}
 \usage{
-  DSPRgenos(design, phenotype.dat, id.col, output = "list")
+DSPRgenos(design, phenotype.dat, id.col, output = "list")
 }
 \arguments{
   \item{design}{a character string. For inbred RIL designs:
@@ -28,32 +28,31 @@
   'list' or 'array'.  Default is 'list'.}
 }
 \value{
-  A list containing: \item{genolist}{a list containing the
-  matrix of additive genotype probabilities at each
-  position in the genome. The list is in the same order as
-  the list of positions described below. Column names are
-  the different DSPR haplotypes and row names are the
-  unique ids provided in id.col. Alternatively, if
-  output='array', the output is a 3 dimensional array
-  [samples,haplotypes,positions]. Haplotypes and samples
-  are named while positions are in the order of the list of
-  positions described below.} \item{positions}{a
-  \code{data.frame} containing regularly spaced positions
-  (every 10KB) in the genome where the genotype
-  probabilities are calculated. Columns are: chr =
-  chromosome, Ppos = physical position (zero offset), Gpos
-  = genetic position, Gaxis = cummulative genetic
-  position.} \item{phenotype}{the phenotype.dat
-  \code{data.frame} ordered by the specified id column and
-  in the same order as the genotype information at each
-  position in the genome in the geno list described above}
+A list containing: \item{genolist}{a list containing the
+matrix of additive genotype probabilities at each position
+in the genome. The list is in the same order as the list of
+positions described below. Column names are the different
+DSPR haplotypes and row names are the unique ids provided
+in id.col. Alternatively, if output='array', the output is
+a 3 dimensional array [samples,haplotypes,positions].
+Haplotypes and samples are named while positions are in the
+order of the list of positions described below.}
+\item{positions}{a \code{data.frame} containing regularly
+spaced positions (every 10KB) in the genome where the
+genotype probabilities are calculated. Columns are: chr =
+chromosome, Ppos = physical position (zero offset), Gpos =
+genetic position, Gaxis = cummulative genetic position.}
+\item{phenotype}{the phenotype.dat \code{data.frame}
+ordered by the specified id column and in the same order as
+the genotype information at each position in the genome in
+the geno list described above}
 }
 \description{
-  Function to generate genotype probabilities across the
-  genome for a given DSPR dataset. This function is most
-  useful for those wishing to fit their own models.
+Function to generate genotype probabilities across the
+genome for a given DSPR dataset. This function is most
+useful for those wishing to fit their own models.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

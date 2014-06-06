@@ -2,8 +2,7 @@
 \alias{LocalInt}
 \title{Local Interval Mapping}
 \usage{
-  LocalInt(peakChr, peakPos, range = 100, phenotype.dat,
-    pheno.name, design)
+LocalInt(peakChr, peakPos, range = 100, phenotype.dat, pheno.name, design)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -29,16 +28,15 @@
   future.}
 }
 \value{
-  A \code{data.frame} consisting of the chromosome,
-  physical position (bp), genetic position (cM) and LOD
-  score for each position.
+A \code{data.frame} consisting of the chromosome, physical
+position (bp), genetic position (cM) and LOD score for each
+position.
 }
 \description{
-  \code{LocalInt} performs standard interval mapping around
-  a given peak for a range of positions specified by the
-  user.
+\code{LocalInt} performs standard interval mapping around a
+given peak for a range of positions specified by the user.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

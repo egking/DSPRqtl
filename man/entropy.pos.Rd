@@ -2,8 +2,7 @@
 \alias{entropy.pos}
 \title{Entropy at a position}
 \usage{
-  entropy.pos(peakChr, peakPos, design, phenotype.dat,
-    id.col, sex)
+entropy.pos(peakChr, peakPos, design, phenotype.dat, id.col, sex)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -38,22 +37,21 @@
   chromosome.}
 }
 \value{
-  A numeric vector: the entropy at the given position for
-  the set of RILs in the phenotype.dat \code{data.frame}.
-  In the case of the ABcross, the A and B entropy are
-  calculated separately and both are returned.
+A numeric vector: the entropy at the given position for the
+set of RILs in the phenotype.dat \code{data.frame}. In the
+case of the ABcross, the A and B entropy are calculated
+separately and both are returned.
 }
 \description{
-  \code{entropy.pos} calculates the entropy (proportion of
-  missing information) at a given position.
+\code{entropy.pos} calculates the entropy (proportion of
+missing information) at a given position.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 \references{
-  Shannon, C.E. 1984. A mathematical theory of
-  communication. \emph{Bell System Technical Journal}
-  27(3): 379-423.
-  \url{http://en.wikipedia.org/wiki/Information_theory#Entropy}
+Shannon, C.E. 1984. A mathematical theory of communication.
+\emph{Bell System Technical Journal} 27(3): 379-423.
+\url{http://en.wikipedia.org/wiki/Information_theory#Entropy}
 }
 

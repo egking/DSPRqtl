@@ -2,8 +2,7 @@
 \alias{perct.var}
 \title{Effect size}
 \usage{
-  perct.var(peakChr, peakPos, model, design, phenotype.dat,
-    id.col, sex)
+perct.var(peakChr, peakPos, model, design, phenotype.dat, id.col, sex)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -43,14 +42,14 @@
   specification of the genotypes on the X chromosome.}
 }
 \value{
-  A numeric vector of length one: the percent variance
-  explained by the QTL.
+A numeric vector of length one: the percent variance
+explained by the QTL.
 }
 \description{
-  \code{perct.var} calculates the percent of the variance
-  explained by the QTL.
+\code{perct.var} calculates the percent of the variance
+explained by the QTL.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

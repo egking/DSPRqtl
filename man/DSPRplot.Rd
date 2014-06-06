@@ -2,7 +2,7 @@
 \alias{DSPRplot}
 \title{Genome Scan Plot}
 \usage{
-  DSPRplot(qtldata, threshold, legNames = NULL)
+DSPRplot(qtldata, threshold, legNames = NULL)
 }
 \arguments{
   \item{qtldata}{a \code{list} of output from DSPRscan with
@@ -21,9 +21,9 @@
   column names used in DSPRscan.}
 }
 \description{
-  Function to plot genome scan results for the DSPR RILs
+Function to plot genome scan results for the DSPR RILs
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

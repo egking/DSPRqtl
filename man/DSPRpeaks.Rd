@@ -3,7 +3,7 @@
 \alias{print.peaks}
 \title{Find and Summarize QTL}
 \usage{
-  DSPRpeaks(qtldat, method, threshold, LODdrop, BCIprob)
+DSPRpeaks(qtldat, method, threshold, LODdrop, BCIprob)
 }
 \arguments{
   \item{qtldat}{An object of class gscan. Output from
@@ -32,25 +32,25 @@
   the nominal Bayes fraction. Default value is 0.95.}
 }
 \value{
-  A list of class \code{peaks} containing a list for each
-  significant peak, each containing: \item{threshold}{the
-  specified signficance threshold} \item{peak}{A single row
-  \code{data.frame} with the chromosome, physical position
-  (bp), genetic position (cM) and LOD score for the peak}
-  \item{LODdrop}{the specified LOD drop for the support
-  interval} \item{CI}{the upper and lower bounds of the
-  confidence interval} \item{founderNs}{the number of RILs
-  with each founder genotype at the peak}
-  \item{geno.means}{the estimated means and standard errors
-  for each founder genotype} \item{perct.var}{the percent
-  variation explained by the QTL} \item{entropy}{the
-  proporiton of missing information (entropy)}
+A list of class \code{peaks} containing a list for each
+significant peak, each containing: \item{threshold}{the
+specified signficance threshold} \item{peak}{A single row
+\code{data.frame} with the chromosome, physical position
+(bp), genetic position (cM) and LOD score for the peak}
+\item{LODdrop}{the specified LOD drop for the support
+interval} \item{CI}{the upper and lower bounds of the
+confidence interval} \item{founderNs}{the number of RILs
+with each founder genotype at the peak}
+\item{geno.means}{the estimated means and standard errors
+for each founder genotype} \item{perct.var}{the percent
+variation explained by the QTL} \item{entropy}{the
+proporiton of missing information (entropy)}
 }
 \description{
-  \code{DSPRpeaks} takes output from
-  \code{\link{DSPRscan}}. Locates and summarizes QTL peaks.
+\code{DSPRpeaks} takes output from \code{\link{DSPRscan}}.
+Locates and summarizes QTL peaks.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

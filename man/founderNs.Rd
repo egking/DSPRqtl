@@ -2,8 +2,7 @@
 \alias{founderNs}
 \title{Numbers of founder genotypes}
 \usage{
-  founderNs(peakChr, peakPos, design, phenotype.dat,
-    id.col)
+founderNs(peakChr, peakPos, design, phenotype.dat, id.col)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -32,19 +31,18 @@
   the id.}
 }
 \value{
-  A named numeric vector consisting of the numbers of RILs
-  in the phenotype.dat \code{data.frame} with each founder
-  genotype at the given position. A RIl is assigned a
-  founder genotype if the HMM probability is over 0.95. The
-  number of RILs with a heterozygous genotype and an
-  uncertain genotype are also returned.
+A named numeric vector consisting of the numbers of RILs in
+the phenotype.dat \code{data.frame} with each founder
+genotype at the given position. A RIl is assigned a founder
+genotype if the HMM probability is over 0.95. The number of
+RILs with a heterozygous genotype and an uncertain genotype
+are also returned.
 }
 \description{
-  \code{founderNs} calculates the number of founder
-  genotypes represented in the DSPR RILs at a given
-  position.
+\code{founderNs} calculates the number of founder genotypes
+represented in the DSPR RILs at a given position.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

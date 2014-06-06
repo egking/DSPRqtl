@@ -3,13 +3,13 @@
 \alias{print.pt}
 \title{DSPR permutation test}
 \usage{
-  DSPRperm(model, design, phenotype.dat, id.col,
-    batch = 1000, niter = 1000, alpha = 0.05, sex)
+DSPRperm(model, design, phenotype.dat, id.col, batch = 1000, niter = 1000,
+  alpha = 0.05, sex)
 }
 \arguments{
   \item{model}{an object of class formula: a symbolic
   description of the null model to be fitted at each
-  position (e.g., \code{phenotype \~ 1}). The genotype
+  position (e.g., \code{phenotype ~ 1}). The genotype
   effects to be fitted will be added based on
   \code{design}.}
 
@@ -50,21 +50,21 @@
   specification of the genotypes on the X chromosome.}
 }
 \value{
-  A list of class \code{pt} containing: \item{maxLODs}{A
-  vector containing the maximum LOD score obtained for each
-  permutation of the data.} \item{alpha}{the specified
-  alpha level} \item{threshold}{the signficance threshold
-  at the specified alpha level}
+A list of class \code{pt} containing: \item{maxLODs}{A
+vector containing the maximum LOD score obtained for each
+permutation of the data.} \item{alpha}{the specified alpha
+level} \item{threshold}{the signficance threshold at the
+specified alpha level}
 }
 \description{
-  \code{DSPRperm} performs a permutation test for a DSPR
-  dataset.
+\code{DSPRperm} performs a permutation test for a DSPR
+dataset.
 }
 \details{
-  The permutation test can take a very long time to run
-  (over 24 hrs).
+The permutation test can take a very long time to run (over
+24 hrs).
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

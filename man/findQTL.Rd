@@ -2,7 +2,7 @@
 \alias{findQTL}
 \title{Find QTL}
 \usage{
-  findQTL(qtldat, threshold, design)
+findQTL(qtldat, threshold, design)
 }
 \arguments{
   \item{qtldat}{\code{data.frame} of chromosome, position,
@@ -20,15 +20,15 @@
   pA and pB set of inbred RILs or the pA-pB cross design.}
 }
 \value{
-  A \code{data.frame} consisting of the chromosome,
-  physical position (bp), genetic position (cM) and LOD
-  score for each significant peak.
+A \code{data.frame} consisting of the chromosome, physical
+position (bp), genetic position (cM) and LOD score for each
+significant peak.
 }
 \description{
-  \code{findQTL} finds peak LOD scores that exceed the
-  given threshold (identifies signficant QTL).
+\code{findQTL} finds peak LOD scores that exceed the given
+threshold (identifies signficant QTL).
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

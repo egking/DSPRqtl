@@ -2,8 +2,7 @@
 \alias{geno.means}
 \title{Founder genotype means and standard errors}
 \usage{
-  geno.means(peakChr, peakPos, model, design,
-    phenotype.dat, id.col, sex)
+geno.means(peakChr, peakPos, model, design, phenotype.dat, id.col, sex)
 }
 \arguments{
   \item{peakChr}{character vector of length one. Must be
@@ -43,18 +42,18 @@
   specification of the genotypes on the X chromosome.}
 }
 \value{
-  A \code{data.frame} of the estimated mean and standard
-  error for each founder genotype. If a covariate is
-  included in the model statement, the estimate will be the
-  founder genotype mean after correcting for the covariate.
-  If using the ABcross design, a \code{list} of
-  \code{data.frames} for pA and pB are returned.
+A \code{data.frame} of the estimated mean and standard
+error for each founder genotype. If a covariate is included
+in the model statement, the estimate will be the founder
+genotype mean after correcting for the covariate. If using
+the ABcross design, a \code{list} of \code{data.frames} for
+pA and pB are returned.
 }
 \description{
-  \code{geno.means} estimates the founder genotype means
-  and standard errors at a given position.
+\code{geno.means} estimates the founder genotype means and
+standard errors at a given position.
 }
 \author{
-  Elizabeth King (\email{egking@uci.edu})
+Elizabeth King (\email{egking@uci.edu})
 }
 

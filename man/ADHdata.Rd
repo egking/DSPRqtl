@@ -9,7 +9,7 @@
 \item{\code{adh}}{numeric vector}
 }}
 \description{
-  The ADH activity phenotype data.
+The ADH activity phenotype data.
 }
 \keyword{datasets}
 

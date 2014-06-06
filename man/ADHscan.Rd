@@ -10,7 +10,7 @@
 \item{\code{phenotype}}{data.frame containing RIL ids and phenotypes}
 }}
 \description{
-  The ADH genome scan results.
+The ADH genome scan results.
 }
 \keyword{datasets}
 
