@@ -5,10 +5,7 @@ LL.alt<-function(mat,model,phenotype.dat)
   }else{
     if(ncol(mat==16))
     {
-      qtlmodel<-as.formula(paste(deparse(model),
-                                 "+mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]
-                                 +mat[,9]+mat[,10]+mat[,11]+mat[,12]+mat[,13]+mat[,14]+mat[,15]
-                                 ",sep=""))
+      qtlmodel<-as.formula(paste(deparse(model),"+mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]+mat[,9]+mat[,10]+mat[,11]+mat[,12]+mat[,13]+mat[,14]+mat[,15]",sep=""))
       
     }else{
       stop("problem with creating genotype matrix")  
@@ -25,8 +22,7 @@ LL.multi<-function(mat,model,pheno)
   }else{
     if(ncol(mat==16))
     {
-      qtlmodel<-as.formula("pheno~mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]
-                           +mat[,9]+mat[,10]+mat[,11]+mat[,12]+mat[,13]+mat[,14]+mat[,15]")
+      qtlmodel<-as.formula("pheno~mat[,1]+mat[,2]+mat[,3]+mat[,4]+mat[,5]+mat[,6]+mat[,7]+mat[,9]+mat[,10]+mat[,11]+mat[,12]+mat[,13]+mat[,14]+mat[,15]")
       
     }else{
       stop("problem with creating genotype matrix")	
