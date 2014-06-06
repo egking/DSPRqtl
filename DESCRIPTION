@@ -1,11 +1,11 @@
 Package: DSPRqtl
-Maintainer: Elizabeth King <egking@uci.edu>
+Maintainer: Elizabeth King <kingeg@missouri.edu>
 License: GPL-2
 Title: Analysis of DSPR phenotypes
 LazyData: yes
 Type: Package
 LazyLoad: yes
-Version: 2.0-1
+Version: 2.0-2
 Author: Elizabeth King
 Description: Package to analyze phenotypes measured on the Drosophila Synthetic
     Population Resource
@@ -14,19 +14,4 @@ Depends:
 Suggests:
     DSPRqtlDataA,
     DSPRqtlDataB
-Date: 2013-06-06
-Collate:
-    'DSPRgenos.R'
-    'DSPRpeaks.R'
-    'DSPRscan.R'
-    'entropy.pos.R'
-    'findCI.R'
-    'findQTL.R'
-    'founderNs.R'
-    'geno.means.R'
-    'misc.R'
-    'perct.var.R'
-    'DSPRqtl-package.R'
-    'DSPRperm.R'
-    'LocalInt.R'
-    'DSPRplot.R'
+Date: 2014-06-07
