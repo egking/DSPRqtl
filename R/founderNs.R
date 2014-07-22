@@ -382,7 +382,7 @@ founderNs<-function(peakChr,peakPos,design,phenotype.dat,id.col)
             rm(list=objnameB)
             
             ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
-            BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
+            BAphenotype.dat<-phenotype.dat[phenotype.dat$patRIL>21000,]
             
             ABgenotypes<-merge(ABphenotype.dat,Agenotypes,by.x='patRIL',by.y='ril') 
             ABgenotypes<-merge(ABgenotypes, Bgenotypes, by.x='matRIL',by.y='ril',sort=FALSE)

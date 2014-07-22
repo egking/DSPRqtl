@@ -210,7 +210,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
         Bgenotypes<-get(objnameB)
         
         ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
-        BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
+        BAphenotype.dat<-phenotype.dat[phenotype.dat$patRIL>21000,]
         
         if(poslist[i,1]=='X' & sex=='m')
         {

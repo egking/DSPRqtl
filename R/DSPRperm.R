@@ -161,7 +161,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
     data(list=objnameB,envir=environment())
     Bgenotypes<-get(objnameB)
     ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
-    BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
+    BAphenotype.dat<-phenotype.dat[phenotype.dat$patRIL>21000,]
     ABphenotype.dat<-ABphenotype.dat[ABphenotype.dat$patRIL %in% Agenotypes$ril & ABphenotype.dat$matRIL %in% Bgenotypes$ril,]
     BAphenotype.dat<-BAphenotype.dat[BAphenotype.dat$patRIL %in% Bgenotypes$ril & BAphenotype.dat$matRIL %in% Agenotypes$ril,]
     phenotype.dat<-rbind(ABphenotype.dat,BAphenotype.dat)
@@ -265,7 +265,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
         Bgenotypes<-get(objnameB)
         
         ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
-        BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
+        BAphenotype.dat<-phenotype.dat[phenotype.dat$patRIL>21000,]
         
         if(poslist[i,1]=='X' & sex=='m')
         {

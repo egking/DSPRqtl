@@ -193,7 +193,7 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
         Bgenotypes<-get(objnameB)
         
         ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
-        BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
+        BAphenotype.dat<-phenotype.dat[phenotype.dat$patRIL>21000,]
         
         if(peakChr=='X' & sex=='m')
         {

@@ -317,7 +317,7 @@ entropy.pos<-function(peakChr,peakPos,design,phenotype.dat,id.col,sex)
             rm(list=objnameB)
             
             ABphenotype.dat<-phenotype.dat[phenotype.dat$patRIL<21000,]
-            BAphenotype.dat<-phenotype.dat[phenotype.dat$patRI>21000,]
+            BAphenotype.dat<-phenotype.dat[phenotype.dat$patRIL>21000,]
             
             if(peakChr=='X' & sex=='m')
             {
