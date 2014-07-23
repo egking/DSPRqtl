@@ -56,7 +56,6 @@
 ##' 
 ##' @export
 ##'
-##' @S3method print pt
 DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alpha=0.05,sex)
 { 
   #CHECK THAT ABCROSS HAS SPECIFIED SEX

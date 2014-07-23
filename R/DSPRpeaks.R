@@ -46,7 +46,6 @@
 ##' 
 ##' @export
 ##'
-##' @S3method print peaks
 DSPRpeaks<-function(qtldat,method,threshold,LODdrop,BCIprob)
 {
   if(missing(method))
