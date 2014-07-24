@@ -28,7 +28,7 @@
 ##'   position (bp), genetic position (cM) and LOD score for each 
 ##'   position.
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' 
 ##' @export

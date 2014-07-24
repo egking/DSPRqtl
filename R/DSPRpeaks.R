@@ -42,7 +42,7 @@
 ##' founder genotype}
 ##' \item{perct.var}{the percent variation explained by the QTL}
 ##' \item{entropy}{the proporiton of missing information (entropy)}
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##'

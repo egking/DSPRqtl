@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Prerequisites</title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteIndexEntry{DSPRqtl-intro}
+-->
+
+<h1>Prerequisites</h1>
+
+<p>If you do not have R, navigate to
+<a href="http://www.r-project.org"><code>http://www.r-project.org</code></a> to download
+and install it. New users should download and read the <a href="http://cran.r-project.org/manuals.html">reference
+manual</a>.</p>
+
+<h1>Installing the DSPRqtl Analysis Package</h1>
+
+<p>To install the analysis package, within R, execute:</p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtl&quot;, 
+                 repos = &quot;http://wfitch.bio.uci.edu/R/&quot;, 
+                 type = &quot;source&quot;)
+</code></pre>
+
+<p><em>Note</em>: you must use the statement <code>repos =
+&quot;http://wfitch.bio.uci.edu/R/&quot;</code>.</p>
+
+<h1>Installing the DSPRqtlData Packages</h1>
+
+<ol>
+<li>Install one or both data packages (<code>DSPRqtlDataA</code> and/or
+<code>DSPRqtlDataB</code>). If only one population was used, only one data
+package (A or B) needs to be installed.</li>
+<li>The data packages are ~3.2 GB each and will take several minutes
+(to hours) to download and install depending on your connection
+speed. These packages are too large to be stored on and installed
+from CRAN. If you do not install these packages, the functions in the
+<code>DSPRqtl</code> package will fetch each position file from the
+internet. This method takes considerably longer to run.</li>
+</ol>
+
+<h2>Installation within R</h2>
+
+<p>Within R (not recommended in RStudio), type:</p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtlDataA&quot;, 
+                 repos = &quot;http://wfitch.bio.uci.edu/R/&quot;, 
+                 type = &quot;source&quot;)
+</code></pre>
+
+<p><em>and/or</em></p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtlDataB&quot;, 
+                 repos = &quot;http://wfitch.bio.uci.edu/R/&quot;, 
+                 type = &quot;source&quot;)
+</code></pre>
+
+<p>for the pA and pB data packages, respectively.</p>
+
+<p><em>Note</em>: you must use the statement <code>repos = &quot;http://wfitch.bio.uci.edu/R/&quot;</code>.</p>
+
+<h2>Installation from the Downloaded Package Source</h2>
+
+<p>If installation within R fails, the packages can be downloaded
+manually and installed from within R from local source. Download the
+package source files from:</p>
+
+<ul>
+<li><a href="http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz"><code>http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataA_2.0-1.tar.gz</code></a></li>
+<li><a href="http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz"><code>http://wfitch.bio.uci.edu/R/src/contrib/DSPRqtlDataB_2.0-1.tar.gz</code></a></li>
+</ul>
+
+<p>using a web browser or command line tool (e.g.,
+<a href="http://www.gnu.org/software/wget/"><code>wget</code></a>). After the files have
+downloaded, execute the following commands in R (one, the other, or
+both as necessary):</p>
+
+<pre><code class="r">install.packages(&quot;DSPRqtlDataA_2.0-1.tar.gz&quot;, repos = NULL, type = &quot;source&quot;)
+install.packages(&quot;DSPRqtlDataB_2.0-1.tar.gz&quot;, repos = NULL, type = &quot;source&quot;)
+</code></pre>
+
+<p><em>Note</em>: You may have to modify the path to the package file.</p>
+
+<h1>Loading and Using the Data Packages</h1>
+
+<p>Once the data packages are installed, they can be loaded using:</p>
+
+<pre><code class="r">library(DSPRqtlDataA)
+</code></pre>
+
+<p><em>and/or</em></p>
+
+<pre><code class="r">library(DSPRqtlDataB)
+</code></pre>
+
+<p>Then, the set of additive HMM probabilities and raw HMM probabilities
+for any given position can be obtained with:</p>
+
+<pre><code class="r">data(A_chromosome.arm_position.in.base.pairs)
+</code></pre>
+
+<p>e.g.,</p>
+
+<pre><code class="r">data(A_X_12000000)
+# This gives a data.frame named A_X_12000000
+</code></pre>
+
+<p>A list of regularly spaced positions every 10 kb is available at
+<a href="http://FlyRILs.org/Data"><code>http://FlyRILs.org/Data</code></a> or within the
+<code>DSPRqtl</code> package (see above for install instructions).</p>
+
+<pre><code class="r">library(DSPRqtl)
+data(positionlist_wgenetic)
+# This gives a data.frame named poslist
+</code></pre>
+
+<h1>Data Analysis Tutorial</h1>
+
+<p>Before you begin, please also obtain the DSPRqtl manual (see
+<a href="http://FlyRILs.org/Tools/Tutori%0Aal"><code>http://FlyRILs.org/Tools/Tutorial)</code></a> and refer to it throughout this tutorial. Also load the <code>DSPRqtl</code>
+package:</p>
+
+<pre><code class="r">library(DSPRqtl)
+</code></pre>
+
+<h2>Phenotype Data {#PD}</h2>
+
+<ul>
+<li>Format your phenotype file and read it into R. All phenotype files
+must have at a minimum a column named <code>&quot;patRIL&quot;</code> (and in the case
+of crossing designs, also one named <code>&quot;matRIL&quot;</code>) containing the
+numeric RIL IDs (e.g., 11001, 11002, &hellip;) and a column with
+phenotype measurements (with a name chosen by the user). Cross
+designs must also contain a column specifying the sex of the
+individuals measured so the X chromosome is handled correctly.</li>
+<li>If covariates are to be used, these should also be in this file (or
+added to it within R before beginning the analysis).</li>
+<li>To view an example, load the example ADH data in the <code>DSPRqtl</code>
+package. Throughout this tutorial, the example dataset <code>ADHdata</code>
+(included in the R package) will be used to illustrate each step.</li>
+</ul>
+
+<pre><code class="r">data(ADHdata)
+# a data.frame named ADHdata
+
+head(ADHdata)
+</code></pre>
+
+<pre><code>##   patRIL matRIL    adh
+## 1  11001  11001 -44.09
+## 2  11002  11002 -55.76
+## 3  11003  11003 -47.58
+## 5  11005  11005 -39.89
+## 6  11006  11006 -56.91
+## 7  11007  11007 -73.39
+</code></pre>
+
+<p>To import your data into R, you must read the file in. R will accept
+many types of files. For help reading files into R, see
+<a href="http://cran.r-pr%0Aoject.org/doc/manuals/R-data.html"><code>http://cran.r-project.org/doc/manuals/R-data.html</code></a>. The code to read in a
+tab-delimited text file is shown below as an example.</p>
+
+<pre><code class="r">phenotype.dat &lt;- read.table(&quot;/path/to/your/file.txt&quot;, 
+                            header = TRUE)
+</code></pre>
+
+<h2>Genome Scan</h2>
+
+<p>One can perform a genome scan using the <code>DSPRscan()</code> function for
+experimental designs where the inbred RILs are measured directly,
+crosses to a standard, or the pA-pB cross design. For users requiring
+more flexibility, see the <a href="#AA"><em>Advanced Analysis</em></a> section
+below. Handling interactive covariates and analyzing multiple
+phenotypes at once is in development. The <code>DSPRscan()</code> function
+performs a genome scan that regresses the 8 founder genotype
+probabilities (or 16 in the case of the pA-pB cross) on the measured
+phenotype at evenly spaced 10 kb positions across the genome:</p>
+
+<pre><code class="r">DSPRscan(model, design, phenotype.dat, id.col, batch, sex)
+</code></pre>
+
+<ul>
+<li><code>model</code> is the null model in formula notation. For a phenotype with
+no covariates, it is of the form <code>phenotype ~ 1</code>. With a single
+additive covariate, it is: <code>phenotype ~ covariate</code>.</li>
+<li><code>design</code> is either <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code> for inbred designs pA
+and pB RILs and crosses to a standard. For the pA-pB cross, use
+<code>&quot;ABcross&quot;</code>.</li>
+<li><code>phenotype.dat</code> is the <code>data.frame</code> read in the section <a href="#PD"><em>Phenotype
+Data</em></a> containing the RIL IDs, phenotype, and any
+covariates.</li>
+<li><code>id.col</code> identifies the column to use as unique ids for the
+measurements. For an inbred design, this column could be the patRIL
+column. For a cross design, a unique id column should be included.</li>
+<li><code>batch</code> is the number of positions tested at one time. Defaults to
+1,000. If memory use is a problem, reduce this number.</li>
+<li><code>sex</code> is the sex of the individuals measured and must be specified
+for the ABcross. It is either <code>&quot;m&quot;</code> or <code>&quot;f&quot;</code>. For inbred designs,
+it can be left out.</li>
+</ul>
+
+<p>For a single phenotype with the data package installed, a genome scan
+should take ~15&ndash;20 min.</p>
+
+<p>Using the ADH example data:</p>
+
+<pre><code class="r">data(ADHdata)
+scan.results &lt;- DSPRscan(adh ~ 1, 
+                         design = &quot;inbredA&quot;, 
+                         phenotype.dat = ADHdata,
+                         id.col=&#39;patRIL&#39;)
+</code></pre>
+
+<p>The output of <code>DSPRscan()</code> is a list containing:</p>
+
+<ul>
+<li><code>LODscores</code> This is a <code>data.frame</code> with positions and LOD scores.</li>
+<li><code>model</code> This is the model statement.</li>
+<li><code>design</code> This is the design specified.</li>
+<li><code>phenotype</code> This is the phenotype data.</li>
+<li><code>sex</code> This is the sex of the individuals measured.</li>
+</ul>
+
+<p>There is example output from a finished genome scan of the ADH data
+in this package as well. Type:</p>
+
+<pre><code class="r">data(ADHscan)
+</code></pre>
+
+<p>To extract the LOD scores <code>data.frame</code>:</p>
+
+<pre><code class="r">ADH.lod.scores &lt;- ADHscan$LODscores
+
+ADH.lod.scores[100:105, ]
+</code></pre>
+
+<pre><code>##     chr    Ppos   Gpos   LOD
+## 100   X 1150000 0.1359 1.662
+## 101   X 1160000 0.1419 1.661
+## 102   X 1170000 0.1479 1.661
+## 103   X 1180000 0.1540 1.661
+## 104   X 1190000 0.1601 1.663
+## 105   X 1200000 0.1663 1.664
+</code></pre>
+
+<h2>Permutation Test</h2>
+
+<p>Perform a permutation test using the function <code>DSPRperm()</code> to obtain
+a significance threshold. For initial data exploration, the value 6.8
+can be used for inbred designs and 10.1 for the ABcross. This
+threshold seems to be fairly stable for multiple phenotypes that we
+have tested, but we recommend each user perform a permutation test
+for their specific data set.</p>
+
+<pre><code class="r">DSPRperm(model, design, phenotype.dat, id.col, batch, niter, alpha, sex)
+</code></pre>
+
+<p>For <code>model, design, phenotype.dat, id.col, batch, sex</code> see above
+description for <code>DSPRscan()</code>. The two additional arguments to
+<code>DSPRperm()</code> are:</p>
+
+<ul>
+<li><code>niter</code> The number of permutations to perform. Default is 1,000.</li>
+<li><code>alpha</code> The desired Type I error rate. </li>
+</ul>
+
+<p>The output of <code>DSPRperm()</code> is a list containing:</p>
+
+<ul>
+<li><code>maxLODs</code> A vector of maximum LOD scores for each permutation.</li>
+<li><code>alpha</code> The specified alpha level</li>
+<li><code>threshold</code> The significance threshold.</li>
+</ul>
+
+<p>After a permutation test is performed, the <code>maxLODs</code> can also be used
+to determine the significance threshold at another alpha level. For
+example,</p>
+
+<pre><code class="r">perm.test &lt;- DSPRperm(adh ~ 1,
+                      design = &quot;inbredA&quot;,
+                      phenotype.dat = ADHdata)
+</code></pre>
+
+<p>For \(\alpha = 0.01\):</p>
+
+<pre><code class="r">quantile(perm.test$maxLODs, 1 - 0.01)
+</code></pre>
+
+<h2>Identify Significant QTL</h2>
+
+<p>Get a summary of the significant peaks. Finding and summarizing
+significant peaks can be done in a single step using the function
+<code>DSPRpeaks()</code>. The individual functions to get the values are also
+available (see the <code>DSPRqtl</code> manual). After peaks are identified, it
+is important for the user to confirm these represent distinct peaks.</p>
+
+<pre><code class="r">DSPRpeaks(qtldat, method, threshold, LODdrop, BCIprob)
+</code></pre>
+
+<ul>
+<li><code>qtldat</code> Output from <code>DSPRscan()</code>.</li>
+<li><code>threshold</code> The threshold found with the permutation test. Defaults
+to 6.8 or 10.1 for inbred and ABcross designs respectively.</li>
+<li><code>LODdrop</code> The desired LODdrop for support intervals. Defaults to 2.</li>
+<li><code>BCIprob</code> The desired nominal Bayes fraction for support intervals.
+Defaults to 0.95.</li>
+</ul>
+
+<p>The output of <code>DSPRpeaks()</code> is a list of peaks. Each peak is a list
+containing:</p>
+
+<ul>
+<li><code>threshold</code> The specified threshold.</li>
+<li><code>peak</code> The peak position and LOD score.</li>
+<li><code>LODdrop</code> The specified LODdrop.</li>
+<li><code>BCIprob</code> The specified BCIprob.</li>
+<li><code>CI</code> The confidence interval.</li>
+<li><code>founderNs</code> The number of RILs with each founder genotype at the
+peak.</li>
+<li><code>geno.means</code> The founder means and standard errors at the peak.</li>
+<li><code>perct.var</code> The percent variation explained by the QTL.</li>
+<li><code>entropy</code> The proportion missing information.</li>
+</ul>
+
+<p>Using the <code>ADHscan</code> output:</p>
+
+<pre><code class="r">peaks &lt;- DSPRpeaks(ADHscan, threshold = 6.8, LODdrop = 2)
+</code></pre>
+
+<p>And the main QTL is found at position 26 in the list:</p>
+
+<pre><code class="r">peaks[[26]]
+</code></pre>
+
+<pre><code>## $threshold
+## [1] 6.8
+## 
+## $peak
+##    chr     Ppos  Gpos   LOD
+## 26  2L 14500000 49.91 107.4
+## 
+## $LODdrop
+## [1] 2
+## 
+## $CI
+##             chr     Ppos  Gpos   LOD
+## Lower Bound  2L 14410000 49.79 105.4
+## Upper Bound  2L 14620000 50.07 105.4
+## 
+## $founderNs
+##        A1        A2        A3        A4        A5        A6        A7 
+##        94        21         1       355       186        20         9 
+##        A8      Hets Uncertain 
+##        42        10        84 
+## 
+## $geno.means
+##    Estimate Std. Error
+## A1   -29.03     0.8126
+## A2   -32.61     1.7962
+## A3   -58.39     6.2789
+## A4   -50.40     0.4272
+## A5   -49.55     0.5805
+## A6   -51.30     1.7197
+## A7   -55.61     2.4104
+## A8   -53.16     1.2484
+## 
+## $perct.var
+## [1] 45.22
+## 
+## $entropy
+## [1] 0.03688
+</code></pre>
+
+<p>The <code>DSPRscan()</code> results can be plotted using the <code>DSPRplot()</code>
+function. Multiple scan results can be plotted on the same plot. Pass
+the scan results as a <code>list()</code> to the <code>DSPRscan()</code> function.</p>
+
+<pre><code class="r">DSPRplot(list(ADHscan), threshold=6.8)
+</code></pre>
+
+<p><img src="data:image/png;base64,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0OroOXQzaqvpbnsBpDssW5EJvPmmZpIazhruWKrTfm64fmzDmaprqK6lZTVP+ebH/SuyXIE2QprWSpqmD/Ws7zKkadpijCzXppy9USWmzthtfVtTU5Oe4zWUjRgxItNzy7pmUI/93Ij92IaDtCvb3oZeb0MZLd7UDrVwZHrm0IT0TFWOdDTSM72ZyGYCJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJmACJlA7BPy/fWunr1pa044t3cD5a5aA+7pmu672K96fJryIhqO/ogVRo9nxNPgD9D66GnVAMrG4Gw1Dr6K9UCHWn0y1ynRt6j4yTUuynrSBrIxPRlR5eHfq93paHfuznq2PBpH2GvoXOhEVYv3JlK28QrYvVZ4FKPhzNCC1gwNYfpFB6X2cyl5zi0x9rfP4HvQJeg9tgILtRkD9pnP8LtQd2UygVQQWZquv0KpId3V/RH9CjWSb0tg3UTc0D7oD7Ylk16Hfx6EoWoTlh6hXaj3botaZHkrDbkbzJZQcuevi9C6agKrdVNer0dfojURlc/WRbhZ086TzoTPSjdZ6KJflKi/XduVI0/msvgoOVcd4sm+vYP1+VOuWra/VrnvQmUjHcX80Bs2LlkGjUTinBxO+FNlMoFUEtmSrpxNb9iU8MbHeCEHdlf4O6WTT3XwwjVKnIcXp5OuECrFaZ3o9jTwYNaE+KN1uJ2J/ND49oQrXd6ZOl6CtUNKh5uqjPcj7LxTsHQI7hpUsy1zlZdmkLNE7sJdr0SsoONTkjjVSG4F6JiNrNJytr9Wc71GyjZqt2BzpnF8IBfszgcvDSqWW7Su1Y++3zQSWpgTdoQUbS0BTHp1DRAMsxaA30kh9HHoAyXkuhiahk9E36DskR5PPap3p6jTwRPQEGoEuRsF2IaCbjORNWEirxuV9VEr990Na5XL10YPk/RL9Ew1FH6JHUC7LVV6u7UqZphmVs9CpOXZyDWlno1q4OcrRjDgpW19r5KrrWbKNY1gXn2akc34F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0jPVNaRlW/ZIJaQ7PU3FtrS8e9lmf/Q/6BPUD2mqN59p36Ee+fI63QRyEvCUb048TjSBihDQyFDWFP/96Z8QF0af7UjWM9GbkJ5rLoQOQ5pq1WittaY69Mmwsa4Zmm4O+8+QpeCocGORPtodTglLoPTrk34zehJaFKXbU0RMQBql7oi+Qc+hXNaBRE07h3rkyus0E8hLIP2AzbuBM5iACZScgKZ65RwOSNuTzleNwpT2VirtYZaaBg4jRj0TvBlNRHr5KZPNTkXmmo7VFPSSaIu0AvScshvSc8u2mqZbZekO9WXiVLftlZiwswjrJkHtTzeNmjXtux36DbofhXYSzGi6YeiEQj0yZnKkCRRKwA61UFLOZwLlI6DnlOchTd3ehdZJhR9kKedzIArTpJpCXhzdigYiTXnegDSNKaeSyX4k8nukKeEj0MIo3a4g4it0B9oLrYi0X5UtZ3sdaqvpRkCjw+XTChrCuqZtb0S7o9WR2rkDuhilP9clKjZN+y6F+iO9mJXPwn6fzpfR6SZgAiZgAtVDQFOyzSjTdGW2Wh5GwvjUdnKC7yI9K02384mYilS+NA4diYJtS0DxcrjBTiGg0azit0aZ8vQh/kmkkZ7yTURyWt1RMDk5pQ0IEamlRpeK3zwtPn11CBFfovSbe42OH0Nh31oORhq5yuTgVf7pWklZJ5YavY5GyfLOY115+6KkncaKbkz0zNZmAiZgAibQAASaaGOvPO2Uo/kl6pMnXzJ5HlYyjU6TeRTuijSa66CVIttqlCdnqWefmUz71lu4WhbT1PYRSKNgmwmYgAmYgAnUBQFNI79S5pbswf6+Q4uUeb/enQmYgAmYgAmUjICcmpzbxiXbw88Lfpuok34e7RgTMAETMAETqG0Ch1J9vXhUDluVnej5rJ652kzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABEzABCpI4P8D2bzPtAqHnIQAAAAASUVORK5CYII=" alt="Output of `DSPRplot()`"/> </p>
+
+<h2>Local Interval Mapping</h2>
+
+<p>The user may wish to perform local interval mapping to compare the
+peak locations and confidence intervals. The <code>LocalInt()</code> function
+will perform interval mapping for a range of positions given by the
+user. <code>FindCI()</code> can then be used to re-estimate confidence
+intervals. This function is only available for the <code>&quot;inbredA&quot;</code> or
+<code>&quot;inbredB&quot;</code> designs.</p>
+
+<pre><code class="r">LocalInt(peakChr, peakPos, range, phenotype.dat, pheno.name, design)
+</code></pre>
+
+<ul>
+<li><code>peakChr</code> Chromosome arm at the peak.</li>
+<li><code>peakPos</code> Position in base pairs at the peak.</li>
+<li><code>range</code> The range of positions to examine. Default is 100 (on
+either side, positions are 10 kb apart)</li>
+<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section
+<a href="#PD"><em>Phenotype Data</em></a>.</li>
+<li><code>pheno.name</code> The name of the column containing the phenotype.</li>
+<li><code>design</code> <code>&quot;inbredA&quot;</code> or <code>&quot;inbredB&quot;</code></li>
+</ul>
+
+<p>The output of <code>LocalInt</code> is the same as the LODscores from <code>DSPRscan</code>
+but only for the specified set of positions.</p>
+
+<p>Using the ADH sample data:</p>
+
+<pre><code class="r"># The main QTL
+main.peak &lt;- peaks[[26]]
+peakChr &lt;- main.peak$peak$chr
+peakPos &lt;- main.peak$peak$Ppos
+</code></pre>
+
+<pre><code class="r">peak.int &lt;- LocalInt(peakChr,
+                     peakPos,
+                     phenotype.dat = ADHdata,
+                     pheno.name = &quot;adh&quot;,
+                     design = &quot;inbredA&quot;)
+</code></pre>
+
+<h1>Advanced Analysis {#AA}</h1>
+
+<h2>Generate Genotype Information</h2>
+
+<p>This package helps automate analysis for simple DSPR designs. Many
+users (especially those with complex interactions or complex cross
+designs) will require more flexibility. To aid those users, the
+<code>DSPRgenos()</code> function is available to set up the genotype
+information using a given phenotype data file. This function can
+handle the following designs:</p>
+
+<ul>
+<li><code>&quot;inbredA&quot;</code> and <code>&quot;inbredB&quot;</code> Direct measurements on the RILs or
+crosses to a standard</li>
+<li><code>&quot;AAcross&quot;</code> and <code>&quot;BBcross&quot;</code> Crosses within the pA or pB RIL panels
+(e.g., round robin design)</li>
+<li><code>&quot;ABcross&quot;</code> Crosses between the pA and pB RIL panels. </li>
+</ul>
+
+<p>The function can handle multiple measurments, a mix of males and
+females, and a mix of cross directions in the case of the pA-pB cross
+(i.e. A males to B females and vice versa). The function outputs
+either a list or a 3 dimensional array and the user can then use the
+many built in analysis tools in R to fit a model across the genome.</p>
+
+<pre><code class="r">DSPRgenos(design, phenotype.dat, id.col, output)
+</code></pre>
+
+<ul>
+<li><code>design</code> <code>&quot;inbredA&quot;</code>,<code>&quot;inbredB&quot;</code>,<code>&quot;AAcross&quot;</code>,<code>&quot;BBcross&quot;</code>, or
+<code>&quot;ABcross&quot;</code>.</li>
+<li><code>phenotype.dat</code> The phenotype <code>data.frame</code>. See the section
+<a href="#PD"><em>Phenotype Data</em></a>.</li>
+<li><code>id.col</code> identifies the column to use as unique ids for the
+measurements. For an inbred design, this column could be the patRIL
+column. For a cross design, a unique id column should be included.</li>
+<li><code>output</code> Format for the genotype output. Either <code>&quot;list&quot;</code> or
+<code>&quot;array&quot;</code>. Default is <code>&quot;list&quot;</code>.</li>
+</ul>
+
+<p>The output of <code>DSPRgenos()</code> is a list containing:</p>
+
+<ul>
+<li><code>genolist</code> a list containing the matrix of additive genotype
+probabilities at each position in the genome. The list is in the
+same order as the list of positions described below. Column names
+are the different DSPR haplotypes and row names are the unique ids
+provided in id.col. Alternatively, if output=&#39;array&#39;, the output is
+a 3 dimensional array [samples,haplotypes,positions]. Haplotypes
+and samples are named while positions are in the order of the list
+of positions described below.</li>
+<li><code>positions</code> a <code>data.frame</code> containing regularly spaced positions
+(every 10KB) in the genome where the genotype probabilities are
+calculated. Columns are: chr = chromosome, Ppos = physical position
+(zero offset), Gpos = genetic position, Gaxis = cummulative genetic
+position.</li>
+<li><code>phenotype</code> the phenotype <code>data.frame</code> ordered by the specified id
+column and in the same order as the genotype information at each
+position in the genome in the geno list described above.</li>
+</ul>
+
+<p>The user can easily use apply (in the case of an array), lapply (in
+the case of list), or a loop to do a genome scan of whatever type
+they wish. Future tutorials will provide sample code for specific
+senarios (e.g., the round robin design).</p>
+
+<p>The <code>DSPRgenos()</code> function is somewhat time consuming to run (~30
+min. - 1 hour). However genome scans using the output should be fast
+(2-10 min for simple designs). The user will likely wish to save the
+output especially if planning to run genome scans with multiple
+different models. Because the output is a large object (~11,000
+positions in the genome), it is much more efficient to use the <code>save</code>
+function in R as shown below:</p>
+
+<pre><code class="r">myGenos &lt;- DSPRgenos(design, phenotype.dat, id.col, output)
+save(myGenos, file = &quot;my file path&quot;)
+</code></pre>
+
+<p>To return to these results later, use <code>load</code>:</p>
+
+<pre><code class="r">load(file=&quot;my file path&quot;)
+# The object will load into the workspace with the same name as
+# when save was used. In this example, this is myGenos.
+</code></pre>
+
+<h1>Questions?</h1>
+
+<p>If you have any questions or have trouble with this tutorial, please
+contact <a href="mailto:flyrils@gmail.com">flyrils@gmail.com</a>.</p>
+
+</body>
+
+</html>

@@ -32,7 +32,7 @@
 ##'   with a heterozygous genotype and an uncertain genotype are also 
 ##'   returned.
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##' 

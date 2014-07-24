@@ -16,7 +16,7 @@
 ##'   result to be plotted. Defaults to the phenotype column names 
 ##'   used in DSPRscan.
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##'

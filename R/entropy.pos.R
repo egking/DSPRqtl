@@ -37,7 +37,7 @@
 ##'   case of the ABcross, the A and B entropy are calculated
 ##'   separately and both are returned.
 ##'   
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##'   
 ##' @references Shannon, C.E. 1984. A mathematical theory of
 ##'   communication. \emph{Bell System Technical Journal} 27(3):

@@ -42,7 +42,7 @@
 ##' information at each position in the genome in the geno list
 ##' described above}
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##'

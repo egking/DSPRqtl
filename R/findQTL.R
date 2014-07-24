@@ -20,7 +20,7 @@
 ##'   position (bp), genetic position (cM) and LOD score for each 
 ##'   significant peak.
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##'

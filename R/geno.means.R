@@ -43,7 +43,7 @@
 ##'   design, a \code{list} of \code{data.frames} for pA and pB are 
 ##'   returned.
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)

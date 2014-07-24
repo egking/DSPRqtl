@@ -52,7 +52,7 @@
 ##' \item{threshold}{the signficance threshold at the specified alpha
 ##' level}
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##'

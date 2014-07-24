@@ -35,7 +35,7 @@
 ##'   two \code{data.frames} are returned when the method used is
 ##'   'both'.
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @references Manichaikul, A., J. Dupuis, S. Sen, and K.W. Broman. 2006.
 ##'  Performance of bootstrap confidence intervals for the location of a 

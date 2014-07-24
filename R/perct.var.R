@@ -39,7 +39,7 @@
 ##' @return A numeric vector of length one: the percent variance 
 ##'   explained by the QTL.
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##' 

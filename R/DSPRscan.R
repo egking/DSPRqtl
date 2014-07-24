@@ -44,7 +44,7 @@
 ##' \item{phenotype}{the phenotype \code{data.frame} specified}
 ##' 
 ##' 
-##' @author Elizabeth King (\email{egking@@uci.edu})
+##' @author Elizabeth King (\email{kingeg@@missouri.edu})
 ##' 
 ##' @export
 ##'
