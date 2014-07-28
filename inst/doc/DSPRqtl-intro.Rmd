@@ -6,11 +6,12 @@ output:
   pdf_document:
     highlight: default
     toc: yes
+    latex_engine: xelatex
   html_document:
     theme: united
     toc: yes
 mainfont: Arial
-monofont: Menlo
+monofont: Monaco
 geometry: margin=1in
 fontsize: 11pt
 ---
