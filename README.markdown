@@ -28,7 +28,7 @@ Researchers using the DSPR will be able to identify putative causative sites. Fo
 
 ## Stable Release
 
-Directions for installation of the stable release are in the [DSPRqtl tutorial (PDF)](http://wfitch.bio.uci.edu/DatFILES/DSPRqtl-intro.pdf).
+Directions for installation of the stable release are in the [DSPRqtl tutorial (PDF)](http://wfitch.bio.uci.edu/~dspr/DatFILES/DSPRqtl-intro.pdf).
 
 ## Development Version
 
