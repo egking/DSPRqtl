@@ -1,7 +1,7 @@
 Package: DSPRqtl
 Maintainer: Elizabeth King <kingeg@missouri.edu>
 License: GPL-2
-Title: Analysis of DSPR phenotypes
+Title: Analysis of DSPR phenotypes in R
 LazyData: yes
 Type: Package
 LazyLoad: yes
