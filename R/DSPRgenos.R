@@ -133,9 +133,10 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
       }
       genotypes<-get(objname)
       patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
-      genos<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
+      patgeno<-patgeno[order(patgeno$id),]
+      genos<-as.matrix(patgeno[,c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
       row.names(genos)<-patgeno$id
-      big.list[[i]]<-genos
+      big.list[[i]]<-genos[,c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')]
       rm(list=objname)
     }
     
@@ -157,9 +158,10 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
         
         genotypes<-get(objname)
         patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
+        patgeno<-patgeno[order(patgeno$id),]
         genos<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
         row.names(genos)<-patgeno$id
-        big.list[[i]]<-genos
+        big.list[[i]]<-genos[,c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')]
         rm(list=objname)
         
       }  
@@ -205,7 +207,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
                     +as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')]))/2
           }
           
-          row.names(genos)<-patgeno$id
+          row.names(genos)<-sort(patgeno$id)
           big.list[[i]]<-genos
           rm(list=objname)
         }
@@ -252,7 +254,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
                       +as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')]))/2
             }
             
-            row.names(genos)<-patgeno$id
+            row.names(genos)<-sort(patgeno$id)
             big.list[[i]]<-genos
             rm(list=objname)          
           }
@@ -297,7 +299,7 @@ DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
               genotypes<-rbind(ABgenotypes,BAgenotypes)
               genotypes<-genotypes[order(genotypes$id),]
               genos<-as.matrix(genotypes[,c("AA1","AA2","AA3","AA4","AA5","AA6","AA7","AA8","BB1","BB2","BB3","BB4","BB5","BB6","BB7","BB8")])
-              row.names(genos)<-genotypes$id 
+              row.names(genos)<-genotypes$id
               
               if(poslist[i,1]=='X')
               {

@@ -5,15 +5,15 @@ Title: Analysis of DSPR phenotypes
 LazyData: yes
 Type: Package
 LazyLoad: yes
-Version: 2.0-3
+Version: 2.0-4
 Author: Elizabeth King
 Description: Package to analyze phenotypes measured on the Drosophila Synthetic
     Population Resource
 Depends:
-    R (>= 2.13)
+    R (>= 3.0)
 Suggests:
     DSPRqtlDataA,
     DSPRqtlDataB,
     knitr
 VignetteBuilder: knitr
-Date: 2014-07-21
+Date: 2015-06-21

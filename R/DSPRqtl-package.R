@@ -5,8 +5,8 @@
 ##' \tabular{ll}{
 ##'   Package: \tab DSPRqtl\cr
 ##'   Type: \tab Package\cr
-##'   Version: \tab 2.0-3\cr
-##'   Date: \tab 2014-07-21\cr
+##'   Version: \tab 2.0-4\cr
+##'   Date: \tab 2015-06-21\cr
 ##'   License: \tab GPL-2\cr
 ##'   LazyLoad: \tab yes\cr
 ##'   LazyData: \tab yes\cr

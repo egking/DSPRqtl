@@ -113,7 +113,8 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
     rm(list=objname)
     
     patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
-    mat<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
+    patgeno<-patgeno[order(patgeno$id),]
+    mat<-as.matrix(patgeno[,c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
     row.names(mat)<-patgeno$id
   }else{
     if(design=='inbredB')
@@ -144,7 +145,8 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
       rm(list=objname)
       
       patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
-      mat<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
+      patgeno<-patgeno[order(patgeno$id),]
+      mat<-as.matrix(patgeno[,c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
       row.names(mat)<-patgeno$id
     }else{
       if(design=='ABcross')
@@ -205,7 +207,8 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
           {
             matgeno<-merge(BAphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril') 
             matgeno<-merge(matgeno,Bgenotypes,by.x='patRIL',by.y='ril',sort=FALSE)
-            mat<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
+            matgeno<-matgeno[order(matgeno$id),]
+            mat<-as.matrix(matgeno[,c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
             row.names(mat)<-matgeno$id
             rm(list=objnameA)
             rm(list=objnameB)
@@ -216,7 +219,8 @@ geno.means<-function(peakChr,peakPos,model,design,phenotype.dat, id.col,sex)
           {
             matgeno<-merge(ABphenotype.dat,Bgenotypes,by.x='matRIL',by.y='ril')
             matgeno<-merge(matgeno,Agenotypes,by.x='patRIL',by.y='ril') 
-            mat<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
+            matgeno<-matgeno[order(matgeno$id),]
+            mat<-as.matrix(matgeno[,c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
             row.names(mat)<-matgeno$id
             rm(list=objnameA)
             rm(list=objnameB)

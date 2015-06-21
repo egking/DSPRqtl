@@ -158,7 +158,8 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
           }
           genotypes<-get(objname)
           patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
-          genos<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
+          patgeno<-patgeno[order(patgeno$id),]
+          genos<-as.matrix(patgeno[,c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
           rm(list=objname)
@@ -178,7 +179,8 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
           
           genotypes<-get(objname)
           patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
-          genos<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
+          patgeno<-patgeno[order(patgeno$id),]
+          genos<-as.matrix(patgeno[,c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
           rm(list=objname)
@@ -222,7 +224,8 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
           {
             matgeno<-merge(BAphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril')
             matgeno<-merge(matgeno,Bgenotypes,by.x='patRIL',by.y='ril',sort=FALSE)
-            genos<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
+            matgeno<-matgeno[order(matgeno$id),]
+            genos<-as.matrix(matgeno[,c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
             rm(list=objnameA)
@@ -235,7 +238,8 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
           {
             matgeno<-merge(ABphenotype.dat,Bgenotypes,by.x='matRIL',by.y='ril') 
             matgeno<-merge(matgeno,Agenotypes,by.x='patRIL',by.y='ril') 
-            genos<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
+            matgeno<-matgeno[order(matgeno$id),]
+            genos<-as.matrix(matgeno[,c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
             rm(list=objnameA)
@@ -255,7 +259,7 @@ DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
             
             genos<-as.matrix(genotypes[,c("AA1","AA2","AA3","AA4","AA5","AA6","AA7","AA8",
                                           "BB1","BB2","BB3","BB4","BB5","BB6","BB7","BB8")])
-            row.names(genos)<-genotypes$id 
+            row.names(genos)<-genotypes$id
             big.list[[counter]]<-genos
             rm(list=objnameA)
             rm(list=objnameB)

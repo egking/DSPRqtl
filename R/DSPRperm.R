@@ -212,6 +212,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
           }
           genotypes<-get(objname)
           patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
+          patgeno<-patgeno[order(patgeno$id),]
           genos<-as.matrix(patgeno[order(patgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
@@ -232,6 +233,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
           
           genotypes<-get(objname)
           patgeno<-merge(phenotype.dat,genotypes,by.x="patRIL",by.y="ril")
+          patgeno<-patgeno[order(patgeno$id),]
           genos<-as.matrix(patgeno[order(patgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
           row.names(genos)<-patgeno$id
           big.list[[counter]]<-genos
@@ -276,6 +278,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
           {
             matgeno<-merge(BAphenotype.dat,Agenotypes,by.x='matRIL',by.y='ril')
             matgeno<-merge(matgeno,Bgenotypes,by.x='patRIL',by.y='ril',sort=FALSE)
+            matgeno<-matgeno[order(matgeno$id),]
             genos<-as.matrix(matgeno[order(matgeno$id),c('AA1','AA2','AA3','AA4','AA5','AA6','AA7','AA8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
@@ -289,6 +292,7 @@ DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alph
           {
             matgeno<-merge(ABphenotype.dat,Bgenotypes,by.x='matRIL',by.y='ril') 
             matgeno<-merge(matgeno,Agenotypes,by.x='patRIL',by.y='ril') 
+            matgeno<-matgeno[order(matgeno$id),]
             genos<-as.matrix(matgeno[order(matgeno$id),c('BB1','BB2','BB3','BB4','BB5','BB6','BB7','BB8')])
             row.names(genos)<-matgeno$id
             big.list[[counter]]<-genos
