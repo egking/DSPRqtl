@@ -50,6 +50,7 @@
 ##'
 DSPRscan<-function(model,design,phenotype.dat,id.col,batch=1000,sex)
 {
+  poslist <- NULL
   
   #CHECK THAT ABCROSS HAS SPECIFIED SEX
   if(missing(sex)){

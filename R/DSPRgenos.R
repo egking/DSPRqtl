@@ -29,14 +29,14 @@
 ##' same order as the list of positions described below. Column names 
 ##' are the different DSPR haplotypes and row names are the unique ids
 ##' provided in id.col. Alternatively, if output='array', the output
-##' is a 3 dimensional array [samples,haplotypes,positions].
+##' is a 3 dimensional array [samples, haplotypes, positions].
 ##' Haplotypes and samples are named while positions are in the order
 ##' of the list of positions described below.}
 ##' \item{positions}{a \code{data.frame} containing regularly spaced 
 ##' positions (every 10KB) in the genome where the genotype
 ##' probabilities are calculated. Columns are: chr = chromosome, Ppos
 ##' = physical position (zero offset), Gpos = genetic position, Gaxis
-##' = cummulative genetic position.}
+##' = cumulative genetic position.}
 ##' \item{phenotype}{the phenotype.dat \code{data.frame} ordered by
 ##' the specified id column and in the same order as the genotype
 ##' information at each position in the genome in the geno list
@@ -49,6 +49,7 @@
 
 DSPRgenos<-function(design,phenotype.dat,id.col,output='list')
 {
+  poslist <- NULL
   
   ##ASSIGN ID COLUMN
   phenotype.dat$id<-phenotype.dat[,id.col]

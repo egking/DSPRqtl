@@ -58,6 +58,8 @@
 ##'
 DSPRperm<-function(model,design,phenotype.dat,id.col, batch=1000,niter=1000,alpha=0.05,sex)
 { 
+  poslist <- NULL
+  
   #CHECK THAT ABCROSS HAS SPECIFIED SEX
   if(missing(sex)){
     if(design=='ABcross')

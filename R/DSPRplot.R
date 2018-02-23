@@ -22,6 +22,7 @@
 ##'
 DSPRplot<-function(qtldata,threshold,legNames=NULL)
 {
+  poslist <- NULL
   
   if(missing(threshold))
   {

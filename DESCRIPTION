@@ -7,8 +7,8 @@ Type: Package
 LazyLoad: yes
 Version: 2.0-4
 Author: Elizabeth King
-Description: Package to analyze phenotypes measured on the Drosophila Synthetic
-    Population Resource
+Description: This package is used to to analyze phenotypes measured on the Drosophila Synthetic
+    Population Resource.
 Depends:
     R (>= 3.0)
 Suggests:
@@ -17,3 +17,4 @@ Suggests:
     knitr
 VignetteBuilder: knitr
 Date: 2015-06-21
+RoxygenNote: 6.0.1

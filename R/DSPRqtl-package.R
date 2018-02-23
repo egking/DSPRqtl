@@ -21,6 +21,10 @@
 ##' @author Elizabeth King
 ##' 
 ##' @keywords package
+##' @importFrom graphics abline axis box legend mtext par plot points rect
+##' @importFrom stats as.formula dnorm lm logLik optim quantile sd summary.aov
+##' @importFrom utils data
+##'
 NULL
 
 ##' Positionlist
